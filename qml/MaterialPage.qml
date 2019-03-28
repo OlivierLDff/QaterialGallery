@@ -144,18 +144,18 @@ Page
         } // ListElement
         ListElement 
         { 
-            title: "Delegates";
+            title: "Lists";
             text: "Lists are continuous, vertical indexes of text or images."
             icon: "qrc:/QQuickMaterialHelperGallery/images/icons/delegate.svg"
             source: "qrc:/QQuickMaterialHelperGallery/qml/DelegatePage.qml" 
         } // ListElement
-        /*ListElement 
+        ListElement 
         { 
             title: "Dialog Delegates";
-            text: "Tabs with independant views"
+            text: "Item delegate than call a dialog"
             icon: "qrc:/QQuickMaterialHelperGallery/images/icons/delegate.svg"
-            source: "qrc:/QQuickMaterialHelperGallery/qml/DelegatePage.qml" 
-        } // ListElement*/
+            source: "qrc:/QQuickMaterialHelperGallery/qml/DialogDelegatePage.qml" 
+        } // ListElement
         /*ListElement 
         { 
             title: "Progress Indicator";
