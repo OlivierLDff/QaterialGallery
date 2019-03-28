@@ -2,6 +2,18 @@
 
 QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper.
 
+## Components
+
+### Buttons
+
+![](./doc/screen2.png)
+
+* Raised Button
+* Flat Button
+* Outlined Button
+
+etc ...
+
 ## Build
 
 QQuickMaterialHelperGallery is a cross platform application that can be build natively or cross compiled. Qt precompiled binary are required and can be download from the [official website](http://download.qt.io/archive/qt/). Then simply use the qt manager to install the toolchain that you need. Minimum Qt version is `5.12`.
