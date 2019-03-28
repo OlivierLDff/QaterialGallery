@@ -1,6 +1,6 @@
-# EreiDM
+# QQuickMaterialHelperGallery
 
-QQuickMaterialHelperGallery is a graphical tool to control and configure Dmx/Rdm network.
+QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper.
 
 ## Build
 
