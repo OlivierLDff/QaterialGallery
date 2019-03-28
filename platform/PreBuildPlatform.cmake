@@ -1,0 +1,25 @@
+MESSAGE(STATUS "Pre Build Platform Dependancies Configuration")
+MESSAGE(STATUS "CMAKE_SYSTEM_NAME :         ${CMAKE_SYSTEM_NAME}")
+MESSAGE(STATUS "CMAKE_HOST_SYSTEM_NAME :    ${CMAKE_HOST_SYSTEM_NAME}")
+
+# ───────── WINDOWS ──────────
+
+IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+
+ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+
+# ────────── LINUX ───────────
+
+# ────────── MACOS ───────────
+
+# ───────── ANDROID ──────────
+
+IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
+	
+SET( QQUICKMATERIALHELPERGALLERY_BUILD_SHARED ON CACHE BOOL "Build as a shared library" FORCE)
+SET( QQUICKMATERIALHELPERGALLERY_BUILD_STATIC OFF CACHE BOOL "Build as a static library" FORCE)
+SET( QQUICKMATERIALHELPERGALLERY_BUILD_EXE OFF CACHE BOOL "Build as an executable" FORCE)
+
+ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
+
+# ─────────── IOS ────────────

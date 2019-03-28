@@ -1,0 +1,34 @@
+#
+#	Download Script by Olivier Le Doeuff
+#
+## CMAKE INPUT	
+#	
+#	-QTANDROIDCMAKE_REPOSITORY : QTANDROIDCMAKE repository url
+#	-QTANDROIDCMAKE_TAG : QTANDROIDCMAKE git tag
+#
+## CMAKE OUTPUT
+# 
+# 	See QTANDROIDCMAKE README
+#
+
+# repository path & tag
+IF( NOT QTANDROIDCMAKE_REPOSITORY )
+	SET( QTANDROIDCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtAndroidCMake.git" CACHE STRING "Qt Android CMake repository, can be a local URL" FORCE )
+ENDIF()
+MESSAGE(STATUS "Qt Android CMake repository folder: " ${QTANDROIDCMAKE_REPOSITORY})
+
+IF( NOT DEFINED QTANDROIDCMAKE_TAG )
+	SET( QTANDROIDCMAKE_TAG master CACHE STRING "Qt Android CMake git tag" FORCE )
+ENDIF()
+MESSAGE( STATUS "Qt Android CMake repository tag: " ${QTANDROIDCMAKE_TAG} )
+
+INCLUDE( ${PROJECT_SOURCE_DIR}/cmake/DownloadProject.cmake )
+
+DOWNLOAD_PROJECT(PROJ 	QtAndroidCMake
+	GIT_REPOSITORY 		${QTANDROIDCMAKE_REPOSITORY}
+	GIT_TAG 			${QTANDROIDCMAKE_TAG}
+	UPDATE_DISCONNECTED 1
+	QUIET
+	)
+
+INCLUDE( ${QtAndroidCMake_SOURCE_DIR}/AddQtAndroidApk.cmake )

@@ -1,0 +1,39 @@
+<RCC>
+	<qresource prefix="/QQuickMaterialHelperGallery/qml">
+
+	<file>Main.qml</file>
+
+	<!-- MAIN PAGE -->
+	<file>MaterialPage.qml</file>
+	<file>AppBarContent.qml</file>
+
+	<!-- PAGE -->
+	<file>AppBarTopPage.qml</file>
+	<file>MenuBarPage.qml</file>
+	<file>AppBarBottomPage.qml</file>
+	<file>ButtonPage.qml</file>
+	<file>ControlButtonPage.qml</file>
+	<file>IconButtonPage.qml</file>
+	<file>FABPage.qml</file>
+	<file>TypoPage.qml</file>	
+	<file>TabBarPage.qml</file>
+	<file>FixedTabBarPage.qml</file>
+	<file>FooterTabBarPage.qml</file>
+	<file>ScrollableTabBarPage.qml</file>
+	<file>ClusturedTabBarPage.qml</file>
+	<file>DelegatePage.qml</file>
+	<file>CardPage.qml</file>
+	<file>CardLayout1.qml</file>
+	<file>CardLayout2.qml</file>
+	<file>CardLayout3.qml</file>
+	<file>CardLayout4.qml</file>
+	<file>FramePage.qml</file>
+	<file>GroupBoxPage.qml</file>
+	<file>GroupBoxLayout.qml</file>
+	<file>BannerPage.qml</file>
+	<file>SnackbarPage.qml</file>
+	<file>DialogPage.qml</file>
+	<file>TextFieldPage.qml</file>
+	
+	</qresource>
+</RCC>
