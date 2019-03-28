@@ -136,15 +136,100 @@ ScrollablePage
         Button
         {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Confirmation"
+            text: "Text Field Dialog"
             width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _textFieldDialogComponent
+            Component
+            {
+                id: _textFieldDialogComponent
+                TextFieldDialog
+                {
+                    id: _textFieldDialog
+                    title: "Enter some text"
+                    textTitle: "Title"
+                    placeholderText: "Placeholder"
+                    helperText: "This a hint"
+                    validator: RegExpValidator { regExp: /[A-Za-z]+/ }
+                    inputMethodHints: Qt.ImhSensitiveData
+                    errorText: length ? ("Don't write more than " + maximumLengthCount + " characters") : "Can't be empty"
+                    maximumLengthCount: 16
+                    trailingContent: TextFieldAlertIcon { visible: _textFieldDialog.errorState }
+                    onAccepted: console.log("Accept")
+                    onRejected: console.log("Cancel")
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                }
+            }
         }
 
         Button
         {
+            id: _radioDialog
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Confirmation (Scrolling)"
+            text: "Radio Dialog"
             width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _radioComponentTitle
+            property int modelIndex: 0
+            Component
+            {
+                id: _radioComponentTitle
+                RadioDialog
+                {
+                    title: "Scrollable Radio Dialog"
+                    onAccepted:
+                    {
+                         console.log("Accept " + currentIndex); 
+                         _radioDialog.modelIndex = currentIndex
+                    }
+                    onRejected: console.log("Cancel")
+                    currentIndex: _radioDialog.modelIndex
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                    model: ListModel
+                    {
+                        ListElement{ text: "Element1"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element2"; secondaryText: "secondary text" }
+                    }
+                }
+            }
+        }
+
+        Button
+        {
+            id: _radioScrollableDialog
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Radio Dialog Scrollable"
+            width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _scrollableComponentTitle
+            property int modelIndex: 0
+            Component
+            {
+                id: _scrollableComponentTitle
+                RadioDialog
+                {
+                    title: "Scrollable Radio Dialog"
+                    onAccepted:
+                    {
+                         console.log("Accept " + currentIndex); 
+                         _radioScrollableDialog.modelIndex = currentIndex
+                    }
+                    onRejected: console.log("Cancel")
+                    currentIndex: _radioScrollableDialog.modelIndex
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                    model: ListModel
+                    {
+                        ListElement{ text: "Element1"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element2"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element3"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element4"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element5"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element6"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element7"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element8"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element9"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element10"; secondaryText: "secondary text" }
+                        ListElement{ text: "Element11"; secondaryText: "secondary text" }
+                    }
+                }
+            }
         }
     } // Column
 

@@ -126,7 +126,8 @@ ApplicationWindow
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         width: window.width*0.8
-        height: window.height*0.8
+        //height: window.height*0.8
+        horizontalPadding: 0
         modal: true
         focus: true
         title: "Settings"
@@ -143,13 +144,13 @@ ApplicationWindow
 
         contentItem: Flickable
         {
-            width: themeDialog.width*0.8
-            height: themeDialog.height
+            //width: themeDialog.width
+            implicitHeight: 400//settingsColumn.implicitHeight
             contentWidth: width
             contentHeight: settingsColumn.implicitHeight
 
             clip: true
-            ColumnLayout 
+            Column
             {
                 id: settingsColumn
                 width: parent.width
@@ -157,7 +158,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Debug Icon Label"
                     checked: MaterialStyle.debug.drawDebugIconLabel
                     onCheckedChanged:
@@ -168,7 +169,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Debug Buttons"
                     checked: MaterialStyle.debug.drawDebugButton
                     onCheckedChanged:
@@ -179,7 +180,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Debug Delegates"
                     checked: MaterialStyle.debug.drawDebugDelegate
                     onCheckedChanged:
@@ -190,17 +191,18 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: checked ? "Dark" : "Light"
                     onCheckedChanged:
                     {
-                        MaterialStyle.theme = checked ? Material.Dark : Material.Light
+                        MaterialStyle.theme = checked ? MaterialStyle.Theme.Dark : MaterialStyle.Theme.Light
                     }
+                    Component.onCompleted: checked = MaterialStyle.theme===MaterialStyle.Theme.Dark
                 }
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: checked ? "Dense" : "Normal"
                     onCheckedChanged:
                     {
@@ -210,7 +212,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Color on Primary (Light)"
                     checked: MaterialStyle.foregroundReversedOnPrimaryLight
                     onCheckedChanged:
@@ -221,7 +223,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Color on Primary (Dark)"
                     checked: MaterialStyle.foregroundReversedOnPrimaryDark
                     onCheckedChanged:
@@ -232,7 +234,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Ripple on Primary (Light)"
                     checked: MaterialStyle.rippleReversedOnPrimaryLight
                     onCheckedChanged:
@@ -243,7 +245,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Ripple on Primary (Dark)"
                     checked: MaterialStyle.rippleReversedOnPrimaryDark
                     onCheckedChanged:
@@ -254,7 +256,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Color on Accent (Light)"
                     checked: MaterialStyle.foregroundReversedOnAccentLight
                     onCheckedChanged:
@@ -265,7 +267,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Reverse Color on Accent (Dark)"
                     checked: MaterialStyle.foregroundReversedOnAccentDark
                     onCheckedChanged:
@@ -276,7 +278,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Prefer Accent Color on Primary (Light)"
                     checked: MaterialStyle.preferAccentOnPrimaryLight
                     onCheckedChanged:
@@ -287,7 +289,7 @@ ApplicationWindow
 
                 SwitchDelegate
                 {
-                    Layout.fillWidth: true
+                    width: parent.width
                     text: "Prefer Accent Color on Primary (Dark)"
                     checked: MaterialStyle.preferAccentOnPrimaryDark
                     onCheckedChanged:
@@ -301,7 +303,7 @@ ApplicationWindow
                     text: "Primary Color"
                     horizontalAlignment: Label.AlignHCenter
                     verticalAlignment: Label.AlignVCenter
-                    Layout.fillWidth: true
+                    width: parent.width
                 }
                 ListModel
                 {
@@ -331,7 +333,7 @@ ApplicationWindow
                 {
                     //width: parent.width
                     columns: parent.width/45
-                    Layout.fillWidth: true
+                    width: parent.width
                     Repeater
                     {
                         model: colorModel
@@ -366,13 +368,13 @@ ApplicationWindow
                     text: "Accent Color"
                     horizontalAlignment: Label.AlignHCenter
                     verticalAlignment: Label.AlignVCenter
-                    Layout.fillWidth: true
+                    width: parent.width
                 }
                 GridLayout
                 {
                     //width: parent.width
                     columns: parent.width/45
-                    Layout.fillWidth: true
+                    width: parent.width
                     Repeater
                     {
                         model: colorModel
