@@ -9,13 +9,22 @@ import QQuickMaterialHelper.Components 1.12
 import QQuickMaterialHelper.Containers 1.12
 import QQuickMaterialHelper.Style 1.12
 
-ScrollablePage
+Page
 {
+
     header: ToolBar 
     {
         AppBarContent { anchors.fill: parent; title: "Dialogs" }
-    } // ToolBar
+    } // ToolBar 
 
+    Loader 
+    { 
+        id: _dialogLoader
+        onLoaded: item.open()
+    }
+ScrollablePage
+{
+    anchors.fill: parent
     //width: parent.width
     Column
     {
@@ -39,6 +48,19 @@ ScrollablePage
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Alert"
             width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _alertComponent
+            Component
+            {
+                id: _alertComponent
+                AlertDialog
+                {
+                    text: "Discard draft"
+                    standardButtons: Dialog.Cancel | Dialog.Ok
+                    onAccepted: console.log("Accept")
+                    onRejected: console.log("Cancel")
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                }
+            }
         }
 
         Button
@@ -46,6 +68,20 @@ ScrollablePage
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Alert with title"
             width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _alertComponentTitle
+            Component
+            {
+                id: _alertComponentTitle
+                AlertDialog
+                {
+                    title: "Use google's location service?"
+                    text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
+                    standardButtons: Dialog.No | Dialog.Ok
+                    onAccepted: console.log("Accept")
+                    onRejected: console.log("Cancel")
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                }
+            }
         }
 
         Button
@@ -53,6 +89,48 @@ ScrollablePage
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Simple"
             width: parent.buttonWidth
+            onClicked: _dialogLoader.sourceComponent = _simpleComponentTitle
+            Component
+            {
+                id: _simpleComponentTitle
+                ModalDialog
+                {
+                    title: "Set user account"
+                    onClosed: _dialogLoader.sourceComponent = undefined
+                    horizontalPadding: 0
+
+                    contentItem: Column
+                    {
+                        ItemDelegate
+                        {
+                            width: parent.width
+                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+                            text: "username@gmail.com"
+                            fillIcon: true
+                            highlightedIcon: true
+                            reverseHighlightIcon: true
+                        }
+                        ItemDelegate
+                        {
+                            fillIcon: true
+                            highlightedIcon: true
+                            reverseHighlightIcon: true
+                            width: parent.width
+                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+                            text: "user02@gmail.com"
+                        }
+                        ItemDelegate
+                        {
+                            fillIcon: true
+                            highlightedIcon: false
+                            reverseHighlightIcon: true
+                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            width: parent.width
+                            text: "add account"
+                        }
+                    }
+                } // Dialog
+            }
         }
 
         Button
@@ -69,4 +147,7 @@ ScrollablePage
             width: parent.buttonWidth
         }
     } // Column
+
 } // ScrollablePage
+
+}

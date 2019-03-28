@@ -139,6 +139,8 @@ ApplicationWindow
             themeDialog.close()
         }
 
+        drawSeparator: true
+
         contentItem: Flickable
         {
             width: themeDialog.width*0.8
