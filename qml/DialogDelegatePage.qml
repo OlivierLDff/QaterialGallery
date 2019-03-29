@@ -88,6 +88,35 @@ ScrollablePage
             }
             onRejected: console.log("Cancel")
         }
-
+        EnumDelegate
+        {
+            width: parent.width
+            property int enumValue: 2
+            text: model.get(enumValue).text ? model.get(enumValue).text : ""
+            secondaryText: model.get(enumValue).secondaryText ? model.get(enumValue).secondaryText : ""
+            icon.source: model.get(enumValue).source ? model.get(enumValue).source : ""
+            onAccepted: enumValue = value
+            title: "Title"
+            model:ListModel
+            {
+                ListElement{ text: "Choice 1"; secondaryText: "secondary text";source: "qrc:/QQuickMaterialHelperGallery/images/icons/cake.svg" }
+                ListElement{ text: "Choice 2"; secondaryText: "Neque porro quisquam";source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg" }
+                ListElement{ text: "Element 3"; secondaryText: "st qui dolorem ipsum";source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg" }
+                ListElement{ text: "Choice 4"; secondaryText: "sNam arcu el" }
+                ListElement{ text: "Element 5"; secondaryText: "tibulum gra" }
+                ListElement{ text: "Element 6"; secondaryText: "sLe Lorem"; source: "qrc:/QQuickMaterialHelperGallery/images/icons/phone.svg" }
+                ListElement{ secondaryText: "quia dolor" }
+                ListElement{ secondaryText: "secondary text";source: "qrc:/QQuickMaterialHelperGallery/images/icons/wifi.svg" }
+                ListElement{ text: "Element 9"; }
+                ListElement{ text: "Element 10"; }
+                ListElement{ text: "Element 11";source: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg" }
+            }
+            delegate: RadioDialogDelegate
+            {
+                text: model.text ? model.text : ""
+                secondaryText: model.secondaryText ? model.secondaryText : ""
+                icon.source: model.source ? model.source : ""
+            }
+        }
     } // Column
 } // ScrollablePage
