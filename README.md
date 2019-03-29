@@ -1,8 +1,8 @@
 # QQuickMaterialHelperGallery
 
 
-<a href="http://http://85.170.130.157:51861/viewType.html?buildTypeId=Build_MSVC64&guest=1">
-<img src="http://http://85.170.130.157:51861/app/rest/builds/buildType:(id:Build_MSVC64)/statusIcon"/>
+<a href="http://85.170.130.157:51861/viewType.html?buildTypeId=QQuickMaterialHelperGallery_Build_MSVC64&guest=1">
+<img src="http://85.170.130.157:51861/app/rest/builds/buildType:(id:QQuickMaterialHelperGallery_Build_MSVC64)/statusIcon"/>
 </a>
 
 QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper.
