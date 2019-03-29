@@ -11,7 +11,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 			ALL
 		    NAME "QQuickMaterialHelperGallery"
 		    VERSION ${QQUICKMATERIALHELPERGALLERY_VERSION}
-		    PUBLISHER "Ereimul"
+		    PUBLISHER "OlivierLdff"
 		    PRODUCT_URL "www.qquickcontrols.com"
 		    PACKAGE "org.qquickcontrols.qquickHelperGallery"
 		    FILE_EXTENSION "qquickHelperGallery"
