@@ -17,6 +17,11 @@ Page
         AppBarContent { anchors.fill: parent; title: "Dialogs" }
     } // ToolBar 
 
+    DialogManager
+    {
+        id: dialogManager
+    }
+
     Loader 
     { 
         id: _dialogLoader
@@ -82,6 +87,27 @@ Page
                         onClosed: _dialogLoader.sourceComponent = undefined
                     }
                 }
+            }
+
+            Button
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Alert with icon"
+                width: parent.buttonWidth
+                onClicked: dialogManager.openWithSettings({
+                    acceptedCallback: function()
+                    {
+                        console.log("accept")
+                    },
+                    rejectedCallback: function()
+                    {
+                        console.log("reject")
+                    },
+                    text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.",
+                    title: qsTr("Send data?"),
+                    iconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg",
+                    standardButtons: Dialog.Cancel | Dialog.Yes
+                } )
             }
 
             Button

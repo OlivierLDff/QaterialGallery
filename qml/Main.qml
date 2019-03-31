@@ -6,6 +6,7 @@ import Qt.labs.settings 1.0
 
 import QQuickMaterialHelper.Components 1.12
 import QQuickMaterialHelper.Style 1.12
+import QQuickMaterialHelper.Fonts 1.12
 
 ApplicationWindow 
 {
