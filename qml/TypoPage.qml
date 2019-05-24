@@ -139,6 +139,7 @@ Page
 
                             text: model.type
                             textType: MaterialStyle.TextType.Caption
+                            
                         } // Label
                         Label
                         {
