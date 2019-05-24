@@ -80,8 +80,8 @@ int main(int argc, char *argv[])
 	// ────────── REGISTER QML TYPE ──────────────────────────────────────
 
 	// QSM HELPER
-	QQuickMaterialHelper::Helper::LoadRessources();
-	QQuickMaterialHelper::Helper::RegisterTypes();
+	QQuickMaterialHelper::Helper::loadRessources();
+	QQuickMaterialHelper::Helper::registerTypes();
 
 	// ────────── LOAD QML MAIN ──────────────────────────────────────
 
