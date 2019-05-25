@@ -2,4 +2,5 @@
 [Bb]uild*/
 # Ignore qt files when importing CMakeLists
 *.users
-QQuickMaterialHelper/
+# Ignore CLion project files
+*.idea
