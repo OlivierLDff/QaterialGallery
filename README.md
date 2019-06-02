@@ -5,7 +5,15 @@
 <img src="http://85.170.130.157:51861/app/rest/builds/buildType:(id:QQuickMaterialHelperGallery_Build_MSVC64)/statusIcon"/>
 </a>
 
-QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper.
+QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper. It is still under development.
+
+This project also showcase multiplatform deployment.
+
+- [x] Windows
+- [ ] Linux *(Compile but no deployment)*
+- [ ] macOs *(Compile but no deployment)*
+- [x] iOs
+- [x] Android
 
 ## Components
 
@@ -18,6 +26,8 @@ QQuickMaterialHelperGallery is a showcase application and contains example for t
 * Outlined Button
 
 etc ...
+
+DOC TODO
 
 ## Build
 
@@ -38,7 +48,7 @@ export QT_DIR_MSVC64=C:/Qt/$QT_WIN_VERSION/msvc2017_64
 Then simply clone the repository and create an in source build folder.
 
 ```bash
-git clone https://github.com/Ereimul/QQuickMaterialHelperGallery 
+git clone https://github.com/OlivierLdff/QQuickMaterialHelperGallery 
 cd QQuickMaterialHelperGallery && mkdir build && cd build
 ```
 
@@ -106,6 +116,11 @@ export QT_DIR_X86=C:/Qt/$QT_WIN_VERSION/android_x86
 export QT_DIR_ARMV7A=Path/To/Qt/$QT_ANDROID_VERSION/android_armv7
 export QT_DIR_ARM64V8A=Path/To/Qt/$QT_WIN_VERSION1/android_arm64_v8a
 export QT_DIR_X86=Path/To/Qt/$QT_WIN_VERSION/android_x86
+## On macOs
+export QT_USER_ID=$(id -un)
+export QT_DIR_ARMV7A=/Users/$QT_USER_ID/Qt/$QT_ANDROID_VERSION/android_armv7
+export QT_DIR_ARM64V8A=/Users/$QT_USER_ID/Qt/$QT_WIN_VERSION1/android_arm64_v8a
+export QT_DIR_X86=/Users/$QT_USER_ID/Qt/$QT_WIN_VERSION/android_x86
 ```
 
 *Due to a bug in gcc it is recommended to use clang.*
@@ -142,7 +157,7 @@ cmake -DQT_DIR=$QT_DIR_ARMV7A -G "Unix Makefiles" \
 make -j8
 ```
 
-The resulted apk will be in `PsnViewer-armeabi-v7a/build/outputs/apk/release/`.
+The resulted apk will be in `QQuickMaterialHelperGallery-armeabi-v7a/build/outputs/apk/release/`.
 
 #### Arm64 v8a
 
@@ -162,7 +177,7 @@ cmake -DQT_DIR=$QT_DIR_ARM64V8A -G "Unix Makefiles" \
 make -j8
 ```
 
-The resulted apk will be in `PsnViewer-arm64-v8a/build/outputs/apk/release/`.
+The resulted apk will be in `QQuickMaterialHelperGallery-arm64-v8a/build/outputs/apk/release/`.
 
 #### x86
 
@@ -183,11 +198,63 @@ cmake -DQT_DIR=$QT_DIR_X86 -G "Unix Makefiles" \
 make -j8
 ```
 
-The resulted apk will be in `PsnViewer-x86/build/outputs/apk/release/`.
+The resulted apk will be in `QQuickMaterialHelperGallery-x86/build/outputs/apk/release/`.
 
 ### Ios
 
-*TODO*
+**Prerequisite:**
+
+- Be on recent version of [macOs](https://www.apple.com/fr/macos/mojave/).
+- Latest Version of [XCode](https://developer.apple.com/xcode/).
+- [Qt](https://www.qt.io/) compiled for iOs as static library.
+- [iOs CMake Toolchain](https://github.com/OlivierLDff/IosCMakeToolchain).
+- Generate Qt Import Plugin statement. See [these macros](https://github.com/OlivierLDff/QtStaticCMake).
+- An [Apple Developer Licence](https://developer.apple.com/) if you want to deploy on real device.
+
+**Prepare Environment:**
+
+If you installed official Qt binary, Qt Sdk binary is located in:
+
+```bash
+export QT_USER_ID=$(id -un)
+export QT_IOS_VERSION=5.12.0
+export QT_IOS_DIR=/Users/$QT_USER_ID/Qt/$QT_IOS_VERSION/ios
+```
+
+**Run CMake:**
+
+Then simply run CMake with [this toolchain](https://github.com/OlivierLDff/IosCMakeToolchain). Read the toolchain README for more information.
+
+```bash
+cmake -DCMAKE_PREFIX_PATH=$QT_IOS_DIR \
+-DDEPLOYMENT_TARGET=11.0 \
+-DCMAKE_TOOLCHAIN_FILE=/path/to/ios.toolchain.cmake \
+-DPLATFORM=OS64COMBINED \
+-DENABLE_BITCODE=FALSE \
+-DTEAM_ID=AAAAAAAA \
+-DSTATIC_QT=ON \
+-G "XCode" \
+path/to/Projet/
+```
+
+**Build:**
+
+Then you can simply build your app:
+
+```bash
+cmake --build . --config Release
+```
+
+or launch the generated XCode project.
+
+**Notes**
+
+- **OS64COMBINED** is only available if you are using CMake 3.14+.
+- Generator **XCode** is required to sign app and create a bundle app.
+- Replace **TEAM_ID** with your id. Run `/usr/bin/env xcrun security find-identity -v -p codesigning` to see availables Ids.
+- **Qt 5.12**:
+  - If you use prebuild qt ios library, then bitcode is disabled.
+  - Library is build with minimum Os support 11.0. You need to do the same.
 
 ## Configuration
 
@@ -201,7 +268,7 @@ The resulted apk will be in `PsnViewer-x86/build/outputs/apk/release/`.
 * **QQUICKMATERIALHELPERGALLERY_PROJECT** : Name of the project. *Default: QQuickMaterialHelperGallery*.
 * **QQUICKMATERIALHELPERGALLERY_TARGET** : Name of the project. *Default: QQuickMaterialHelperGallery*.
 * **QQUICKMATERIALHELPERGALLERY_USE_NAMESPACE** : Should the library be compiled with a namespace. *Default: ON*.
-* **QQUICKMATERIALHELPERGALLERY_NAMESPACE** : Namespace of the library ig **QQUICKMATERIALHELPERGALLERY_USE_NAMESPACE** is ON. *Default : Erdm.*
+* **QQUICKMATERIALHELPERGALLERY_NAMESPACE** : Namespace of the library ig **QQUICKMATERIALHELPERGALLERY_USE_NAMESPACE** is ON. *Default : Qqmh.*
 
 ### Dependencies
 
