@@ -9,12 +9,27 @@ import QQuickMaterialHelper.Components 1.12
 import QQuickMaterialHelper.Containers 1.12
 import QQuickMaterialHelper.Style 1.12
 
-ScrollablePage
+
+
+Page
 {
     header: ToolBar 
     {
         AppBarContent { anchors.fill: parent; title: "Snackbars" }
     } // ToolBar
+
+    SnackbarManager
+    {
+        id: _snackbarManager
+        anchors.fill: parent
+        anchors.bottomMargin : 20
+    }
+    ScrollablePage
+{
+
+
+    anchors.fill: parent
+
 
     Column
     {
@@ -71,8 +86,30 @@ ScrollablePage
 
         Button
         {
+            id :test
             anchors.horizontalCenter: parent.horizontalCenter
+        
             text: "Push Snackbar"
+            onClicked: _snackbarManager.show({
+                text : "Snackbar text",
+                action : "",
+                timeout: "",
+                onAccept : function()
+                   {
+                     console.log("accept snackbar")
+                    },
+                onClose: function()
+                      {
+                    console.log("close snackbar with time")
+                      }
+
+                })
         }
+
+
+
+       
     } // Column
 } // ScrollablePage
+}
+ 
