@@ -17,11 +17,11 @@ ApplicationWindow
 	title: "Oliv Material Gallery"
 
     RobotoFontLoader {}
-
+    
     menuBar: MenuBar 
     {
         visible: false
-        Menu 
+        Menu
         {
             title: qsTr("File")
             width: 300
