@@ -31,7 +31,7 @@
 
 #define QQUICKMATERIALHELPERGALLERY_URI "QQuickMaterialHelperGallery"
 
-Q_LOGGING_CATEGORY(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "qquickcontrols.qquickHelperGallery")
+Q_LOGGING_CATEGORY(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "qquickHelperGallery")
 
 int main(int argc, char *argv[])
 {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	// ────────── COMMAND PARSER ──────────────────────────────────────
 
 	QCommandLineParser parser;
-	parser.setApplicationDescription("QQuickMaterialHelperGallery is a tool to control and and configure Dmx/Rdm Network.");
+	parser.setApplicationDescription("QQuickMaterialHelperGallery is a gallery for the QML library QQuickMaterialHelper.");
 	parser.addHelpOption();
 	parser.addVersionOption();
 
@@ -71,21 +71,21 @@ int main(int argc, char *argv[])
 
 	const QStringList args = parser.positionalArguments();
 
-	// ────────── SET QML FONT AND RESSOURCES ──────────────────────────────────────
+	// ────────── SET QML FONT AND RESSOURCES ──────────
 
 	QQuickStyle::setStyle(QStringLiteral("Material"));
 	engine.addImportPath("qrc:///QQuickMaterialHelperGallery/qml");
 	engine.addImportPath("qrc:///");
 
-	// ────────── REGISTER QML TYPE ──────────────────────────────────────
+	// ────────── REGISTER QML TYPE ────────────
 
 	// QSM HELPER
-	QQuickMaterialHelper::Helper::LoadRessources();
-	QQuickMaterialHelper::Helper::RegisterTypes();
+	QQuickMaterialHelper::Helper::loadResources();
+	QQuickMaterialHelper::Helper::registerTypes();
 
-	// ────────── LOAD QML MAIN ──────────────────────────────────────
+	// ────────── LOAD QML MAIN ───────────
 
-	qCInfo(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY(), "Qml Engine Load Main.qml");
+	qCInfo(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
 	engine.load(QUrl("qrc:/QQuickMaterialHelperGallery/qml/Main.qml"));
 	if (engine.rootObjects().isEmpty())
 		return -1;
