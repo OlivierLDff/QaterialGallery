@@ -139,13 +139,14 @@ Page
 
                             text: model.type
                             textType: MaterialStyle.TextType.Caption
-                            
+                            usePixelSize: false
                         } // Label
                         Label
                         {
                             text: font.styleName + " " + font.pixelSize + "sp"
                             textType: model.textType
                             enabled: _enabledSwitch.checked
+                            usePixelSize: false
                         } // Label
                     } // RowLayout
                 } // Repeater        
@@ -164,14 +165,14 @@ Page
                     model: typoModel
                     delegate: RowLayout
                     {
-                        LabelPixelSize
+                        Label
                         {
                             Layout.preferredWidth: 65
 
                             text: model.type
                             textType: MaterialStyle.TextType.Caption
                         } // Label
-                        LabelPixelSize
+                        Label
                         {
                             text: font.styleName + " " + font.pixelSize + "sp"
                             textType: model.textType

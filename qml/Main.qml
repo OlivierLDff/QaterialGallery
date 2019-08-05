@@ -16,10 +16,7 @@ ApplicationWindow
     visible: true
 	title: "Oliv Material Gallery"
 
-    RobotoFontLoader
-    {
-        
-    }
+    RobotoFontLoader {}
     
     menuBar: MenuBar 
     {
