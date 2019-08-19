@@ -155,6 +155,13 @@ Page
             text: "Item delegate than call a dialog"
             icon: "qrc:/QQuickMaterialHelperGallery/images/icons/delegate.svg"
             source: "qrc:/QQuickMaterialHelperGallery/qml/DialogDelegatePage.qml" 
+        }
+         ListElement 
+        { 
+            title: "Fader";
+            text: "An Item that can have a value between 0 and 100"
+            icon: "qrc:/QQuickMaterialHelperGallery/images/icons/fader.svg"
+            source: "qrc:/QQuickMaterialHelperGallery/qml/FaderPage.qml" 
         } // ListElement
         /*ListElement 
         { 

@@ -35,6 +35,7 @@
     <file>DialogPage.qml</file>
     <file>TextFieldPage.qml</file>
     <file>DialogDelegatePage.qml</file>
-     <file>SnackbarManager.qml</file>
+    <file>SnackbarManager.qml</file>
+    <file>FaderPage.qml</file>
     </qresource>
 </RCC>
