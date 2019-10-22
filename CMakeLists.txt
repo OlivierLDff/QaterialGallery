@@ -263,4 +263,4 @@ endif(QT_STATIC)
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────
 
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/platform/PostBuildPlatform.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/platform/PostBuildPlatform.cmake)
