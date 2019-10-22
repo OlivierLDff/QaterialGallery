@@ -52,6 +52,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
         GIT_TAG        ${QTANDROIDCMAKE_TAG}
     )
     message(STATUS "Download QtAndroidCMake from ${QTANDROIDCMAKE_REPOSITORY}")
+    FetchContent_MakeAvailable(QtAndroidCMake)
 
     # Set keystore variable
     IF(QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE)

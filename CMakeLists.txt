@@ -85,10 +85,11 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/platform/PreBuildPlatform.cmake)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(Qt5Core CONFIG REQUIRED ONLY)
-find_package(Qt5Quick CONFIG REQUIRED ONLY)
-find_package(Qt5QuickControls2 CONFIG REQUIRED ONLY)
-find_package(Qt5QuickCompiler CONFIG REQUIRED ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
+find_package(Qt5Core CONFIG REQUIRED)
+find_package(Qt5Quick CONFIG REQUIRED)
+find_package(Qt5QuickControls2 CONFIG REQUIRED)
+find_package(Qt5QuickCompiler CONFIG REQUIRED)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       STATUS                                     │
