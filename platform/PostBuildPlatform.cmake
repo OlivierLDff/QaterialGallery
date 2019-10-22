@@ -5,8 +5,17 @@ MESSAGE(STATUS "Post Build Platform Dependancies Configuration")
 IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
     IF(QQUICKMATERIALHELPERGALLERY_BUILD_EXE)
 
-        MESSAGE(STATUS "Add QtWindowsCMake for ${QQUICKMATERIALHELPERGALLERY_TARGET}")
-        add_qt_windows_exe( ${QQUICKMATERIALHELPERGALLERY_TARGET} 
+        message(STATUS "Download QtWindowsCMake from ${QTWINDOWSCMAKE_REPOSITORY}")
+
+        # QtWindowsCMake
+        FetchContent_Declare(
+            QtWindowsCMake
+            GIT_REPOSITORY ${QTWINDOWSCMAKE_REPOSITORY}
+            GIT_TAG        ${QTWINDOWSCMAKE_TAG}
+        )
+        FetchContent_MakeAvailable(QtWindowsCMake)
+
+        add_qt_windows_exe( ${QQUICKMATERIALHELPERGALLERY_TARGET}
             ALL
             NAME "QQuickMaterialHelperGallery"
             VERSION ${QQUICKMATERIALHELPERGALLERY_VERSION}
@@ -21,8 +30,12 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
             VERBOSE_INSTALLER
          )
 
-    ENDIF(QQUICKMATERIALHELPERGALLERY_BUILD_EXE)
-ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+        if(MSVC)
+            set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QQUICKMATERIALHELPERGALLERY_TARGET})
+        endif() # MSVC
+
+    endif() # QQUICKMATERIALHELPERGALLERY_BUILD_EXE
+endif() # Windows
 
 # ────────── LINUX ───────────
 
@@ -31,6 +44,14 @@ ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 # ───────── ANDROID ──────────
 
 IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
+
+    # QtAndroidCMake
+    FetchContent_Declare(
+        QtAndroidCMake
+        GIT_REPOSITORY ${QTANDROIDCMAKE_REPOSITORY}
+        GIT_TAG        ${QTANDROIDCMAKE_TAG}
+    )
+    message(STATUS "Download QtAndroidCMake from ${QTANDROIDCMAKE_REPOSITORY}")
 
     # Set keystore variable
     IF(QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE)
@@ -50,11 +71,20 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
         ${KEYSTORE_SIGNATURE}
     )
 
-ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
+ENDIF() # Android
 
 # ─────────── IOS ────────────
 
 IF(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
+
+    # QtIosCMake
+    FetchContent_Declare(
+        QtIosCMake
+        GIT_REPOSITORY ${QTIOSCMAKE_REPOSITORY}
+        GIT_TAG        ${QTIOSCMAKE_TAG}
+    )
+    message(STATUS "Download QtIosCMake from ${QTIOSCMAKE_REPOSITORY}")
+    FetchContent_MakeAvailable(QtIosCMake)
 
     # We can't have empty flags
     IF(NOT TEAM_ID)
