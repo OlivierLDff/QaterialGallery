@@ -3,13 +3,8 @@
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
-
-
+import Qaterial 1.0
 
 Page
 {
@@ -32,7 +27,7 @@ Page
         Column
         {
             width: parent.width
-            spacing: MaterialStyle.card.verticalPadding*4
+            spacing: Style.card.verticalPadding*4
 
             Label
             {
@@ -44,7 +39,7 @@ Page
                 "  • A snackbar can contain a single action. Because they disappear automatically, the action shouldn’t be “Dismiss” or “Cancel.”"
                 //Layout.preferredHeight: 100
                 maximumLineCount: 7
-                textType: MaterialStyle.TextType.Caption
+                textType: Style.TextType.Caption
             } // Label
 
             Snackbar
@@ -122,7 +117,7 @@ Page
                         // Default value : ""
                         text: "Action Snackbar text",
                         action: "Action text",
-                        timeout: MaterialStyle.snackbar.longDisplayTime,
+                        timeout: Style.snackbar.longDisplayTime,
                         // Default Value : true
                         canBeKilled: false
                     })
@@ -139,7 +134,7 @@ Page
                         text: "Text",
                         // Default value : ""
                         action: "Action",
-                        // Standard values : MaterialStyle.snackbar.shortDisplayTime (2000ms), MaterialStyle.snackbar.longDisplayTime (5000ms),
+                        // Standard values : Style.snackbar.shortDisplayTime (2000ms), Style.snackbar.longDisplayTime (5000ms),
                         timeout: 3000,
                         // Default value : undefined
                         onAccept : function()

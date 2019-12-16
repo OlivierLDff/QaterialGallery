@@ -1,30 +1,27 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Control Buttons" }
     } // ToolBar
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -33,18 +30,18 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
 
                     wrapMode: Label.Wrap
-                    text: "Use switches to: \n" + 
+                    text: "Use switches to: \n" +
                     "- Toggle a single option on or off, on mobile and tablet\n" +
                     "- Immediately activate or deactivate something"
                 }
 
-                ColumnLayout 
+                ColumnLayout
                 {
                     spacing: 0
                     Layout.fillHeight: true
@@ -54,7 +51,7 @@ Page
                     {
                         text: "Switch Button 1"
                         checked: true
-                        Layout.alignment: Qt.AlignLeft 
+                        Layout.alignment: Qt.AlignLeft
                     } // SwitchButton
                     SwitchButton
                     {
@@ -65,12 +62,12 @@ Page
                     {
                         text: "Switch Button Disabled"
                         enabled: false
-                        Layout.alignment: Qt.AlignLeft 
+                        Layout.alignment: Qt.AlignLeft
                     } // SwitchButton
                 } // Grid Layout
             } // Column
         } // Pane
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -79,7 +76,7 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -88,30 +85,30 @@ Page
                     text: "Use checkboxes to: \n" +
                         "- Select one or multiple items from a list\n" +
                         "- Present a list containing sub-selections\n" +
-                        "- Turn an option on or off in desktop environment" 
+                        "- Turn an option on or off in desktop environment"
                 }
 
-                ColumnLayout 
+                ColumnLayout
                 {
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                     Layout.fillWidth: true
                     spacing: 0
-                    ButtonGroup 
+                    ButtonGroup
                     {
                         id: childGroup
                         exclusive: false
                         checkState: parentBox.checkState
                     }
 
-                    CheckButton 
+                    CheckButton
                     {
                         id: parentBox
                         text: qsTr("Parent")
                         checkState: childGroup.checkState
                     } // CheckButton
 
-                    CheckButton 
+                    CheckButton
                     {
                         checked: true
                         text: qsTr("Child 1")
@@ -119,14 +116,14 @@ Page
                         ButtonGroup.group: childGroup
                     } // CheckButton
 
-                    CheckButton 
+                    CheckButton
                     {
                         text: qsTr("Child 2")
                         leftPadding: indicator.width
                         ButtonGroup.group: childGroup
                     } // CheckButton
 
-                    CheckButton 
+                    CheckButton
                     {
                         text: qsTr("Child 3")
                         leftPadding: indicator.width
@@ -137,7 +134,7 @@ Page
                 } // Grid Layout
             } // Column
         } // Pane
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -146,7 +143,7 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -158,25 +155,25 @@ Page
                     "If available options can be collapsed, consider using a dropdown menu instead, as it uses less space."
                 }
 
-                ColumnLayout 
+                ColumnLayout
                 {
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                     Layout.fillWidth: true
                     spacing: 0
 
-                    RadioButton 
+                    RadioButton
                     {
                         checked: true
                         text: qsTr("Child 1")
                     }  // ButtonGroup
 
-                    RadioButton 
+                    RadioButton
                     {
                         text: qsTr("Child 2")
                     } // ButtonGroup
 
-                    RadioButton 
+                    RadioButton
                     {
                         text: qsTr("Child 3")
                         enabled: false
@@ -186,7 +183,7 @@ Page
         } // Pane
     } // SwipeView
 
-    footer: FixedTabBar 
+    footer: FixedTabBar
     {
         id: tabBar
         elevation: 20

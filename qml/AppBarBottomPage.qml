@@ -1,39 +1,36 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: AppBar 
+    header: AppBar
     {
         AppBarContent { anchors.fill: parent; title: "Buttons" }
     } // AppBar
 
-    footer: AppBar 
+    footer: AppBar
     {
         Row
         {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 0
 
-            AppBarButton 
+            AppBarButton
             {
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/menu.svg"
+                icon.source: "qrc:/QaterialGallery/images/icons/menu.svg"
                 onPrimary: true
             } // ToolButton
 
-            AppBarButton 
+            AppBarButton
             {
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/settings.svg"
+                icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
                 onPrimary: true
             } // ToolButton
         } // RowLayout

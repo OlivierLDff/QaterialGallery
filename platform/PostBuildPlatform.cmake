@@ -3,7 +3,7 @@ MESSAGE(STATUS "Post Build Platform Dependancies Configuration")
 # ───────── WINDOWS ──────────
 
 IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
-    IF(QQUICKMATERIALHELPERGALLERY_BUILD_EXE)
+    IF(QATERIALGALLERY_BUILD_EXE)
 
         message(STATUS "Download QtWindowsCMake from ${QTWINDOWSCMAKE_REPOSITORY}")
 
@@ -15,13 +15,13 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
         )
         FetchContent_MakeAvailable(QtWindowsCMake)
 
-        add_qt_windows_exe( ${QQUICKMATERIALHELPERGALLERY_TARGET}
+        add_qt_windows_exe( ${QATERIALGALLERY_TARGET}
             ALL
-            NAME "QQuickMaterialHelperGallery"
-            VERSION ${QQUICKMATERIALHELPERGALLERY_VERSION}
+            NAME "QaterialGallery"
+            VERSION ${QATERIALGALLERY_VERSION}
             PUBLISHER "OlivierLdff"
-            PRODUCT_URL "www.materialGallery.com"
-            PACKAGE "com.oliv.materialGallery"
+            PRODUCT_URL "https://github.com/OlivierLDff/QaterialGallery"
+            PACKAGE "com.oliv.qaterial"
             ICON ${CMAKE_CURRENT_SOURCE_DIR}/platform/windows/icon.ico
             ICON_RC ${CMAKE_CURRENT_SOURCE_DIR}/platform/windows/icon.rc
             QML_DIR ${QT_WINDOWS_QT_ROOT}/qml
@@ -31,10 +31,10 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
          )
 
         if(MSVC)
-            set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QQUICKMATERIALHELPERGALLERY_TARGET})
+            set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QATERIALGALLERY_TARGET})
         endif() # MSVC
 
-    endif() # QQUICKMATERIALHELPERGALLERY_BUILD_EXE
+    endif() # QATERIALGALLERY_BUILD_EXE
 endif() # Windows
 
 # ────────── LINUX ───────────
@@ -55,18 +55,18 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
     FetchContent_MakeAvailable(QtAndroidCMake)
 
     # Set keystore variable
-    IF(QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE)
+    IF(QATERIALGALLERY_ANDROID_KEYSTORE)
     SET(KEYSTORE_SIGNATURE
-        KEYSTORE ${QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE} ${QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_ALIAS}
-        KEYSTORE_PASSWORD ${QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_PASSWORD}
+        KEYSTORE ${QATERIALGALLERY_ANDROID_KEYSTORE} ${QATERIALGALLERY_ANDROID_KEYSTORE_ALIAS}
+        KEYSTORE_PASSWORD ${QATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD}
         )
-    ENDIF(QQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE)
+    ENDIF(QATERIALGALLERY_ANDROID_KEYSTORE)
 
-    add_qt_android_apk(${QQUICKMATERIALHELPERGALLERY_TARGET}Apk ${QQUICKMATERIALHELPERGALLERY_TARGET}
-        NAME "QQuickMaterialHelperGallery"
-        VERSION_NAME ${QQUICKMATERIALHELPERGALLERY_VERSION}
+    add_qt_android_apk(${QATERIALGALLERY_TARGET}Apk ${QATERIALGALLERY_TARGET}
+        NAME "Qaterial Gallery"
+        VERSION_NAME ${QATERIALGALLERY_VERSION}
         VERSION_CODE 1 # Must be incremented on each release
-        PACKAGE_NAME "com.oliv.materialGallery"
+        PACKAGE_NAME "com.oliv.qaterial"
         PACKAGE_SOURCES  ${CMAKE_CURRENT_SOURCE_DIR}/platform/android/src
         ANDROID_MANIFEST_IN_PATH ${CMAKE_CURRENT_SOURCE_DIR}/platform/android/AndroidManifest.xml.in
         ${KEYSTORE_SIGNATURE}
@@ -92,11 +92,11 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
         SET(TEAM_ID "AAAAAAAA")
     ENDIF(NOT TEAM_ID)
 
-    add_qt_ios_app(${QQUICKMATERIALHELPERGALLERY_TARGET}
+    add_qt_ios_app(${QATERIALGALLERY_TARGET}
         NAME "Qml Material Helper Gallery"
-        BUNDLE_IDENTIFIER "com.oliv.materialGallery"
-        VERSION ${QQUICKMATERIALHELPERGALLERY_VERSION}
-        LONG_VERSION ${QQUICKMATERIALHELPERGALLERY_VERSION}.${QQUICKMATERIALHELPERGALLERY_VERSION_TAG}
+        BUNDLE_IDENTIFIER "com.oliv.qaterial"
+        VERSION ${QATERIALGALLERY_VERSION}
+        LONG_VERSION ${QATERIALGALLERY_VERSION}.${QATERIALGALLERY_VERSION_TAG}
         CODE_SIGN_IDENTITY "iPhone Developer"
         TEAM_ID ${TEAM_ID} # TEAM_ID must be specified when executing cmake or later in XCode
         COPYRIGHT "Copyright Olivier Ldff 2019"

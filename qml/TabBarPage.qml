@@ -1,18 +1,15 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Page {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         ColumnLayout
         {
@@ -31,7 +28,7 @@ Page {
         } // ColumnLayout
     } // ToolBar
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
@@ -67,7 +64,7 @@ Page {
 
     } // SwipeView
 
-    footer: FixedTabBar 
+    footer: FixedTabBar
     {
         id: tabBar
         elevation: 20

@@ -1,27 +1,24 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         ColumnLayout
         {
             anchors.fill: parent
             spacing: 0
-            
+
             AppBarContent { title: "Typography" }
 
             SwitchDelegate
@@ -35,87 +32,87 @@ Page
         } // ColumnLayout
     } // ToolBar
 
-    ListModel 
+    ListModel
     {
         id: typoModel
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Display 3";
-            textType: MaterialStyle.TextType.Display3
+            textType: Style.TextType.Display3
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Display 2";
-            textType: MaterialStyle.TextType.Display2
+            textType: Style.TextType.Display2
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Display 1";
-            textType: MaterialStyle.TextType.Display1
+            textType: Style.TextType.Display1
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Heading";
-            textType: MaterialStyle.TextType.Heading
+            textType: Style.TextType.Heading
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Title";
-            textType: MaterialStyle.TextType.Title
+            textType: Style.TextType.Title
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Subheading";
-            textType: MaterialStyle.TextType.Subheading
+            textType: Style.TextType.Subheading
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "List Text";
-            textType: MaterialStyle.TextType.ListText
+            textType: Style.TextType.ListText
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "List Sec Text";
-            textType: MaterialStyle.TextType.ListSecText
+            textType: Style.TextType.ListSecText
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Overline";
-            textType: MaterialStyle.TextType.Overline
+            textType: Style.TextType.Overline
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Body 2";
-            textType: MaterialStyle.TextType.Body2
+            textType: Style.TextType.Body2
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Body 1";
-            textType: MaterialStyle.TextType.Body1
+            textType: Style.TextType.Body1
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Caption";
-            textType: MaterialStyle.TextType.Caption
+            textType: Style.TextType.Caption
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Hint";
-            textType: MaterialStyle.TextType.Hint
+            textType: Style.TextType.Hint
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Button";
-            textType: MaterialStyle.TextType.Button
+            textType: Style.TextType.Button
         } // ListElement
-        ListElement 
-        { 
+        ListElement
+        {
             type: "Menu";
-            textType: MaterialStyle.TextType.Menu
+            textType: Style.TextType.Menu
         } // ListElement
     } // ListModel
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
@@ -138,7 +135,7 @@ Page
                             Layout.preferredWidth: 65
 
                             text: model.type
-                            textType: MaterialStyle.TextType.Caption
+                            textType: Style.TextType.Caption
                             usePixelSize: false
                         } // Label
                         Label
@@ -149,7 +146,7 @@ Page
                             usePixelSize: false
                         } // Label
                     } // RowLayout
-                } // Repeater        
+                } // Repeater
             } // ColumnLayout
         } // ScrollablePage
 
@@ -170,7 +167,7 @@ Page
                             Layout.preferredWidth: 65
 
                             text: model.type
-                            textType: MaterialStyle.TextType.Caption
+                            textType: Style.TextType.Caption
                         } // Label
                         Label
                         {
@@ -179,12 +176,12 @@ Page
                             enabled: _enabledSwitch.checked
                         } // Label
                     } // RowLayout
-                } // Repeater        
+                } // Repeater
             } // ColumnLayout
         } // ScrollablePage
     } // SwipeView
 
-    footer: FixedTabBar 
+    footer: FixedTabBar
     {
         id: tabBar
         elevation: 20

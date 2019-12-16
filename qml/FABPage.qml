@@ -1,30 +1,27 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Page {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         //anchors.fill: parent
         AppBarContent { anchors.fill: parent; title: "Floating Action Buttons" }
     } // ToolBar
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        ScrollablePage 
+        ScrollablePage
         {
             width: swipeView.width
             height: swipeView.height
@@ -32,7 +29,7 @@ Page {
             Pane
             {
                 anchors.fill: parent
-                ColumnLayout 
+                ColumnLayout
                 {
                     width: parent.width
                     spacing: 10
@@ -58,7 +55,7 @@ Page {
                         } // SwitchDelegate
                     }
 
-                    Label 
+                    Label
                     {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignTop
@@ -72,7 +69,7 @@ Page {
                         text: "Mini Fab"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     }
 
                     RowLayout
@@ -81,7 +78,7 @@ Page {
                         spacing: 15
                         MiniFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                             Layout.alignment: Qt.AlignHCenter
                             flat: false
                             highlighted: true
@@ -90,7 +87,7 @@ Page {
                         }
                         MiniFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/pencil.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
                             Layout.alignment: Qt.AlignHCenter
                             flat: false
                             enabled: _enabledSwitch.checked
@@ -98,7 +95,7 @@ Page {
                         }
                         MiniFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             Layout.alignment: Qt.AlignHCenter
                             highlighted: true
                             enabled: _enabledSwitch.checked
@@ -106,7 +103,7 @@ Page {
                         }
                         MiniFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                             Layout.alignment: Qt.AlignHCenter
                             enabled: _enabledSwitch.checked
                             enabledScale: _scaleSwitch.checked
@@ -118,7 +115,7 @@ Page {
                         text: "Default Fab"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     }
 
                     RowLayout
@@ -127,7 +124,7 @@ Page {
                         spacing: 15
                         FabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                             text: "Default"
                             Layout.alignment: Qt.AlignHCenter
                             enabled: _enabledSwitch.checked
@@ -135,7 +132,7 @@ Page {
                         }
                         FabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/pencil.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
                             Layout.alignment: Qt.AlignHCenter
                             highlighted: false
                             enabled: _enabledSwitch.checked
@@ -143,7 +140,7 @@ Page {
                         }
                         FabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             Layout.alignment: Qt.AlignHCenter
                             flat: true
                             enabled: _enabledSwitch.checked
@@ -151,7 +148,7 @@ Page {
                         }
                         FabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                             Layout.alignment: Qt.AlignHCenter
                             flat: true
                             highlighted: false
@@ -165,7 +162,7 @@ Page {
                         text: "Extended Fab"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     }
 
                     GridLayout
@@ -176,7 +173,7 @@ Page {
                         columns: 2
                         ExtendedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                             text: "Extended"
                             Layout.alignment: Qt.AlignHCenter
                             enabled: _enabledSwitch.checked
@@ -184,7 +181,7 @@ Page {
                         }
                         ExtendedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/pencil.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
                             text: "Extended"
                             Layout.alignment: Qt.AlignHCenter
                             highlighted: false
@@ -193,7 +190,7 @@ Page {
                         }
                         ExtendedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             text: "Extended"
                             Layout.alignment: Qt.AlignHCenter
                             flat: true
@@ -202,7 +199,7 @@ Page {
                         }
                         ExtendedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                             text: "Extended"
                             Layout.alignment: Qt.AlignHCenter
                             flat: true
@@ -217,11 +214,11 @@ Page {
                         text: "Default To Fab"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     }
                     ExtendedFabButton
                     {
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                         text: "Extended"
                         Layout.alignment: Qt.AlignHCenter
                         enabled: _enabledSwitch.checked
@@ -231,7 +228,7 @@ Page {
             } // Page
         } // ScrollablePage
 
-        ScrollablePage 
+        ScrollablePage
         {
             width: swipeView.width
             height: swipeView.height
@@ -239,7 +236,7 @@ Page {
             Pane
             {
                 anchors.fill: parent
-                ColumnLayout 
+                ColumnLayout
                 {
                     width: parent.width
                     spacing: 5
@@ -248,7 +245,7 @@ Page {
                         text: "Flat Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -256,16 +253,16 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
                             checkable : true
                         } // FlatFabButton
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/settings.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
                         } // FlatFabButton
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             enabled: false
                         } // FlatFabButton
                     } // Row
@@ -275,7 +272,7 @@ Page {
                         text: "Mini Flat Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -283,16 +280,16 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                             checkable : true
                         } // MiniFlatFabButton
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/music-note.svg"
                         } // MiniFlatFabButton
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/wifi.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/wifi.svg"
                             enabled: false
                         } // MiniFlatFabButton
                     } // Row
@@ -302,7 +299,7 @@ Page {
                         text: "Flat Fab Button (No Clip)"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -310,18 +307,18 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
                             checkable : true
                             rippleClip: false
                         } // FlatFabButton
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             rippleClip: false
                         } // FlatFabButton
                         FlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/settings.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
                             enabled: false
                             rippleClip: false
                         } // FlatFabButton
@@ -332,7 +329,7 @@ Page {
                         text: "Mini Flat Fab Button (No Clip)"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -340,18 +337,18 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                             checkable : true
                             rippleClip: false
                         } // MiniFlatFabButton
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             rippleClip: false
                         } // MiniFlatFabButton
                         MiniFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             rippleClip: false
                             enabled: false
                         } // MiniFlatFabButton
@@ -362,7 +359,7 @@ Page {
                         text: "Scalable Flat Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Grid
@@ -371,17 +368,17 @@ Page {
                         verticalItemAlignment: Grid.AlignVCenter
                         ScalableFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             checkable : true
 
                         } // MiniFlatFabButton
                         ScalableFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                         } // MiniFlatFabButton
                         ScalableFlatFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             enabled: false
                         } // MiniFlatFabButton
                     } // Row
@@ -391,7 +388,7 @@ Page {
                         text: "Scalable Mini Flat Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Grid
@@ -400,21 +397,21 @@ Page {
                         verticalItemAlignment: Grid.AlignVCenter
                         ScalableFlatFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus-circle-outline.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
                             checkable : true
 
                         } // MiniFlatFabButton
                         ScalableFlatFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/settings.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
                             rippleClip: true
                         } // MiniFlatFabButton
                         ScalableFlatFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             enabled: false
                             rippleClip: true
                         } // MiniFlatFabButton
@@ -423,7 +420,7 @@ Page {
             } // Pane
         } // ScrollablePage
 
-        ScrollablePage 
+        ScrollablePage
         {
             width: swipeView.width
             height: swipeView.height
@@ -431,7 +428,7 @@ Page {
             Pane
             {
                 anchors.fill: parent
-                ColumnLayout 
+                ColumnLayout
                 {
                     width: parent.width
                     spacing: 5
@@ -440,7 +437,7 @@ Page {
                         text: "Outlined Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -448,16 +445,16 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/airplane.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/airplane.svg"
                             checkable : true
                         } // OutlinedFabButton
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/album.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/album.svg"
                         } // OutlinedFabButton
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/compass.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/compass.svg"
                             enabled: false
                         } // OutlinedFabButton
                     } // Row
@@ -467,7 +464,7 @@ Page {
                         text: "Mini Outlined Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -475,16 +472,16 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
                             checkable : true
                         } // MiniOutlinedFabButton
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/crosshairs-gps.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
                         } // MiniOutlinedFabButton
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/format-bold.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/format-bold.svg"
                             enabled: false
                         } // MiniOutlinedFabButton
                     } // Row
@@ -494,7 +491,7 @@ Page {
                         text: "Outlined Fab Button (No Clip)"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -502,18 +499,18 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             checkable : true
                             rippleClip: false
                         } // OutlinedFabButton
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/music-note.svg"
                             rippleClip: false
                         } // OutlinedFabButton
                         OutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/palette.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/palette.svg"
                             enabled: false
                             rippleClip: false
                         } // OutlinedFabButton
@@ -524,7 +521,7 @@ Page {
                         text: "Mini Outlined Fab Button (No Clip)"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Row
@@ -532,18 +529,18 @@ Page {
                         Layout.alignment: Qt.AlignHCenter
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/pencil.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
                             checkable : true
                             rippleClip: false
                         } // MiniOutlinedFabButton
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                             rippleClip: false
                         } // MiniOutlinedFabButton
                         MiniOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus-circle-outline.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
                             rippleClip: false
                             enabled: false
                         } // MiniOutlinedFabButton
@@ -554,7 +551,7 @@ Page {
                         text: "Scalable Outlined Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Grid
@@ -563,18 +560,18 @@ Page {
                         verticalItemAlignment: Grid.AlignVCenter
                         ScalableOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/settings.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
                             checkable : true
 
                         } // MiniOutlinedFabButton
                         ScalableOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/wifi.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/wifi.svg"
                             rippleClip: true
                         } // MiniOutlinedFabButton
                         ScalableOutlinedFabButton
                         {
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"
+                            icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
                             enabled: false
                             rippleClip: true
                         } // MiniOutlinedFabButton
@@ -585,7 +582,7 @@ Page {
                         text: "Scalable Mini Outlined Fab Button"
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
-                        textType: MaterialStyle.TextType.Body2
+                        textType: Style.TextType.Body2
                     } // Label
 
                     Grid
@@ -594,21 +591,21 @@ Page {
                         verticalItemAlignment: Grid.AlignVCenter
                         ScalableOutlinedFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                             checkable : true
 
                         } // MiniOutlinedFabButton
                         ScalableOutlinedFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/album.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/album.svg"
                             rippleClip: true
                         } // MiniOutlinedFabButton
                         ScalableOutlinedFabButton
                         {
-                            type: MaterialStyle.FabType.Mini
-                            icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"
+                            type: Style.FabType.Mini
+                            icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
                             enabled: false
                             rippleClip: true
                         } // MiniOutlinedFabButton
@@ -617,7 +614,7 @@ Page {
             } // Pane
         } // ScrollablePage
 
-        Page 
+        Page
         {
             width: swipeView.width
             height: swipeView.height
@@ -630,7 +627,7 @@ Page {
         }
     } // SwipeView
 
-    footer: ScrollableTabBar 
+    footer: ScrollableTabBar
     {
         id: tabBar
         elevation: 20

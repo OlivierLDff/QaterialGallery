@@ -1,19 +1,16 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Page
 {
     id: root
     property bool enabled: true
-    Pane 
+    Pane
     {
         padding: 0
 
@@ -35,17 +32,17 @@ Page
                     anchors.fill: parent
                     spacing: 0
 
-                    Label 
+                    Label
                     {
                         id: titleLabel
 
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         onPrimary: true
-                        Layout.topMargin: (MaterialStyle.toolbar.implicitHeight-implicitHeight)/2
-                        Layout.bottomMargin: (MaterialStyle.toolbar.implicitHeight-implicitHeight)/2
+                        Layout.topMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
+                        Layout.bottomMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
 
                         text: "Fixed Tab Bar"
-                        textType: MaterialStyle.TextType.Title
+                        textType: Style.TextType.Title
                         elide: Label.ElideRight
                     } // Label
 
@@ -77,26 +74,26 @@ Page
                         onPrimary: true
                         enabled: root.enabled
 
-                        display: _displaySwitch.checked && _showIconSwitch.checked ? AbstractButton.TextUnderIcon : 
+                        display: _displaySwitch.checked && _showIconSwitch.checked ? AbstractButton.TextUnderIcon :
                             _showIconSwitch.checked ? AbstractButton.IconOnly : AbstractButton.TextOnly
 
                         model: ListModel
                         {
-                            ListElement { text: "Explore"; source: "/QQuickMaterialHelperGallery/images/icons/compass.svg"}
-                            ListElement { text: "Flights"; source: "/QQuickMaterialHelperGallery/images/icons/airplane.svg"}
-                            ListElement { text: "Trips"; source: "/QQuickMaterialHelperGallery/images/icons/briefcase.svg"}
+                            ListElement { text: "Explore"; source: "/QaterialGallery/images/icons/compass.svg"}
+                            ListElement { text: "Flights"; source: "/QaterialGallery/images/icons/airplane.svg"}
+                            ListElement { text: "Trips"; source: "/QaterialGallery/images/icons/briefcase.svg"}
                         }
                     } // TabBar
                 } // ColumnLayout
             } // ToolBar
 
-            SwipeView 
+            SwipeView
             {
                 id: swipeView
                 anchors.fill: parent
                 currentIndex: tabBar.currentIndex
                 interactive: root.enabled
-                
+
                 Item
                 {
                     width: swipeView.width
@@ -105,9 +102,9 @@ Page
                     {
                         anchors.centerIn: parent
                         text: "Explore View"
-                        textType: MaterialStyle.TextType.Display1
+                        textType: Style.TextType.Display1
                         color: "#FFF44336"
-                    } // FixedTabBarPage                    
+                    } // FixedTabBarPage
                 } // Item
 
                 Item
@@ -118,9 +115,9 @@ Page
                     {
                         anchors.centerIn: parent
                         text: "Flight View"
-                        textType: MaterialStyle.TextType.Display1
+                        textType: Style.TextType.Display1
                         color: "#FFE91E63"
-                    } // FixedTabBarPage                    
+                    } // FixedTabBarPage
                 } // Item
 
                 Item
@@ -131,9 +128,9 @@ Page
                     {
                         anchors.centerIn: parent
                         text: "Trips View"
-                        textType: MaterialStyle.TextType.Display1
+                        textType: Style.TextType.Display1
                         color: "#FF9C27B0"
-                    } // FixedTabBarPage                    
+                    } // FixedTabBarPage
                 } // Item
 
             } // SwipeView

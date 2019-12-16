@@ -1,15 +1,12 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
@@ -32,6 +29,6 @@ Page
             Layout.fillWidth: true
             onCheckedChanged: window.menuBar.onPrimary = checked
             Component.onCompleted: checked = true
-        } // SwitchDelegate     
+        } // SwitchDelegate
     } // ColumnLayout
 } // Page

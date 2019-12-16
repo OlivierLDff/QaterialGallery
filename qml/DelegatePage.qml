@@ -1,26 +1,23 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         ColumnLayout
         {
             anchors.fill: parent
-            
+
             AppBarContent { title: "Delegate" }
             spacing: 0
 
@@ -46,218 +43,218 @@ Page
     ListModel
     {
         id: _dummyModel
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Single-line item";
         }
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Two-line item";
             info: "Secondary text"
         }
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
         }
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Single-line item longer text";
         }
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Two-line item longer text";
             overline: "overline"
         }
-        ListElement 
-        { 
+        ListElement
+        {
             text: "Three-line item longer text";
             overline: "overline"
             info: "Etiam rhoncus eros ac posuere aliquet."
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/airplane.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/airplane.svg";
             text: "Single-line item";
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/album.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/album.svg";
             text: "Two-line item";
             info: "Secondary text"
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/compass.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/compass.svg";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/music-note.svg";
             text: "Single-line item";
             outlined: true
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/thumb-up.svg";
             text: "Two-line item";
             info: "Secondary text"
             outlined: true
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/textbox.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/textbox.svg";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             outlined: true
             highlighted: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/music-note.svg";
             text: "Single-line item";
             fill: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/thumb-up.svg";
             text: "Two-line item";
             info: "Secondary text"
             fill: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/textbox.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/textbox.svg";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             fill: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/music-note.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/music-note.svg";
             text: "Single-line item";
             fill: true
             highlighted: true
             reverseHighlight: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/thumb-up.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/thumb-up.svg";
             text: "Two-line item";
             info: "Secondary text"
             fill: true
             highlighted: true
             reverseHighlight: true
         }
-        ListElement 
-        { 
-            source: "qrc:/QQuickMaterialHelperGallery/images/icons/textbox.svg"; 
+        ListElement
+        {
+            source: "qrc:/QaterialGallery/images/icons/textbox.svg";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             fill: true
             highlighted: true
             reverseHighlight: true
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card80x80_1.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card80x80_1.png";
             text: "Single-line item";
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card80x80_2.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card80x80_2.png";
             text: "Two-line item";
             info: "Secondary text"
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_1.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card168x168_1.png";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_5.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card168x168_5.png";
             text: "Single-line item";
             large: true
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_4.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card168x168_4.png";
             text: "Two-line item";
             info: "Secondary text"
             large: true
         }
-        ListElement 
-        { 
-            roundImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_1.png"; 
+        ListElement
+        {
+            roundImage: "qrc:/QaterialGallery/images/card168x168_1.png";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             large: true
         }
         ListElement
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_2.png"; 
+        {
+            squareImage: "qrc:/QaterialGallery/images/card168x168_2.png";
             text: "Single-line item";
         }
-        ListElement 
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_3.png"; 
+        ListElement
+        {
+            squareImage: "qrc:/QaterialGallery/images/card168x168_3.png";
             text: "Two-line item";
             info: "Secondary text"
         }
-        ListElement 
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card168x168_4.png"; 
+        ListElement
+        {
+            squareImage: "qrc:/QaterialGallery/images/card168x168_4.png";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
         }
         ListElement
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card80x80_1.png"; 
+        {
+            squareImage: "qrc:/QaterialGallery/images/card80x80_1.png";
             text: "Single-line item";
             large: true
         }
-        ListElement 
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card80x80_2.png"; 
+        ListElement
+        {
+            squareImage: "qrc:/QaterialGallery/images/card80x80_2.png";
             text: "Two-line item";
             info: "Secondary text"
             large: true
         }
-        ListElement 
-        { 
-            squareImage: "qrc:/QQuickMaterialHelperGallery/images/card344x194_3.png"; 
+        ListElement
+        {
+            squareImage: "qrc:/QaterialGallery/images/card344x194_3.png";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
             large: true
         }
-        ListElement 
-        { 
-            largeImage: "qrc:/QQuickMaterialHelperGallery/images/card344x194_1.png"; 
+        ListElement
+        {
+            largeImage: "qrc:/QaterialGallery/images/card344x194_1.png";
             text: "Single-line item";
         }
-        ListElement 
-        { 
-            largeImage: "qrc:/QQuickMaterialHelperGallery/images/card344x194_2.png"; 
+        ListElement
+        {
+            largeImage: "qrc:/QaterialGallery/images/card344x194_2.png";
             text: "Two-line item";
             info: "Secondary text"
         }
-        ListElement 
-        { 
-            largeImage: "qrc:/QQuickMaterialHelperGallery/images/card344x194_3.png"; 
+        ListElement
+        {
+            largeImage: "qrc:/QaterialGallery/images/card344x194_3.png";
             text: "Three-line item";
             info: "Etiam rhoncus eros ac posuere aliquet. Donec sed lorem eu urna elementum gravida eget a elit."
         }
     }
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
@@ -269,7 +266,7 @@ Page
             width: swipeView.width
             height: swipeView.height
             ListView
-            {                
+            {
                 anchors.fill: parent
                 currentIndex: -1
                 ScrollIndicator.vertical: ScrollIndicator { }
@@ -293,10 +290,10 @@ Page
                     reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
 
                     // THUMBNAIL
-                    roundSource: model.roundImage ? model.roundImage : "" 
-                    squareSource: model.squareImage ? model.squareImage : "" 
-                    largeSource: model.largeImage ? model.largeImage : "" 
-                    largeThumbnail: model.large ? model.large : false 
+                    roundSource: model.roundImage ? model.roundImage : ""
+                    squareSource: model.squareImage ? model.squareImage : ""
+                    largeSource: model.largeImage ? model.largeImage : ""
+                    largeThumbnail: model.large ? model.large : false
 
                     enabled: _enabledSwitch.checked
                 }
@@ -308,7 +305,7 @@ Page
             width: swipeView.width
             height: swipeView.height
             ListView
-            {                
+            {
                 anchors.fill: parent
                 currentIndex: -1
                 ScrollIndicator.vertical: ScrollIndicator { }
@@ -332,10 +329,10 @@ Page
                     reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
 
                     // THUMBNAIL
-                    roundSource: model.roundImage ? model.roundImage : "" 
-                    squareSource: model.squareImage ? model.squareImage : "" 
-                    largeSource: model.largeImage ? model.largeImage : "" 
-                    largeThumbnail: model.large ? model.large : false 
+                    roundSource: model.roundImage ? model.roundImage : ""
+                    squareSource: model.squareImage ? model.squareImage : ""
+                    largeSource: model.largeImage ? model.largeImage : ""
+                    largeThumbnail: model.large ? model.large : false
 
                     enabled: _enabledSwitch.checked
                 }
@@ -347,7 +344,7 @@ Page
             width: swipeView.width
             height: swipeView.height
             ListView
-            {                
+            {
                 anchors.fill: parent
                 currentIndex: -1
                 ScrollIndicator.vertical: ScrollIndicator { }
@@ -371,10 +368,10 @@ Page
                     reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
 
                     // THUMBNAIL
-                    roundSource: model.roundImage ? model.roundImage : "" 
-                    squareSource: model.squareImage ? model.squareImage : "" 
-                    largeSource: model.largeImage ? model.largeImage : "" 
-                    largeThumbnail: model.large ? model.large : false 
+                    roundSource: model.roundImage ? model.roundImage : ""
+                    squareSource: model.squareImage ? model.squareImage : ""
+                    largeSource: model.largeImage ? model.largeImage : ""
+                    largeThumbnail: model.large ? model.large : false
 
                     enabled: _enabledSwitch.checked
                 }
@@ -386,7 +383,7 @@ Page
             width: swipeView.width
             height: swipeView.height
             ListView
-            {                
+            {
                 anchors.fill: parent
                 currentIndex: -1
                 ScrollIndicator.vertical: ScrollIndicator { }
@@ -410,10 +407,10 @@ Page
                     reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
 
                     // THUMBNAIL
-                    roundSource: model.roundImage ? model.roundImage : "" 
-                    squareSource: model.squareImage ? model.squareImage : "" 
-                    largeSource: model.largeImage ? model.largeImage : "" 
-                    largeThumbnail: model.large ? model.large : false 
+                    roundSource: model.roundImage ? model.roundImage : ""
+                    squareSource: model.squareImage ? model.squareImage : ""
+                    largeSource: model.largeImage ? model.largeImage : ""
+                    largeThumbnail: model.large ? model.large : false
 
                     enabled: _enabledSwitch.checked
                 }
@@ -425,8 +422,8 @@ Page
             width: swipeView.width
             height: swipeView.height
             ListView
-            {                
-                anchors.fill: parent                
+            {
+                anchors.fill: parent
                 currentIndex: -1
                 ScrollIndicator.vertical: ScrollIndicator { }
                 model: _dummyModel
@@ -449,18 +446,18 @@ Page
                     reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
 
                     // THUMBNAIL
-                    roundSource: model.roundImage ? model.roundImage : "" 
-                    squareSource: model.squareImage ? model.squareImage : "" 
-                    largeSource: model.largeImage ? model.largeImage : "" 
-                    largeThumbnail: model.large ? model.large : false 
+                    roundSource: model.roundImage ? model.roundImage : ""
+                    squareSource: model.squareImage ? model.squareImage : ""
+                    largeSource: model.largeImage ? model.largeImage : ""
+                    largeThumbnail: model.large ? model.large : false
 
                     enabled: _enabledSwitch.checked
 
-                    Component 
+                    Component
                     {
                         id: removeComponent
 
-                        Rectangle 
+                        Rectangle
                         {
                             color: "red"
                             width: parent.width
@@ -468,7 +465,7 @@ Page
                             clip: true
                             anchors.left: parent.background.right
 
-                            Label 
+                            Label
                             {
                                 text: "Remove"
                                 onPrimary: true
@@ -484,7 +481,7 @@ Page
         } // Page
     } // SwipeView
 
-    footer: ScrollableTabBar 
+    footer: ScrollableTabBar
     {
         id: tabBar
         elevation: 20

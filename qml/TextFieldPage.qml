@@ -1,18 +1,13 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
-
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
-import QQuickMaterialHelper.Core 1.12
+import Qaterial 1.0
 
 ScrollablePage
 {
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Text Fields" }
     } // ToolBar
@@ -21,7 +16,7 @@ ScrollablePage
     {
         id: _column
         width: Math.min(parent.width, 500)
-        //spacing: MaterialStyle.card.verticalPadding
+        //spacing: Style.card.verticalPadding
         anchors.horizontalCenter: parent.horizontalCenter
 
         SwitchButton
@@ -31,14 +26,14 @@ ScrollablePage
             checked: true
         }
 
-        Label 
+        Label
         {
             width: _column.width
             wrapMode: Label.Wrap
             elide: Text.ElideRight
             text: "Text fields allow users to enter text into a UI. They typically appear in forms and dialogs."
             maximumLineCount: 5
-            textType: MaterialStyle.TextType.Caption
+            textType: Style.TextType.Caption
         } // Label
 
         TextField // Name Field // Demonstrate required
@@ -50,11 +45,11 @@ ScrollablePage
             validator: RegExpValidator { regExp: /[A-Za-z]+/ }
             errorText: "Name is required"
             inputMethodHints: Qt.ImhSensitiveData
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/account.svg"
             trailingVisible: true
             //trailingErrorAnimation: true
             enabled: _enabled.checked
-            trailingContent: TextFieldButtonContainer 
+            trailingContent: TextFieldButtonContainer
             {
                 TextFieldAlertIcon { visible: _nameInput.errorState }
                 TextFieldClearButton { visible: _nameInput.length }
@@ -69,7 +64,7 @@ ScrollablePage
                 title: "Phone Number *"
                 placeholderText: "Where can we reach you"
                 inputMethodHints: Qt.ImhDialableCharactersOnly
-                leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/phone.svg"
+                leadingIconSource: "qrc:/QaterialGallery/images/icons/phone.svg"
             enabled: _enabled.checked
             } // Area
             ComboBox // Name Field
@@ -85,7 +80,7 @@ ScrollablePage
             enabled: _enabled.checked
             title: "Birthday"
             placeholderText: "How old are you?"
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/cake.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/cake.svg"
             inputMethodHints: Qt.ImhDate
         } // TextField
 
@@ -95,7 +90,7 @@ ScrollablePage
             enabled: _enabled.checked
             title: "Time"
             placeholderText: "Dummy time?"
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/alarm.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/alarm.svg"
             inputMethodHints: Qt.ImhTime
         } // TextField
 
@@ -105,11 +100,11 @@ ScrollablePage
             enabled: _enabled.checked
             title: "Email"
             placeholderText: "Your Email address"
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/email.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/email.svg"
             leadingIconInline: true
             inputMethodHints: Qt.ImhUrlCharactersOnly
             trailingInline: false
-            trailingContent: TextFieldButtonContainer 
+            trailingContent: TextFieldButtonContainer
             {
                 TextFieldCopyButton {}
                 TextFieldClearButton {}
@@ -124,12 +119,12 @@ ScrollablePage
             title: "Address"
             placeholderText: "Where do you live?"
             helperText: "No more than 32 characters"
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/map-marker.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/map-marker.svg"
             leadingIconInline: true
             text: "Neque porro quisquam est"
             maximumLength: 32
             inputMethodHints: Qt.ImhSensitiveData
-            trailingContent: TextFieldButtonContainer 
+            trailingContent: TextFieldButtonContainer
             {
                 TextFieldCopyButton {}
                 TextFieldClearButton {}
@@ -156,7 +151,7 @@ ScrollablePage
             title: "Salary"
             prefixText: "$"
             suffixText: "USD"
-            suffixTextType: MaterialStyle.TextType.Overline
+            suffixTextType: Style.TextType.Overline
             suffixTextColor: "#8BC34A"
             placeholderText: "Enter your Salary"
             validator: RegExpValidator { regExp: /[0-9]*[.,]?[0-9]{0,2}/ }
@@ -192,7 +187,7 @@ ScrollablePage
         } // TextField
 
         ComboBox
-        {            
+        {
             enabled: _enabled.checked
             width: _column.width
             editable: true
@@ -211,7 +206,7 @@ ScrollablePage
         TextArea
         {
             enabled: _enabled.checked
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/account.svg"
             placeholderText: "Tell us about yourself (eg, write down what do you or what bobbies you have)"
             width: _column.width
             //implicitBackgroundHeight : 100
@@ -229,7 +224,7 @@ ScrollablePage
         {
             id: control
             enabled: _enabled.checked
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/account.svg"
             placeholderText: "Tell us about yourself (eg, write down what do you or what bobbies you have)"
             width: _column.width
             //implicitBackgroundHeight : 100
@@ -244,7 +239,7 @@ ScrollablePage
         ScrollableTextArea
         {
             enabled: _enabled.checked
-            leadingIconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+            leadingIconSource: "qrc:/QaterialGallery/images/icons/account.svg"
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu mi nisl. Nulla risus eros, facilisis a libero at, porttitor elementum nibh. Suspendisse ac porttitor tellus. Nulla placerat felis eu euismod molestie. Nullam nec enim non eros porta maximus. Vivamus eget est id dui tristique volutpat vitae nec risus. Phasellus bibendum justo ut tortor cursus scelerisque ut vitae urna. Pellentesque est metus, ultrices eget sem a, ornare malesuada sapien. Suspendisse potenti."
             placeholderText: "Tell us about yourself (eg, write down what do you or what bobbies you have)"
             width: _column.width
@@ -264,7 +259,7 @@ ScrollablePage
             enabled: _enabled.checked
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Submit"
-            onClicked: 
+            onClicked:
             {
                 _nameInput.submitInput()
                 _phoneField.submitInput()
@@ -274,14 +269,14 @@ ScrollablePage
             }
         }
 
-        Label 
+        Label
         {
             width: _column.width
             horizontalAlignment: Qt.AlignHCenter
             wrapMode: Label.Wrap
             elide: Text.ElideRight
             text: "Field with * are required"
-            textType: MaterialStyle.TextType.Caption
+            textType: Style.TextType.Caption
         } // Label
 
     } // Column

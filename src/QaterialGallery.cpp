@@ -11,13 +11,13 @@
 // Dependancies Header
 
 // Application Header
-#include <QQuickMaterialHelperGallery.hpp>
+#include <QaterialGallery.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //					DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-QQUICKMATERIALHELPERGALLERY_USING_NAMESPACE
+QATERIALGALLERY_USING_NAMESPACE
 
 // ─────────────────────────────────────────────────────────────
 //					FUNCTIONS
@@ -25,22 +25,22 @@ QQUICKMATERIALHELPERGALLERY_USING_NAMESPACE
 
 uint32_t Version::GetMajor()
 {
-	return QQUICKMATERIALHELPERGALLERY_VERSION_MAJOR;
+	return QATERIALGALLERY_VERSION_MAJOR;
 }
 
 uint32_t Version::GetMinor()
 {
-	return QQUICKMATERIALHELPERGALLERY_VERSION_MINOR;
+	return QATERIALGALLERY_VERSION_MINOR;
 }
 
 uint32_t Version::GetPatch()
 {
-	return QQUICKMATERIALHELPERGALLERY_VERSION_PATCH;
+	return QATERIALGALLERY_VERSION_PATCH;
 }
 
 uint32_t Version::GetTag()
 {
-	return QQUICKMATERIALHELPERGALLERY_VERSION_TAG_HEX;
+	return QATERIALGALLERY_VERSION_TAG_HEX;
 }
 
 QString Version::GetVersion()

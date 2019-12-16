@@ -1,19 +1,16 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Banners" }
     } // ToolBar
@@ -29,8 +26,8 @@ Page
         width: parent.width
         drawSeparator: true
         text: _small.checked ? page.shortText : (_med.checked ? page.medText : page.longText)
-        thumbnailSource: _thumb.checked ? "qrc:/QQuickMaterialHelperGallery/images/card40x40.png" : ""
-        iconSource: _icon.checked ? "qrc:/QQuickMaterialHelperGallery/images/icons/wifi.svg" : ""
+        thumbnailSource: _thumb.checked ? "qrc:/QaterialGallery/images/card40x40.png" : ""
+        iconSource: _icon.checked ? "qrc:/QaterialGallery/images/icons/wifi.svg" : ""
         fillIcon: _fill.checked
         outlinedIcon: _outlined.checked
         highlightedIcon: _highlighted.checked
@@ -55,9 +52,9 @@ Page
         Column
         {
             width: parent.width
-            spacing: MaterialStyle.card.verticalPadding
+            spacing: Style.card.verticalPadding
 
-            Label 
+            Label
             {
                 width: parent.width
                 wrapMode: Label.Wrap
@@ -66,34 +63,34 @@ Page
                 "  • Banners should be displayed at the top of the screen, below a top app bar. They are persistent and nonmodal, allowing the user to either ignore them or interact with them at any time."
                 //Layout.preferredHeight: 100
                 maximumLineCount: 7
-                textType: MaterialStyle.TextType.Caption
+                textType: Style.TextType.Caption
             }
 
-            GroupBox 
+            GroupBox
             {
                 title: "Banner selection"
                 inlineTitle: true
                 width: Math.min(parent.width, 400)
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                contentItem: Column 
+                contentItem: Column
                 {
                     spacing: 0
 
-                    RadioButton 
+                    RadioButton
                     {
                         id: _small
                         text: "Small Banner"
                         width: parent.width
                     }
-                    RadioButton 
+                    RadioButton
                     {
                         id: _med
                         text: "Medium Banner"
                         checked: true
                         width: parent.width
                     }
-                    RadioButton 
+                    RadioButton
                     {
                         id: _long
                         text: "Long Banner"
@@ -102,30 +99,30 @@ Page
                 }
             } // GroupBox
 
-            GroupBox 
+            GroupBox
             {
                 title: "Supporting illustration"
                 inlineTitle: true
                 width: Math.min(parent.width, 400)
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                contentItem: Column 
+                contentItem: Column
                 {
                     id: _supportBox
                     spacing: 0
 
-                    RadioButton 
+                    RadioButton
                     {
                         text: "No Thumbnail"
                         width: parent.width
                     }
-                    RadioButton 
+                    RadioButton
                     {
                         id: _thumb
                         text: "Thumbnail"
                         width: parent.width
                     }
-                    RadioButton 
+                    RadioButton
                     {
                         id: _icon
                         text: "Icon"
@@ -134,14 +131,14 @@ Page
                     }
                     Row
                     {
-                        RadioButton 
+                        RadioButton
                         {
                             id: _outlined
                             text: "Outlined"
                             width: _supportBox.width/2
                             enabled: _icon.checked
                         }
-                        RadioButton 
+                        RadioButton
                         {
                             id: _fill
                             text: "Fill"
@@ -152,7 +149,7 @@ Page
                     }
                     Row
                     {
-                        CheckButton 
+                        CheckButton
                         {
                             id: _highlighted
                             text: "Highlighted"
@@ -160,7 +157,7 @@ Page
                             width: _supportBox.width/2
                             enabled: _icon.checked
                         }
-                        CheckButton 
+                        CheckButton
                         {
                             id: _reverse
                             text: "Reverse"
@@ -169,7 +166,7 @@ Page
                             enabled: _icon.checked
                         }
                     }
-                    SwitchButton 
+                    SwitchButton
                     {
                         id: _enabled
                         text: "Enabled"

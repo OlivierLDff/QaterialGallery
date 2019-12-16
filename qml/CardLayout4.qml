@@ -1,13 +1,10 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Core 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Card
 {
@@ -21,14 +18,14 @@ Card
 
         CardMedia
         {
-            height: MaterialStyle.dense ? 134 : 168
-            width: MaterialStyle.dense ? 134 : 168
-            //sourceSize.width: MaterialStyle.dense ? 134 : 168
-            //sourceSize.height: MaterialStyle.dense ? 134 : 168
+            height: Style.dense ? 134 : 168
+            width: Style.dense ? 134 : 168
+            //sourceSize.width: Style.dense ? 134 : 168
+            //sourceSize.height: Style.dense ? 134 : 168
             source: control.media
             clipTop: true
             Layout.fillWidth: true
-            Layout.maximumWidth: MaterialStyle.dense ? 134 : 168
+            Layout.maximumWidth: Style.dense ? 134 : 168
         }
 
         RowLayout
@@ -37,23 +34,23 @@ Card
             Layout.alignment: Qt.AlignHCenter
             SquareButton
             {
-                foregroundColor: MaterialStyle.secondaryTextColor()
+                foregroundColor: Style.secondaryTextColor()
                 Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
             } // SquareButton
 
             SquareButton
             {
-                foregroundColor: MaterialStyle.secondaryTextColor()
+                foregroundColor: Style.secondaryTextColor()
                 Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/pencil.svg"
+                icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
             } // SquareButton
 
             SquareButton
             {
-                foregroundColor: MaterialStyle.secondaryTextColor()
+                foregroundColor: Style.secondaryTextColor()
                 Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
             } // SquareButton
         } // RowLayout
     } // ColumnLayout

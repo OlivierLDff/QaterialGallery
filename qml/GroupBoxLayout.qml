@@ -1,35 +1,35 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 
-import QQuickMaterialHelper.Components 1.12
+import Qaterial 1.0
 
-GroupBox 
+GroupBox
 {
     title: "Title"
 
     property alias columnWidth: _column.width
     property alias button: _button
 
-    Column 
+    Column
     {
         id: _column
         spacing: 0
 
-        RadioButton 
+        RadioButton
         {
             text: "Neque porro quisquam"
             checked: true
             width: parent.width
         }
-        RadioButton 
+        RadioButton
         {
             id: _button
             text: "Dolorem"
             width: parent.width
         }
-        RadioButton 
+        RadioButton
         {
             text: "Sit amet, consectetur"
             width: parent.width

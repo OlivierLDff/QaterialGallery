@@ -1,18 +1,16 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Page
 {
     id: root
     property bool enabled: true
-    Pane 
+    Pane
     {
         padding: 0
 
@@ -34,17 +32,17 @@ Page
                     spacing: 0
                     id: _column
 
-                    Label 
+                    Label
                     {
                         id: titleLabel
 
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         onPrimary: true
-                        Layout.topMargin: (MaterialStyle.toolbar.implicitHeight-implicitHeight)/2
-                        Layout.bottomMargin: (MaterialStyle.toolbar.implicitHeight-implicitHeight)/2
+                        Layout.topMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
+                        Layout.bottomMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
 
                         text: "Scrollable Tab Bar"
-                        textType: MaterialStyle.TextType.Title
+                        textType: Style.TextType.Title
                         elide: Label.ElideRight
                     } // Label
 
@@ -86,7 +84,7 @@ Page
                 } // ColumnLayout
             } // ToolBar
 
-            SwipeView 
+            SwipeView
             {
                 id: swipeView
                 anchors.fill: parent
@@ -104,8 +102,8 @@ Page
                         {
                             anchors.centerIn: parent
                             text: "Chapter " + (index+1)
-                            textType: MaterialStyle.TextType.Display1
-                        } // FixedTabBarPage                    
+                            textType: Style.TextType.Display1
+                        } // FixedTabBarPage
                     }
                 } // Repeater
             } // SwipeView

@@ -1,24 +1,21 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Cards" }
     } // ToolBar
 
-    Flickable 
+    Flickable
     {
         //anchors.fill: parent
         width: parent.width
@@ -27,7 +24,7 @@ Page
         contentHeight: pane.implicitHeight
         flickableDirection: Flickable.AutoFlickIfNeeded
 
-        Pane 
+        Pane
         {
             id: pane
             width: Math.min(parent.width, 500)
@@ -40,7 +37,7 @@ Page
                 CardLayout3
                 {
                     Layout.fillWidth: true
-                    media: "qrc:/QQuickMaterialHelperGallery/images/card80x80_1.png"
+                    media: "qrc:/QaterialGallery/images/card80x80_1.png"
                     headerText: "Title goes here"
                     supportingText: "Cards contain content and actions about a single subject."
                     button1.text: "Action 1"
@@ -50,21 +47,21 @@ Page
                 CardLayout1
                 {
                     Layout.fillWidth: true
-                    media: "qrc:/QQuickMaterialHelperGallery/images/card344x194_2.png"
+                    media: "qrc:/QaterialGallery/images/card344x194_2.png"
                     headerText: "Our Changing Planet"
                     subHeaderText: "by Kurt Wagner"
                     supportingText: "Visit ten places on our planet that are undergoing the biggest changes today."
                     button1.text: "Read"
                     button2.text: "Bookmark"
-                    button3.icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
-                    button4.icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                    button3.icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+                    button4.icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                 }
 
                 CardLayout2
                 {
                     Layout.fillWidth: true
-                    media: "qrc:/QQuickMaterialHelperGallery/images/card344x194_3.png"
-                    thumbnail: "qrc:/QQuickMaterialHelperGallery/images/card40x40.png"
+                    media: "qrc:/QaterialGallery/images/card344x194_3.png"
+                    thumbnail: "qrc:/QaterialGallery/images/card40x40.png"
                     headerText: "Title goes here"
                     subHeaderText: "Secondary Text"
                     supportingText: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
@@ -77,12 +74,12 @@ Page
                     model: 5
                     cacheBuffer : 5
                     Layout.fillWidth: true
-                    spacing: MaterialStyle.card.horizontalPadding
+                    spacing: Style.card.horizontalPadding
                     orientation: ListView.Horizontal
                     implicitHeight: 220
                     delegate: CardLayout4
                     {
-                        media: "qrc:/QQuickMaterialHelperGallery/images/card168x168_" + (5-index) + ".png"
+                        media: "qrc:/QaterialGallery/images/card168x168_" + (5-index) + ".png"
                     }
                 }
 
@@ -90,7 +87,7 @@ Page
                 {
                     Layout.fillWidth: true
                     outlined: true
-                    media: "qrc:/QQuickMaterialHelperGallery/images/card80x80_2.png"
+                    media: "qrc:/QaterialGallery/images/card80x80_2.png"
                     headerText: "Title goes here"
                     supportingText: "Secondary Text Lorem ipsum dolor sit amet"
                     button1.text: "Action 1"
@@ -101,14 +98,14 @@ Page
                 {
                     Layout.fillWidth: true
                     outlined: true
-                    media: "qrc:/QQuickMaterialHelperGallery/images/card344x194_1.png"
+                    media: "qrc:/QaterialGallery/images/card344x194_1.png"
                     headerText: "Our Changing Planet"
                     subHeaderText: "by Kurt Wagner"
                     supportingText: "Visit ten places on our planet that are undergoing the biggest changes today."
                     button1.text: "Read"
                     button2.text: "Bookmark"
-                    button3.icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
-                    button4.icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/heart.svg"
+                    button3.icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+                    button4.icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
                 }
 
                 ListView
@@ -116,12 +113,12 @@ Page
                     model: 5
                     cacheBuffer : 5
                     Layout.fillWidth: true
-                    spacing: MaterialStyle.card.horizontalPadding
+                    spacing: Style.card.horizontalPadding
                     orientation: ListView.Horizontal
                     implicitHeight: 220
                     delegate: CardLayout4
                     {
-                        media: "qrc:/QQuickMaterialHelperGallery/images/card168x168_" + (index+1) + ".png"
+                        media: "qrc:/QaterialGallery/images/card168x168_" + (index+1) + ".png"
                         outlined: true
                     }
                 }

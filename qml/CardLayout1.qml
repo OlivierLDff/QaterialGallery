@@ -1,13 +1,10 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Core 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Card
 {
@@ -17,45 +14,45 @@ Card
     property alias button3: _button3
     property alias button4: _button4
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     contentItem: ColumnLayout
     {
         id: _column
         width: parent.width
-        spacing: MaterialStyle.card.horizontalPadding
+        spacing: Style.card.horizontalPadding
 
         CardMedia
         {
             source: control.media
             clipTop: true
             Layout.fillWidth: true
-            Layout.maximumHeight: MaterialStyle.card.mediaImplicitHeight
+            Layout.maximumHeight: Style.card.mediaImplicitHeight
         }
 
         CardTitle
         {
             headerText: control.headerText
             subHeaderText: control.subHeaderText
-            Layout.leftMargin: MaterialStyle.card.horizontalPadding
-            Layout.rightMargin: MaterialStyle.card.horizontalPadding
+            Layout.leftMargin: Style.card.horizontalPadding
+            Layout.rightMargin: Style.card.horizontalPadding
             Layout.fillWidth: true
         }
 
         CardSupportingText
         {
             supportingText: control.supportingText
-            Layout.leftMargin: MaterialStyle.card.horizontalPadding
-            Layout.rightMargin: MaterialStyle.card.horizontalPadding
+            Layout.leftMargin: Style.card.horizontalPadding
+            Layout.rightMargin: Style.card.horizontalPadding
             Layout.topMargin: 2
             Layout.bottomMargin: 2
-            Layout.fillWidth: true                
+            Layout.fillWidth: true
         }
 
         Item
         {
-            Layout.leftMargin: MaterialStyle.card.verticalPadding
-            Layout.rightMargin: MaterialStyle.card.verticalPadding
+            Layout.leftMargin: Style.card.verticalPadding
+            Layout.rightMargin: Style.card.verticalPadding
             Layout.fillWidth: true
             implicitHeight: _button1.implicitHeight
             implicitWidth: 200
@@ -77,7 +74,7 @@ Card
             SquareButton
             {
                 id: _button3
-                foregroundColor: MaterialStyle.secondaryTextColor()
+                foregroundColor: Style.secondaryTextColor()
                 visible: icon.source != ""
                 anchors.right: _button4.left
             } // SquareButton
@@ -86,7 +83,7 @@ Card
             {
                 id: _button4
                 visible: icon.source != ""
-                foregroundColor: MaterialStyle.secondaryTextColor()
+                foregroundColor: Style.secondaryTextColor()
                 anchors.right: parent.right
             } // SquareButton
         } // Item

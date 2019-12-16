@@ -1,5 +1,5 @@
 /**
- * \brief PsnViewer Main File that:
+ * \brief QaterialGallery Main File that:
  * - Initialiaze Qt
  * - Parse command line input
  * - Initialiaze PsnViewer
@@ -20,21 +20,22 @@
 #include <QDebug>
 
 // Oliv Qt
-#include <QQuickMaterialHelper.hpp>
+#include <Qaterial.hpp>
 
-// QQuickMaterialHelperGallery
-#include <QQuickMaterialHelperGallery.hpp>
+// QaterialGallery
+#include <QaterialGallery.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //					DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-#define QQUICKMATERIALHELPERGALLERY_URI "QQuickMaterialHelperGallery"
+#define QATERIALGALLERY_URI "QaterialGallery"
 
-Q_LOGGING_CATEGORY(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "qquickHelperGallery")
+Q_LOGGING_CATEGORY(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "QaterialGallery")
 
 int main(int argc, char *argv[])
 {
+	// It's important to set the high dip support before creating the gui app
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
 	QQmlApplicationEngine engine;
@@ -42,11 +43,11 @@ int main(int argc, char *argv[])
 	// ────────── REGISTER APPLICATION ──────────────────────────────────────
 
 	QGuiApplication::setOrganizationName("Oliv");
-	QGuiApplication::setApplicationName("QQuickMaterialHelperGallery");	
-	QGuiApplication::setOrganizationDomain("www.qquickhelpergallery.com");
+	QGuiApplication::setApplicationName("Qaterial Gallery");
+	QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
 	QGuiApplication::setApplicationVersion(Qqhg::Version::GetVersion());
 
-	qCDebug(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
+	qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
 		"Organization: %s; "
 		"Domain: %s; "
 		"ApplicationName: %s; "
@@ -60,7 +61,7 @@ int main(int argc, char *argv[])
 	// ────────── COMMAND PARSER ──────────────────────────────────────
 
 	QCommandLineParser parser;
-	parser.setApplicationDescription("QQuickMaterialHelperGallery is a gallery for the QML library QQuickMaterialHelper.");
+	parser.setApplicationDescription("QaterialGallery is a gallery for the QML library Qaterial.");
 	parser.addHelpOption();
 	parser.addVersionOption();
 
@@ -74,19 +75,19 @@ int main(int argc, char *argv[])
 	// ────────── SET QML FONT AND RESSOURCES ──────────
 
 	QQuickStyle::setStyle(QStringLiteral("Material"));
-	engine.addImportPath("qrc:///QQuickMaterialHelperGallery/qml");
+	engine.addImportPath("qrc:///QaterialGallery/qml");
 	engine.addImportPath("qrc:///");
 
 	// ────────── REGISTER QML TYPE ────────────
 
 	// QSM HELPER
-	QQuickMaterialHelper::Helper::loadResources();
-	QQuickMaterialHelper::Helper::registerTypes();
+	Qaterial::Utils::loadResources();
+	Qaterial::Utils::registerTypes();
 
 	// ────────── LOAD QML MAIN ───────────
 
-	qCInfo(QQUICKMATERIALHELPERGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
-	engine.load(QUrl("qrc:/QQuickMaterialHelperGallery/qml/Main.qml"));
+	qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
+	engine.load(QUrl("qrc:/QaterialGallery/qml/Main.qml"));
 	if (engine.rootObjects().isEmpty())
 		return -1;
 

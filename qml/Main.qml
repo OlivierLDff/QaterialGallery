@@ -1,24 +1,22 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.13
 import QtQuick.Controls.Material 2.12
 import Qt.labs.settings 1.0
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Style 1.12
-import QQuickMaterialHelper.Fonts 1.12
+import Qaterial 1.0
 
-ApplicationWindow 
+ApplicationWindow
 {
     id: window
     width: 480
     height: 750
     visible: true
-	title: "Oliv Material Gallery"
+	title: "Qaterial Gallery"
 
     RobotoFontLoader {}
-    
-    menuBar: MenuBar 
+
+    menuBar: MenuBar
     {
         visible: false
         Menu
@@ -32,14 +30,14 @@ ApplicationWindow
             MenuSeparator { width: parent.width }
             MenuItem { text: qsTr("Quit"); onTriggered: console.log("Quit") }
         }
-        Menu 
+        Menu
         {
             width: 300
             title: qsTr("Edit")
-            MenuItem 
-            { 
-                text: qsTr("Copy"); 
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/content-copy.svg"; 
+            MenuItem
+            {
+                text: qsTr("Copy");
+                icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg";
                 action: Action
                 {
                     shortcut : "Ctrl+C"
@@ -48,7 +46,7 @@ ApplicationWindow
             }
             MenuItem { text: qsTr("Cut"); onTriggered: console.log("Cut") }
             MenuItem { text: qsTr("Paste"); onTriggered: console.log("Paster") }
-            Menu 
+            Menu
             {
                 title: "Find/Replace"
                 MenuItem { text: "Find Next" }
@@ -56,20 +54,20 @@ ApplicationWindow
                 MenuItem { text: "Replace" }
             }
             MenuSeparator { width: parent.width }
-            MenuItem 
-            { 
-                text: qsTr("Dummy"); 
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/airplane.svg"; 
+            MenuItem
+            {
+                text: qsTr("Dummy");
+                icon.source: "qrc:/QaterialGallery/images/icons/airplane.svg";
                 action: Action
                 {
                     shortcut : "Ctrl+Shift+F5"
                     onTriggered: console.log("Dummy")
                 }
             }
-            MenuItem 
-            { 
-                text: qsTr("Colored Icon"); 
-                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/album.svg";
+            MenuItem
+            {
+                text: qsTr("Colored Icon");
+                icon.source: "qrc:/QaterialGallery/images/icons/album.svg";
                 icon.color: "#8BC34A"
                 action: Action
                 {
@@ -78,7 +76,7 @@ ApplicationWindow
                 }
             }
         }
-        Menu 
+        Menu
         {
             title: qsTr("Test")
             MenuItem { text: qsTr("Checked 1 very loing afznuaefb"); checked: true }
@@ -87,7 +85,7 @@ ApplicationWindow
             MenuItem { text: qsTr("Checked 4"); checkable: true }
             MenuItem { text: qsTr("Checked 5"); checkable: true }
         }
-        Menu 
+        Menu
         {
             title: qsTr("Help")
             MenuItem { text: qsTr("About"); onTriggered: console.log("About") }
@@ -96,14 +94,14 @@ ApplicationWindow
 
     Component.onCompleted:
     {
-        //MaterialStyle.theme = Material.Dark
+        //Style.theme = Material.Dark
     }
 
-    Material.theme: MaterialStyle.theme
-    Material.primary : MaterialStyle.primaryColor
-    Material.background : MaterialStyle.backgroundColor
-    Material.accent : MaterialStyle.accentColor
-    Material.foreground: MaterialStyle.foregroundColor
+    Material.theme: Style.theme
+    Material.primary : Style.primaryColor
+    Material.background : Style.backgroundColor
+    Material.accent : Style.accentColor
+    Material.foreground: Style.foregroundColor
 
     Shortcut {
         sequences: ["Esc", "Back"]
@@ -117,296 +115,15 @@ ApplicationWindow
         id: stackView
         anchors.fill: parent
 
-        initialItem: MaterialPage 
+        initialItem: MaterialPage
         {
             id: materialPage
         }
     }
 
-    Dialog 
+    StyleSettingsDialog
     {
         id: themeDialog
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
         width: window.width*0.8
-        //height: window.height*0.8
-        horizontalPadding: 0
-        modal: true
-        focus: true
-        title: "Settings"
-
-        standardButtons: Dialog.Ok | Dialog.Cancel
-        onAccepted: {
-            themeDialog.close()
-        }
-        onRejected: {
-            themeDialog.close()
-        }
-
-        drawSeparator: true
-
-        contentItem: Flickable
-        {
-            //width: themeDialog.width
-            implicitHeight: 400//settingsColumn.implicitHeight
-            contentWidth: width
-            contentHeight: settingsColumn.implicitHeight
-
-            clip: true
-            Column
-            {
-                id: settingsColumn
-                width: parent.width
-                spacing: 0
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Debug Icon Label"
-                    checked: MaterialStyle.debug.drawDebugIconLabel
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.debug.drawDebugIconLabel = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Debug Buttons"
-                    checked: MaterialStyle.debug.drawDebugButton
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.debug.drawDebugButton = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Debug Delegates"
-                    checked: MaterialStyle.debug.drawDebugDelegate
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.debug.drawDebugDelegate = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: checked ? "Dark" : "Light"
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.theme = checked ? MaterialStyle.Theme.Dark : MaterialStyle.Theme.Light
-                    }
-                    Component.onCompleted: checked = MaterialStyle.theme===MaterialStyle.Theme.Dark
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: checked ? "Dense" : "Normal"
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.dense = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Color on Primary (Light)"
-                    checked: MaterialStyle.foregroundReversedOnPrimaryLight
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.foregroundReversedOnPrimaryLight = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Color on Primary (Dark)"
-                    checked: MaterialStyle.foregroundReversedOnPrimaryDark
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.foregroundReversedOnPrimaryDark = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Ripple on Primary (Light)"
-                    checked: MaterialStyle.rippleReversedOnPrimaryLight
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.rippleReversedOnPrimaryLight = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Ripple on Primary (Dark)"
-                    checked: MaterialStyle.rippleReversedOnPrimaryDark
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.rippleReversedOnPrimaryDark = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Color on Accent (Light)"
-                    checked: MaterialStyle.foregroundReversedOnAccentLight
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.foregroundReversedOnAccentLight = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Reverse Color on Accent (Dark)"
-                    checked: MaterialStyle.foregroundReversedOnAccentDark
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.foregroundReversedOnAccentDark = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Prefer Accent Color on Primary (Light)"
-                    checked: MaterialStyle.preferAccentOnPrimaryLight
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.preferAccentOnPrimaryLight = checked
-                    }
-                }
-
-                SwitchDelegate
-                {
-                    width: parent.width
-                    text: "Prefer Accent Color on Primary (Dark)"
-                    checked: MaterialStyle.preferAccentOnPrimaryDark
-                    onCheckedChanged:
-                    {
-                        MaterialStyle.preferAccentOnPrimaryDark = checked
-                    }
-                }
-
-                Label 
-                {
-                    text: "Primary Color"
-                    horizontalAlignment: Label.AlignHCenter
-                    verticalAlignment: Label.AlignVCenter
-                    width: parent.width
-                }
-                ListModel
-                {
-                    id: colorModel
-                    ListElement { color: Material.Red; materialColor: true }
-                    ListElement { color: Material.DeepOrange; materialColor: true }
-                    ListElement { color: Material.Orange; materialColor: true }
-                    ListElement { color: Material.Amber; materialColor: true }
-                    ListElement { color: Material.Yellow; materialColor: true }
-                    ListElement { color: Material.Lime; materialColor: true }
-                    ListElement { color: Material.LightGreen; materialColor: true }
-                    ListElement { color: Material.Green; materialColor: true }
-                    ListElement { color: Material.Teal; materialColor: true }
-                    ListElement { color: Material.Cyan; materialColor: true }
-                    ListElement { color: Material.LightBlue; materialColor: true }
-                    ListElement { color: Material.Blue; materialColor: true }
-                    ListElement { color: Material.Indigo; materialColor: true }
-                    ListElement { color: Material.DeepPurple; materialColor: true }
-                    ListElement { color: Material.Purple; materialColor: true }
-                    ListElement { color: Material.Pink; materialColor: true }
-                    ListElement { color: 0; materialColor: false; colorString: "#303030" }
-                    ListElement { color: 0; materialColor: false; colorString: "#212121" }
-                    
-                }
-
-                GridLayout
-                {
-                    //width: parent.width
-                    columns: parent.width/45
-                    width: parent.width
-                    Repeater
-                    {
-                        model: colorModel
-
-                        delegate: Rectangle
-                        {
-                            id: icon
-                            width: 40; height: 40
-                            color: model.materialColor ? Material.color(model.color) : model.colorString
-                            radius: 3
-                            MouseArea
-                            {
-                                anchors.fill: parent
-                                onClicked: 
-                                {
-                                    if(MaterialStyle.theme == Material.Light)
-                                    {
-                                        MaterialStyle.primaryColorLight = model.materialColor ? Material.color(model.color) : model.colorString
-                                    }
-                                    else
-                                    {
-                                        MaterialStyle.primaryColorDark = model.materialColor ? Material.color(model.color) : model.colorString
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Label 
-                {
-                    text: "Accent Color"
-                    horizontalAlignment: Label.AlignHCenter
-                    verticalAlignment: Label.AlignVCenter
-                    width: parent.width
-                }
-                GridLayout
-                {
-                    //width: parent.width
-                    columns: parent.width/45
-                    width: parent.width
-                    Repeater
-                    {
-                        model: colorModel
-
-                        delegate: Rectangle
-                        {
-                            id: icon
-                            width: 40; height: 40
-                            color: model.materialColor ? Material.color(model.color) : model.colorString
-                            radius: 3
-                            MouseArea
-                            {
-                                anchors.fill: parent
-                                onClicked:
-                                {
-                                    if(MaterialStyle.theme == Material.Light)
-                                    {
-                                        MaterialStyle.accentColorLight = model.materialColor ? Material.color(model.color) : model.colorString
-                                    }
-                                    else
-                                    {
-                                        MaterialStyle.accentColorDark = model.materialColor ? Material.color(model.color) : model.colorString
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }

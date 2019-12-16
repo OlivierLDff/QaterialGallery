@@ -1,19 +1,16 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-Page 
+Page
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         ColumnLayout
         {
@@ -40,7 +37,7 @@ Page
                 Label
                 {
                     text: "Radius (" + _radiusSlider.value + ")"
-                    textType: MaterialStyle.TextType.Body2
+                    textType: Style.TextType.Body2
                     onPrimary: true
                 } // Label
 
@@ -49,21 +46,21 @@ Page
                     id: _radiusSlider
                     Layout.fillWidth: true
                     from: 0
-                    to: MaterialStyle.rawButton.minHeight/2
-                    value: MaterialStyle.rawButton.cornerRadius
+                    to: Style.rawButton.minHeight/2
+                    value: Style.rawButton.cornerRadius
                     stepSize: 1
                 } // Slider
             } // RowLayout
         } // ColumnLayout
     } // ToolBar
 
-    SwipeView 
+    SwipeView
     {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -72,7 +69,7 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -82,7 +79,7 @@ Page
                         "They emphasize functions on busy or wide spaces."
                 }
 
-                GridLayout 
+                GridLayout
                 {
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
@@ -92,7 +89,7 @@ Page
                     RaisedButton
                     {
                         text: "Raised Button"
-                        Layout.alignment: Qt.AlignRight 
+                        Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
                     }
@@ -105,7 +102,7 @@ Page
                     RaisedButton
                     {
                         text: "Raised Button"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                         Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
@@ -113,7 +110,7 @@ Page
                     RaisedButton
                     {
                         text: "Disabled"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                         enabled: false
                         radius: _radiusSlider.value
                     }
@@ -121,7 +118,7 @@ Page
             } // Column
         } // Pane
 
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -130,7 +127,7 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -140,7 +137,7 @@ Page
                         "Use flat buttons on toolbars, in dialogs and inline with padding."
                 }
 
-                GridLayout 
+                GridLayout
                 {
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
@@ -150,7 +147,7 @@ Page
                     FlatButton
                     {
                         text: "Flat Button"
-                        Layout.alignment: Qt.AlignRight 
+                        Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
                     }
@@ -163,7 +160,7 @@ Page
                     FlatButton
                     {
                         text: "Flat Button"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus-circle-outline.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
                         Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
@@ -171,7 +168,7 @@ Page
                     FlatButton
                     {
                         text: "Disabled"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus-circle-outline.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
                         enabled: false
                         radius: _radiusSlider.value
                     }
@@ -179,7 +176,7 @@ Page
             } // Column
         } // Pane
 
-        Pane 
+        Pane
         {
             width: swipeView.width
             height: swipeView.height
@@ -188,7 +185,7 @@ Page
             {
                 anchors.fill: parent
 
-                Label 
+                Label
                 {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -198,7 +195,7 @@ Page
                         "They are often paired with raised buttons to indicate an alternaive, secondary action."
                 }
 
-                GridLayout 
+                GridLayout
                 {
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
@@ -208,7 +205,7 @@ Page
                     OutlineButton
                     {
                         text: "Outline Button"
-                        Layout.alignment: Qt.AlignRight 
+                        Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
                     }
@@ -221,7 +218,7 @@ Page
                     OutlineButton
                     {
                         text: "Outline Button"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                         Layout.alignment: Qt.AlignRight
                         highlighted: _highlightedSwitch.checked
                         radius: _radiusSlider.value
@@ -229,7 +226,7 @@ Page
                     OutlineButton
                     {
                         text: "Disabled"
-                        icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                         enabled: false
                         radius: _radiusSlider.value
                     }
@@ -238,7 +235,7 @@ Page
         } // Pane
     } // SwipeView
 
-    footer: FixedTabBar 
+    footer: FixedTabBar
     {
         id: tabBar
         elevation: 20

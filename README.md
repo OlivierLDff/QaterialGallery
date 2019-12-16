@@ -1,13 +1,8 @@
-# QQuickMaterialHelperGallery
+# Qaterial Gallery
 
+QaterialGallery is a showcase application and contains example for the library Qaterial . It is still under development.
 
-<a href="http://85.170.130.157:51861/viewType.html?buildTypeId=QQuickMaterialHelperGallery_Build_MSVC64&guest=1">
-<img src="http://85.170.130.157:51861/app/rest/builds/buildType:(id:QQuickMaterialHelperGallery_Build_MSVC64)/statusIcon"/>
-</a>
-
-QQuickMaterialHelperGallery is a showcase application and contains example for the library QQuickMaterialHelper. It is still under development.
-
-This project also showcase multiplatform deployment.
+This project also showcase multiplatform deployment with Qt.
 
 - [x] Windows
 - [ ] Linux *(Compile but no deployment)*
@@ -31,7 +26,7 @@ DOC TODO
 
 ## Build
 
-QQuickMaterialHelperGallery is a cross platform application that can be build natively or cross compiled. Qt precompiled binary are required and can be download from the [official website](http://download.qt.io/archive/qt/). Then simply use the qt manager to install the toolchain that you need. Minimum Qt version is `5.12`.
+QaterialGallery is a cross platform application that can be build natively or cross compiled. Qt precompiled binary are required and can be download from the [official website](http://download.qt.io/archive/qt/). Then simply use the qt manager to install the toolchain that you need. Minimum Qt version is `5.12`.
 
 ### Windows
 
@@ -48,8 +43,8 @@ export QT_DIR_MSVC64=C:/Qt/$QT_WIN_VERSION/msvc2017_64
 Then simply clone the repository and create an in source build folder.
 
 ```bash
-git clone https://github.com/OlivierLdff/QQuickMaterialHelperGallery 
-cd QQuickMaterialHelperGallery && mkdir build && cd build
+git clone https://github.com/OlivierLdff/QaterialGallery
+cd QaterialGallery && mkdir build && cd build
 ```
 
 **MinGw 32 bits - Make**
@@ -132,7 +127,7 @@ Depending on Qt Version you might need to change the Android STL.
 
 **CMAKE_BUILD_TYPE** can be set to multiple values. *Debug | Release | MinSizeRel | RelWithDebInfo*.
 
-*Tip for windows: If you don't have make installed you can use the one in the ndk:* 
+*Tip for windows: If you don't have make installed you can use the one in the ndk:*
 
 ```bash
 -DCMAKE_MAKE_PROGRAM="$ANDROID_NDK/prebuilt/windows-x86_64/bin/make.exe"
@@ -149,15 +144,15 @@ cmake -DQT_DIR=$QT_DIR_ARMV7A -G "Unix Makefiles" \
 -DANDROID_NATIVE_API_LEVEL=27 \
 -DANDROID_STL=c++_shared \
 -DANDROID_TOOLCHAIN=clang \
--DQQUICKMATERIALHELPERGALLERY_BUILD_SHARED=ON \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
+-DQATERIALGALLERY_BUILD_SHARED=ON \
+-DQATERIALGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
 ..
 make -j8
 ```
 
-The resulted apk will be in `QQuickMaterialHelperGallery-armeabi-v7a/build/outputs/apk/release/`.
+The resulted apk will be in `QaterialGallery-armeabi-v7a/build/outputs/apk/release/`.
 
 #### Arm64 v8a
 
@@ -170,14 +165,14 @@ cmake -DQT_DIR=$QT_DIR_ARM64V8A -G "Unix Makefiles" \
 -DANDROID_NATIVE_API_LEVEL=27 \
 -DANDROID_STL=c++_shared \
 -DANDROID_TOOLCHAIN=clang \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
+-DQATERIALGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
 ..
 make -j8
 ```
 
-The resulted apk will be in `QQuickMaterialHelperGallery-arm64-v8a/build/outputs/apk/release/`.
+The resulted apk will be in `QaterialGallery-arm64-v8a/build/outputs/apk/release/`.
 
 #### x86
 
@@ -190,15 +185,15 @@ cmake -DQT_DIR=$QT_DIR_X86 -G "Unix Makefiles" \
 -DANDROID_NATIVE_API_LEVEL=27 \
 -DANDROID_STL=c++_shared \
 -DANDROID_TOOLCHAIN=clang \
--DQQUICKMATERIALHELPERGALLERY_BUILD_SHARED=ON \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
--DQQUICKMATERIALHELPERGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
+-DQATERIALGALLERY_BUILD_SHARED=ON \
+-DQATERIALGALLERY_ANDROID_KEYSTORE=Path/To/Keystore \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_ALIAS=KeystoreAlias \
+-DQATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD=xxxx \
 ..
 make -j8
 ```
 
-The resulted apk will be in `QQuickMaterialHelperGallery-x86/build/outputs/apk/release/`.
+The resulted apk will be in `QaterialGallery-x86/build/outputs/apk/release/`.
 
 ### Ios
 
@@ -262,25 +257,25 @@ or launch the generated XCode project.
 
 *Note: Exe, Shared and Static can't be ON at the same time.*
 
-* **QQUICKMATERIALHELPERGALLERY_BUILD_SHARED** : Build as a shared library [ON OFF]. *Default: OFF*.
-* **QQUICKMATERIALHELPERGALLERY_BUILD_STATIC** : Build as a static library [ON OFF]. *Default: OFF*.
-* **QQUICKMATERIALHELPERGALLERY_BUILD_EXE** : Build as an executable [ON OFF]. *Default: ON*.
-* **QQUICKMATERIALHELPERGALLERY_PROJECT** : Name of the project. *Default: QQuickMaterialHelperGallery*.
-* **QQUICKMATERIALHELPERGALLERY_TARGET** : Name of the project. *Default: QQuickMaterialHelperGallery*.
-* **QQUICKMATERIALHELPERGALLERY_USE_NAMESPACE** : Should the library be compiled with a namespace. *Default: ON*.
-* **QQUICKMATERIALHELPERGALLERY_NAMESPACE** : Namespace of the library ig **QQUICKMATERIALHELPERGALLERY_USE_NAMESPACE** is ON. *Default : Qqmh.*
+* **QATERIALGALLERY_BUILD_SHARED** : Build as a shared library [ON OFF]. *Default: OFF*.
+* **QATERIALGALLERY_BUILD_STATIC** : Build as a static library [ON OFF]. *Default: OFF*.
+* **QATERIALGALLERY_BUILD_EXE** : Build as an executable [ON OFF]. *Default: ON*.
+* **QATERIALGALLERY_PROJECT** : Name of the project. *Default: QaterialGallery*.
+* **QATERIALGALLERY_TARGET** : Name of the project. *Default: QaterialGallery*.
+* **QATERIALGALLERY_USE_NAMESPACE** : Should the library be compiled with a namespace. *Default: ON*.
+* **QATERIALGALLERY_NAMESPACE** : Namespace of the library ig **QATERIALGALLERY_USE_NAMESPACE** is ON. *Default : Qqmh.*
 
 ### Dependencies
 
 ### Output
 
-* **QQUICKMATERIALHELPERGALLERY_TARGET** : Output target to link to. *Default: QQuickMaterialHelperGallery*
+* **QATERIALGALLERY_TARGET** : Output target to link to. *Default: QaterialGallery*
 
 ## Versions
 
-To create a new release: 
+To create a new release:
 
-* Update in `CMakelist.txt` variables **QQUICKMATERIALHELPERGALLERY_VERSION_MAJOR**, **QQUICKMATERIALHELPERGALLERY_VERSION_MINOR**, **QQUICKMATERIALHELPERGALLERY_VERSION_PATCH**.
+* Update in `CMakelist.txt` variables **QATERIALGALLERY_VERSION_MAJOR**, **QATERIALGALLERY_VERSION_MINOR**, **QATERIALGALLERY_VERSION_PATCH**.
 * Increment in `platform/PostBuildPlatform.cmake` the parameter **VERSION_CODE** in the android apk macro
 
 ## Authors

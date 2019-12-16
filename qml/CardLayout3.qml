@@ -1,13 +1,10 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Core 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Card
 {
@@ -15,17 +12,17 @@ Card
     property alias button1: _button1
     property alias button2: _button2
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     contentItem: ColumnLayout
     {
         id: _column
         width: parent.width
-        spacing: MaterialStyle.card.verticalPadding
+        spacing: Style.card.verticalPadding
 
         RowLayout
         {
-            Layout.topMargin: MaterialStyle.card.horizontalPadding
+            Layout.topMargin: Style.card.horizontalPadding
             ColumnLayout
             {
                 Layout.fillWidth: true
@@ -33,37 +30,37 @@ Card
                 {
                     text: control.headerText
                     elide: Text.ElideRight
-                    textType: MaterialStyle.TextType.Heading
-                    //padding: MaterialStyle.card.horizontalPadding
-                    Layout.leftMargin: MaterialStyle.card.horizontalPadding
-                    Layout.rightMargin: MaterialStyle.card.horizontalPadding
+                    textType: Style.TextType.Heading
+                    //padding: Style.card.horizontalPadding
+                    Layout.leftMargin: Style.card.horizontalPadding
+                    Layout.rightMargin: Style.card.horizontalPadding
                     Layout.fillWidth: true
                 } // Label
 
                 CardSupportingText
                 {
                     supportingText: control.supportingText
-                    Layout.leftMargin: MaterialStyle.card.horizontalPadding
-                    Layout.rightMargin: MaterialStyle.card.horizontalPadding
+                    Layout.leftMargin: Style.card.horizontalPadding
+                    Layout.rightMargin: Style.card.horizontalPadding
                     Layout.topMargin: 2
                     Layout.bottomMargin: 2
-                    Layout.fillWidth: true                
+                    Layout.fillWidth: true
                 } // CardSupportingText
             } // ColumnLayout
 
             Image
             {
                 source: control.media
-                Layout.maximumWidth: MaterialStyle.dense ? 64 : 80
-                Layout.maximumHeight: MaterialStyle.dense ? 64 : 80
-                Layout.rightMargin: MaterialStyle.card.horizontalPadding
+                Layout.maximumWidth: Style.dense ? 64 : 80
+                Layout.maximumHeight: Style.dense ? 64 : 80
+                Layout.rightMargin: Style.card.horizontalPadding
             } // Image
         }
 
         Row
         {
-            Layout.leftMargin: MaterialStyle.card.verticalPadding
-            Layout.rightMargin: MaterialStyle.card.verticalPadding
+            Layout.leftMargin: Style.card.verticalPadding
+            Layout.rightMargin: Style.card.verticalPadding
 
             FlatButton
             {

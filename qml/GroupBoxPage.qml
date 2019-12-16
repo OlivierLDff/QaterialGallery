@@ -1,19 +1,15 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
-ScrollablePage 
+ScrollablePage
 {
     id: page
 
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Group Box" }
     } // ToolBar
@@ -22,12 +18,12 @@ ScrollablePage
 
     readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, page.availableWidth / 3 * 2))
 
-    Column 
+    Column
     {
         spacing: 20
         width: parent.width
 
-        Label 
+        Label
         {
             width: parent.width
             wrapMode: Label.Wrap
@@ -56,7 +52,7 @@ ScrollablePage
             title: "Caption Inline Title"
             columnWidth: page.itemWidth
             anchors.horizontalCenter: parent.horizontalCenter
-            titleType: MaterialStyle.TextType.Caption
+            titleType: Style.TextType.Caption
             inlineTitle: true
         } // GroupBoxLayout
 
@@ -65,7 +61,7 @@ ScrollablePage
             title: "Caption Default Title"
             columnWidth: page.itemWidth
             anchors.horizontalCenter: parent.horizontalCenter
-            titleType: MaterialStyle.TextType.Caption
+            titleType: Style.TextType.Caption
         } // GroupBoxLayout
     }
 }

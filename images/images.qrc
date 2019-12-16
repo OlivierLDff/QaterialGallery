@@ -1,5 +1,5 @@
 <RCC>
-	<qresource prefix="/QQuickMaterialHelperGallery/images">
+	<qresource prefix="/QaterialGallery/images">
 	<file>icon.png</file>
 	<file>icons/back.png</file>
 	<file>icons/drawer.png</file>
@@ -14,13 +14,13 @@
 	<file>icons/airplane.svg</file>
 	<file>icons/briefcase.svg</file>
 	<file>icons/compass.svg</file>
-	
+
 	<file>icons/album.svg</file>
 	<file>icons/settings.svg</file>
 	<file>icons/music-note.svg</file>
 	<file>icons/heart.svg</file>
 	<file>icons/thumb-up.svg</file>
-	
+
 	<file>icons/pencil.svg</file>
 	<file>icons/content-copy.svg</file>
 	<file>icons/crosshairs-gps.svg</file>
@@ -72,6 +72,6 @@
 	<file>card168x168_3.png</file>
 	<file>card168x168_4.png</file>
 	<file>card168x168_5.png</file>
-	
+
 	</qresource>
 </RCC>

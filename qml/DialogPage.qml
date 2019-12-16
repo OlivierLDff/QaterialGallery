@@ -1,29 +1,26 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 
-import QQuickMaterialHelper.Components 1.12
-import QQuickMaterialHelper.Containers 1.12
-import QQuickMaterialHelper.Style 1.12
+import Qaterial 1.0
 
 Page
 {
 
-    header: ToolBar 
+    header: ToolBar
     {
         AppBarContent { anchors.fill: parent; title: "Dialogs" }
-    } // ToolBar 
+    } // ToolBar
 
     DialogManager
     {
         id: dialogManager
     }
 
-    Loader 
-    { 
+    Loader
+    {
         id: _dialogLoader
         onLoaded: item.open()
     }
@@ -34,19 +31,19 @@ Page
         Column
         {
             width: parent.width
-            spacing: MaterialStyle.card.horizontalPadding
+            spacing: Style.card.horizontalPadding
 
-            Label 
+            Label
             {
                 width: parent.width
                 wrapMode: Label.Wrap
                 elide: Text.ElideRight
                 text: "A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.\n" + "  • Dialogs are purposefully interruptive, so they should be used sparingly."
                 maximumLineCount: 7
-                textType: MaterialStyle.TextType.Caption
+                textType: Style.TextType.Caption
             } // Label
 
-            readonly property double buttonWidth: Math.min(width*0.8, 500) 
+            readonly property double buttonWidth: Math.min(width*0.8, 500)
 
             Button
             {
@@ -105,7 +102,7 @@ Page
                     },
                     text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.",
                     title: qsTr("Send data?"),
-                    iconSource: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg",
+                    iconSource: "qrc:/QaterialGallery/images/icons/account.svg",
                     standardButtons: Dialog.Cancel | Dialog.Yes
                 } )
             }
@@ -130,7 +127,7 @@ Page
                             ItemDelegate
                             {
                                 width: parent.width
-                                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+                                icon.source: "qrc:/QaterialGallery/images/icons/account.svg"
                                 text: "username@gmail.com"
                                 fillIcon: true
                                 highlightedIcon: true
@@ -142,7 +139,7 @@ Page
                                 highlightedIcon: true
                                 reverseHighlightIcon: true
                                 width: parent.width
-                                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/account.svg"
+                                icon.source: "qrc:/QaterialGallery/images/icons/account.svg"
                                 text: "user02@gmail.com"
                             }
                             ItemDelegate
@@ -150,7 +147,7 @@ Page
                                 fillIcon: true
                                 highlightedIcon: false
                                 reverseHighlightIcon: true
-                                icon.source: "qrc:/QQuickMaterialHelperGallery/images/icons/plus.svg"
+                                icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                                 width: parent.width
                                 text: "add account"
                             }
@@ -203,7 +200,7 @@ Page
                         title: "Scrollable Radio Dialog"
                         onAccepted:
                         {
-                             console.log("Accept " + currentIndex); 
+                             console.log("Accept " + currentIndex);
                              _radioDialog.modelIndex = currentIndex
                         }
                         onRejected: console.log("Cancel")
@@ -234,7 +231,7 @@ Page
                         title: "Scrollable Radio Dialog"
                         onAccepted:
                         {
-                             console.log("Accept " + currentIndex); 
+                             console.log("Accept " + currentIndex);
                              _radioScrollableDialog.modelIndex = currentIndex
                         }
                         onRejected: console.log("Cancel")
