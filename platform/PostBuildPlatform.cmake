@@ -63,7 +63,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
     ENDIF(QATERIALGALLERY_ANDROID_KEYSTORE)
 
     add_qt_android_apk(${QATERIALGALLERY_TARGET}Apk ${QATERIALGALLERY_TARGET}
-        NAME "Qaterial Gallery"
+        NAME "Qaterial"
         VERSION_NAME ${QATERIALGALLERY_VERSION}
         VERSION_CODE 1 # Must be incremented on each release
         PACKAGE_NAME "com.oliv.qaterial"
@@ -93,7 +93,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     ENDIF(NOT TEAM_ID)
 
     add_qt_ios_app(${QATERIALGALLERY_TARGET}
-        NAME "Qml Material Helper Gallery"
+        NAME "Qaterial"
         BUNDLE_IDENTIFIER "com.oliv.qaterial"
         VERSION ${QATERIALGALLERY_VERSION}
         LONG_VERSION ${QATERIALGALLERY_VERSION}.${QATERIALGALLERY_VERSION_TAG}
