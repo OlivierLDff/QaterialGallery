@@ -2,7 +2,7 @@
 #define __QATERIALGALLERY_COMMON_HPP__
 
 // ─────────────────────────────────────────────────────────────
-//					INCLUDE
+//                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
 // C Header
@@ -18,19 +18,19 @@
 // Application Header
 
 // ─────────────────────────────────────────────────────────────
-//					DECLARATION
+//                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
 #ifdef WIN32
-	#ifdef QATERIALGALLERY_SHARED	// Shared build
-		#define QATERIALGALLERY_API_ __declspec(dllexport)
-	#elif QATERIALGALLERY_STATIC 	// No decoration when building staticlly
-		#define QATERIALGALLERY_API_
-	#else 				// Link to lib
-		#define QATERIALGALLERY_API_ __declspec(dllimport)
-	#endif
+    #ifdef QATERIALGALLERY_SHARED   // Shared build
+        #define QATERIALGALLERY_API_ __declspec(dllexport)
+    #elif QATERIALGALLERY_STATIC    // No decoration when building staticlly
+        #define QATERIALGALLERY_API_
+    #else               // Link to lib
+        #define QATERIALGALLERY_API_ __declspec(dllimport)
+    #endif
 #else
-	#define QATERIALGALLERY_API_
+    #define QATERIALGALLERY_API_
 #endif
 
 #ifdef QATERIALGALLERY_USE_NAMESPACE
@@ -53,16 +53,16 @@ QATERIALGALLERY_NAMESPACE_START
 class QATERIALGALLERY_API_ Version
 {
 public:
-	/** Library Major Version */
-	static uint32_t GetMajor();
-	/** Library Minor Version */
-	static uint32_t GetMinor();
-	/** Library Patch Version */
-	static uint32_t GetPatch();
-	/** Library Tag Version */
-	static uint32_t GetTag();
-	/** Library Version as major.minor.patch.tag */
-	static QString GetVersion();
+    /** Library Major Version */
+    static uint32_t GetMajor();
+    /** Library Minor Version */
+    static uint32_t GetMinor();
+    /** Library Patch Version */
+    static uint32_t GetPatch();
+    /** Library Tag Version */
+    static uint32_t GetTag();
+    /** Library Version as major.minor.patch.tag */
+    static QString GetVersion();
 };
 
 QATERIALGALLERY_NAMESPACE_END

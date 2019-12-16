@@ -52,7 +52,7 @@ ScrollablePage
             title: "Caption Inline Title"
             columnWidth: page.itemWidth
             anchors.horizontalCenter: parent.horizontalCenter
-            titleType: Style.TextType.Caption
+            textType: Style.TextType.Caption
             inlineTitle: true
         } // GroupBoxLayout
 
@@ -61,7 +61,7 @@ ScrollablePage
             title: "Caption Default Title"
             columnWidth: page.itemWidth
             anchors.horizontalCenter: parent.horizontalCenter
-            titleType: Style.TextType.Caption
+            textType: Style.TextType.Caption
         } // GroupBoxLayout
     }
 }

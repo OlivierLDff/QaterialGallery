@@ -85,6 +85,7 @@ ScrollablePage
             }
             onRejected: console.log("Cancel")
         }
+
         EnumDelegate
         {
             width: parent.width
@@ -94,7 +95,8 @@ ScrollablePage
             icon.source: model.get(enumValue).source ? model.get(enumValue).source : ""
             onAccepted: enumValue = value
             title: "Title"
-            model:ListModel
+
+            model: ListModel
             {
                 ListElement{ text: "Choice 1"; secondaryText: "secondary text";source: "qrc:/QaterialGallery/images/icons/cake.svg" }
                 ListElement{ text: "Choice 2"; secondaryText: "Neque porro quisquam";source: "qrc:/QaterialGallery/images/icons/music-note.svg" }
@@ -108,11 +110,15 @@ ScrollablePage
                 ListElement{ text: "Element 10"; }
                 ListElement{ text: "Element 11";source: "qrc:/QaterialGallery/images/icons/account.svg" }
             }
-            delegate: RadioDialogDelegate
+
+            delegate: Component
             {
-                text: model.text ? model.text : ""
-                secondaryText: model.secondaryText ? model.secondaryText : ""
-                icon.source: model.source ? model.source : ""
+                RadioDialogDelegate
+                {
+                    text: model.text ? model.text : ""
+                    secondaryText: model.secondaryText ? model.secondaryText : ""
+                    icon.source: model.source ? model.source : ""
+                }
             }
         }
     } // Column

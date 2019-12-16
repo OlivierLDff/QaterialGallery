@@ -12,7 +12,7 @@ ApplicationWindow
     width: 480
     height: 750
     visible: true
-	title: "Qaterial Gallery"
+    title: "Qaterial Gallery"
 
     RobotoFontLoader {}
 

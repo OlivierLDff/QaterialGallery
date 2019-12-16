@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-//					INCLUDE
+//                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
 // C Header
@@ -14,39 +14,39 @@
 #include <QaterialGallery.hpp>
 
 // ─────────────────────────────────────────────────────────────
-//					DECLARATION
+//                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
 QATERIALGALLERY_USING_NAMESPACE
 
 // ─────────────────────────────────────────────────────────────
-//					FUNCTIONS
+//                  FUNCTIONS
 // ─────────────────────────────────────────────────────────────
 
 uint32_t Version::GetMajor()
 {
-	return QATERIALGALLERY_VERSION_MAJOR;
+    return QATERIALGALLERY_VERSION_MAJOR;
 }
 
 uint32_t Version::GetMinor()
 {
-	return QATERIALGALLERY_VERSION_MINOR;
+    return QATERIALGALLERY_VERSION_MINOR;
 }
 
 uint32_t Version::GetPatch()
 {
-	return QATERIALGALLERY_VERSION_PATCH;
+    return QATERIALGALLERY_VERSION_PATCH;
 }
 
 uint32_t Version::GetTag()
 {
-	return QATERIALGALLERY_VERSION_TAG_HEX;
+    return QATERIALGALLERY_VERSION_TAG_HEX;
 }
 
 QString Version::GetVersion()
 {
-	return QString::number(GetMajor()) + "." +
-		QString::number(GetMinor()) + "." +
-		QString::number(GetPatch()) + "." +
-		QString::number(GetTag(), 16);
+    return QString::number(GetMajor()) + "." +
+        QString::number(GetMinor()) + "." +
+        QString::number(GetPatch()) + "." +
+        QString::number(GetTag(), 16);
 }

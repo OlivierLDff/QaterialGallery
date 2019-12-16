@@ -1,6 +1,10 @@
+
+
+
+
 # Qaterial Gallery
 
-QaterialGallery is a showcase application and contains example for the library Qaterial . It is still under development.
+QaterialGallery is a showcase application and contains example for the library Qaterial . It is still under development. This library is hard fork of previous library QQuickMaterialHelper.
 
 This project also showcase multiplatform deployment with Qt.
 
@@ -12,15 +16,63 @@ This project also showcase multiplatform deployment with Qt.
 
 ## Components
 
+### Main Page
+
+<img src="./doc/screen3.png" alt="screen3" style="zoom:50%;" />
+
+### Menu Bar
+
+![screen4](./doc/screen4.png)
+
 ### Buttons
 
-![](./doc/screen2.png)
+![screen5](./doc/screen5.png)
 
-* Raised Button
-* Flat Button
-* Outlined Button
+### Icons
 
-etc ...
+<img src="./doc/screen6.png" alt="screen6" style="zoom:50%;" />
+
+### Floating Action Button
+
+![screen7](./doc/screen7.png)
+
+### Controls Buttons
+
+![screen8](./doc/screen8.png)
+
+### Typography
+
+<img src="./doc/screen9.png" alt="screen9" style="zoom:50%;" />
+
+### Text Field
+
+<img src="./doc/screen10.png" alt="screen10" style="zoom: 50%;" />
+
+### Tab
+
+![screen11](./doc/screen11.png)
+
+### Cards
+
+![screen12](./doc/screen12.png)
+
+### Frame
+
+<img src="./doc/screen13.png" alt="screen13" style="zoom: 50%;" />
+
+### Group Box
+
+<img src="./doc/screen14.png" alt="screen14" style="zoom:50%;" />
+
+### Snackbars
+
+<img src="./doc/screen15.png" alt="screen15" style="zoom:50%;" />
+
+### Dialogs
+
+![screen16](./doc/screen16.png)
+
+
 
 DOC TODO
 

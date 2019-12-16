@@ -4,5 +4,5 @@
 *.users
 # Ignore CLion project files
 *.idea
-# For macOs users ^^
+# For macOs users
 .DS_Store

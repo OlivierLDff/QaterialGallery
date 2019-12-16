@@ -7,7 +7,7 @@ Page
 {
     header: ToolBar
     {
-        AppBarContent { anchors.fill: parent; title: "Qaterial Gallery" }
+        AppBarContent { anchors.fill: parent; title: "Qaterial Gallery "+ Version.readable }
     } // ToolBar
 
     ListModel
