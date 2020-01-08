@@ -7,8 +7,7 @@
     <application 
     	android:label="@QT_ANDROID_APP_NAME@" 
     	android:name="org.qtproject.qt5.android.bindings.QtApplication"
-    	android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher">
+    	android:icon="@mipmap/ic_launcher">
 		<activity 
 			android:label="@QT_ANDROID_APP_NAME@" 
 			android:name="org.qtproject.qt5.android.bindings.QtActivity" 
