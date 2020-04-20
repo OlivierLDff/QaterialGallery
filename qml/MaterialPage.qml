@@ -1,13 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.12
 
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
-  header: ToolBar
+  header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Qaterial Gallery "+ Version.readable }
+    AppBarContent { anchors.fill: parent; title: "Qaterial Gallery "+ Qaterial.Version.readable }
   } // ToolBar
 
   ListModel
@@ -146,27 +147,27 @@ Page
         icon: "qrc:/QaterialGallery/images/icons/delegate.svg"
         source: "qrc:/QaterialGallery/DialogDelegatePage.qml"
       }
-      ListElement
+      /*ListElement
       {
         title: "Fader";
         text: "An Item that can have a value between 0 and 100"
         icon: "qrc:/QaterialGallery/images/icons/fader.svg"
         source: "qrc:/QaterialGallery/FaderPage.qml"
-      } // ListElement
+      } // ListElement*/
   } // ListModel
 
   Component
   {
     id: galleryModelDelegate
-    ItemDelegate
+    Qaterial.ItemDelegate
     {
       width: parent.width
       text: model.title
       secondaryText: model.text ? model.text : ""
       highlighted: ListView.isCurrentItem
       icon.source: model.icon
-      fillIcon: Style.theme !== Style.Theme.Light
-      outlinedIcon: Style.theme === Style.Theme.Light
+      fillIcon: Qaterial.Style.theme !== Qaterial.Style.Theme.Light
+      outlinedIcon: Qaterial.Style.theme === Qaterial.Style.Theme.Light
       highlightedIcon: true
       reverseHighlightIcon: false
 
@@ -189,6 +190,6 @@ Page
     delegate: galleryModelDelegate
     model: galleryModel
 
-    ScrollIndicator.vertical: ScrollIndicator { }
+    ScrollIndicator.vertical: Qaterial.ScrollIndicator { }
   }
 }
