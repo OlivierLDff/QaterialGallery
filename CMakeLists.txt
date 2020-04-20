@@ -218,6 +218,17 @@ target_link_libraries(${QATERIALGALLERY_TARGET}
   Qt5::QuickControls2
   )
 
+# set output directories for all builds (Debug, Release, etc.)
+foreach(_CONFIG ${CMAKE_CONFIGURATION_TYPES})
+  string(TOUPPER ${_CONFIG} _CONFIG_UPPER)
+  set_target_properties(${QATERIALGALLERY_TARGET}
+    PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/lib"
+    LIBRARY_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/lib"
+    RUNTIME_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/bin"
+  )
+endforeach()
+
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
