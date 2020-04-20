@@ -20,10 +20,10 @@
 #include <QDebug>
 
 // Oliv Qt
-#include <Qaterial.hpp>
+#include <Qaterial/Qaterial.hpp>
 
 // QaterialGallery
-#include <QaterialGallery.hpp>
+#include <QaterialGallery/QaterialGallery.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setOrganizationName("Oliv");
     QGuiApplication::setApplicationName("Qaterial Gallery");
     QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
-    QGuiApplication::setApplicationVersion(Qqhg::Version::GetVersion());
+    QGuiApplication::setApplicationVersion(QaterialGallery::Version::GetVersion());
 
     qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
         "Organization: %s; "
@@ -75,7 +75,6 @@ int main(int argc, char *argv[])
     // ────────── SET QML FONT AND RESSOURCES ──────────
 
     QQuickStyle::setStyle(QStringLiteral("Material"));
-    engine.addImportPath("qrc:///QaterialGallery/qml");
     engine.addImportPath("qrc:///");
 
     // ────────── REGISTER QML TYPE ────────────
@@ -84,10 +83,12 @@ int main(int argc, char *argv[])
     Qaterial::Utils::loadResources();
     Qaterial::Utils::registerTypes();
 
+    Q_INIT_RESOURCE(QaterialGallery);
+
     // ────────── LOAD QML MAIN ───────────
 
     qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
-    engine.load(QUrl("qrc:/QaterialGallery/qml/Main.qml"));
+    engine.load(QUrl("qrc:/QaterialGallery/Main.qml"));
     if (engine.rootObjects().isEmpty())
         return -1;
 

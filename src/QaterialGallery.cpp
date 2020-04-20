@@ -2,22 +2,14 @@
 //                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
-// C Header
-
-// C++ Header
-
-// Qt Header
-
-// Dependancies Header
-
 // Application Header
-#include <QaterialGallery.hpp>
+#include <QaterialGallery/QaterialGallery.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-QATERIALGALLERY_USING_NAMESPACE
+using namespace QaterialGallery;
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS

@@ -3,10 +3,7 @@ MESSAGE(STATUS "Post Build Platform Dependancies Configuration")
 # ───────── WINDOWS ──────────
 
 IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
-    IF(QATERIALGALLERY_BUILD_EXE)
-
-        message(STATUS "Download QtWindowsCMake from ${QTWINDOWSCMAKE_REPOSITORY}")
-
+    IF(NOT QATERIALGALLERY_BUILD_SHARED AND NOT QATERIALGALLERY_BUILD_STATIC)
         # QtWindowsCMake
         FetchContent_Declare(
             QtWindowsCMake
@@ -14,6 +11,12 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
             GIT_TAG        ${QTWINDOWSCMAKE_TAG}
         )
         FetchContent_MakeAvailable(QtWindowsCMake)
+
+        # Don't deploy when using static cmake since we are not using any qml file
+        get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+        if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
+            set(PLATFORM_NO_DEPLOY NO_DEPLOY)
+        endif()
 
         add_qt_windows_exe( ${QATERIALGALLERY_TARGET}
             ALL
@@ -28,6 +31,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
             NO_TRANSATION
             VERBOSE_LEVEL_DEPLOY 1
             VERBOSE_INSTALLER
+            ${PLATFORM_NO_DEPLOY}
          )
 
         if(MSVC)
@@ -51,7 +55,6 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
         GIT_REPOSITORY ${QTANDROIDCMAKE_REPOSITORY}
         GIT_TAG        ${QTANDROIDCMAKE_TAG}
     )
-    message(STATUS "Download QtAndroidCMake from ${QTANDROIDCMAKE_REPOSITORY}")
     FetchContent_MakeAvailable(QtAndroidCMake)
 
     # Set keystore variable
@@ -84,11 +87,11 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
         GIT_REPOSITORY ${QTIOSCMAKE_REPOSITORY}
         GIT_TAG        ${QTIOSCMAKE_TAG}
     )
-    message(STATUS "Download QtIosCMake from ${QTIOSCMAKE_REPOSITORY}")
     FetchContent_MakeAvailable(QtIosCMake)
 
     # We can't have empty flags
     IF(NOT TEAM_ID)
+        message(WARNING "Please provide TEAM_ID to cmake (cmake -DTEAM_ID=AAAAAAAA <path>)")
         SET(TEAM_ID "AAAAAAAA")
     ENDIF(NOT TEAM_ID)
 
@@ -99,7 +102,7 @@ IF(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
         LONG_VERSION ${QATERIALGALLERY_VERSION}.${QATERIALGALLERY_VERSION_TAG}
         CODE_SIGN_IDENTITY "iPhone Developer"
         TEAM_ID ${TEAM_ID} # TEAM_ID must be specified when executing cmake or later in XCode
-        COPYRIGHT "Copyright Olivier Ldff 2019"
+        COPYRIGHT "Copyright Olivier Ldff 2019-2020"
         ASSET_DIR "${CMAKE_CURRENT_SOURCE_DIR}/platform/ios/Assets.xcassets"
         LAUNCHSCREEN_STORYBOARD "${CMAKE_CURRENT_SOURCE_DIR}/platform/ios/LaunchScreen.storyboard"
         MAIN_STORYBOARD "${CMAKE_CURRENT_SOURCE_DIR}/platform/ios/Main.storyboard"
