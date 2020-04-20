@@ -80,7 +80,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/platform/PreBuildPlatform.cmake)
 find_package(Qt5Core            CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Gui             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Qml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QmlWorkerScript CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5QmlWorkerScript CONFIG NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Quick           CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5QuickControls2  CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Svg             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
@@ -213,10 +213,13 @@ target_link_libraries(${QATERIALGALLERY_TARGET}
   Qt5::Svg
   Qt5::Xml
   Qt5::Qml
-  Qt5::QmlWorkerScript
   Qt5::Quick
   Qt5::QuickControls2
   )
+
+if(TARGET Qt5::QmlWorkerScript)
+  target_link_libraries(${QATERIALGALLERY_TARGET} Qt5::QmlWorkerScript)
+endif()
 
 # set output directories for all builds (Debug, Release, etc.)
 foreach(_CONFIG ${CMAKE_CONFIGURATION_TYPES})
