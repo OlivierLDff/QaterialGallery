@@ -119,9 +119,10 @@ FetchContent_Declare(
 
 # spdlog
 FetchContent_Declare(
-    spdlog
-    GIT_REPOSITORY ${SPDLOG_REPOSITORY}
-    GIT_TAG        ${SPDLOG_TAG}
+  spdlog
+  GIT_REPOSITORY ${SPDLOG_REPOSITORY}
+  GIT_TAG        ${SPDLOG_TAG}
+  GIT_SHALLOW    1
 )
 
 # Qaterial
