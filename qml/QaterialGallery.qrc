@@ -36,6 +36,7 @@
     <file>TextFieldPage.qml</file>
     <file>DialogDelegatePage.qml</file>
     <file>FaderPage.qml</file>
+    <file>SlidersPage.qml</file>
 
     <!-- ICONS -->
     <file>images/icons/back.png</file>
@@ -93,6 +94,7 @@
     <file>images/icons/close-circle.svg</file>
     <file>images/icons/alert-circle.svg</file>
     <file>images/icons/fader.svg</file>
+    <file>images/icons/sliders.svg</file>
 
     <!-- ICONS -->
     <file>images/delegateLarge.png</file>
