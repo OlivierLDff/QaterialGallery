@@ -170,13 +170,6 @@ export QT_DIR_ARM64V8A=/Users/$QT_USER_ID/Qt/$QT_WIN_VERSION1/android_arm64_v8a
 export QT_DIR_X86=/Users/$QT_USER_ID/Qt/$QT_WIN_VERSION/android_x86
 ```
 
-*Due to a bug in gcc it is recommended to use clang.*
-
-Depending on Qt Version you might need to change the Android STL.
-
-- `5.12` : `c++_shared`
-- `5.11` : `gnustl_shared`
-
 **CMAKE_BUILD_TYPE** can be set to multiple values. *Debug | Release | MinSizeRel | RelWithDebInfo*.
 
 *Tip for windows: If you don't have make installed you can use the one in the ndk:*
