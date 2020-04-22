@@ -80,11 +80,12 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/platform/PreBuildPlatform.cmake)
 find_package(Qt5Core            CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Gui             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Qml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QmlWorkerScript CONFIG NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5QmlWorkerScript CONFIG QUIET    NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Quick           CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5QuickControls2  CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Svg             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Xml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5QuickCompiler   CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       STATUS                                     │
