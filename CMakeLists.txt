@@ -203,12 +203,12 @@ target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_V
 target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_VERSION_TAG=${QATERIALGALLERY_VERSION_TAG})
 target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_VERSION_TAG_HEX=${QATERIALGALLERY_VERSION_TAG_HEX})
 
-target_link_libraries(${QATERIALGALLERY_TARGET} Qaterial)
+target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE Qaterial)
 
 set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES AUTOMOC TRUE)
 set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES AUTORCC TRUE)
 target_compile_features(${QATERIALGALLERY_TARGET} PUBLIC cxx_std_11)
-target_link_libraries(${QATERIALGALLERY_TARGET}
+target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
   Qt5::Core
   Qt5::Gui
   Qt5::Svg
@@ -217,10 +217,6 @@ target_link_libraries(${QATERIALGALLERY_TARGET}
   Qt5::Quick
   Qt5::QuickControls2
   )
-
-if(TARGET Qt5::QmlWorkerScript)
-  target_link_libraries(${QATERIALGALLERY_TARGET} Qt5::QmlWorkerScript)
-endif()
 
 # set output directories for all builds (Debug, Release, etc.)
 foreach(_CONFIG ${CMAKE_CONFIGURATION_TYPES})
@@ -248,6 +244,11 @@ if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
     VERBOSE
     )
   qt_generate_plugin_import(${QATERIALGALLERY_TARGET} VERBOSE)
+endif()
+
+
+if(TARGET Qt5::QmlWorkerScript)
+  target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE Qt5::QmlWorkerScript)
 endif()
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────
