@@ -16,11 +16,16 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QtQml>
-#include <QFontDatabase>
 #include <QDebug>
 
 // Oliv Qt
 #include <Qaterial/Qaterial.hpp>
+
+// spdlog
+#ifdef WIN32
+#include <spdlog/sinks/msvc_sink.h>
+#endif
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 // QaterialGallery
 #include <QaterialGallery/QaterialGallery.hpp>
@@ -29,12 +34,24 @@
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-#define QATERIALGALLERY_URI "QaterialGallery"
-
 Q_LOGGING_CATEGORY(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "QaterialGallery")
+
+void installLoggers()
+{
+#ifdef WIN32
+    const auto msvcSink = std::make_shared<spdlog::sinks::msvc_sink_mt>();
+    msvcSink->set_level(spdlog::level::debug);
+    Qaterial::Logger::registerSink(msvcSink);
+#endif
+    const auto stdoutSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+    stdoutSink->set_level(spdlog::level::debug);
+    Qaterial::Logger::registerSink(stdoutSink);
+}
 
 int main(int argc, char *argv[])
 {
+    installLoggers();
+
     // It's important to set the high dip support before creating the gui app
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
