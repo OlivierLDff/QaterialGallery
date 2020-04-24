@@ -1,38 +1,44 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 
-import Qaterial 1.0
+// Qterial
+import Qaterial 1.0 as Qaterial
 
-GroupBox
+Qaterial.GroupBox
 {
-    title: "Title"
+  title: "Title"
 
-    property alias columnWidth: _column.width
-    property alias button: _button
+  property alias columnWidth: _column.width
+  property alias button: _button
 
-    Column
+  Column
+  {
+    id: _column
+    spacing: 0
+
+    Qaterial.RadioButton
     {
-        id: _column
-        spacing: 0
+      text: "Neque porro quisquam"
+      checked: true
+      width: parent.width
+    } // RadioButton
 
-        RadioButton
-        {
-            text: "Neque porro quisquam"
-            checked: true
-            width: parent.width
-        }
-        RadioButton
-        {
-            id: _button
-            text: "Dolorem"
-            width: parent.width
-        }
-        RadioButton
-        {
-            text: "Sit amet, consectetur"
-            width: parent.width
-        }
-    }
-}
+    Qaterial.RadioButton
+    {
+      id: _button
+      text: "Dolorem"
+      width: parent.width
+    } // RadioButton
+
+    Qaterial.RadioButton
+    {
+      text: "Sit amet, consectetur"
+      width: parent.width
+    } // RadioButton
+  } // Column
+} // GroupBox

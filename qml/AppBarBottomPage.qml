@@ -1,38 +1,42 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
-    id: page
+  id: _page
 
-    header: AppBar
+  header: Qaterial.AppBar
+  {
+    AppBarContent { anchors.fill: parent; title: "App Bar Bottom" } // AppBarContent
+  } // AppBar
+
+  footer: Qaterial.AppBar
+  {
+    Row
     {
-        AppBarContent { anchors.fill: parent; title: "Buttons" }
-    } // AppBar
+      anchors.verticalCenter: parent.verticalCenter
+      spacing: 0
 
-    footer: AppBar
-    {
-        Row
-        {
-            anchors.verticalCenter: parent.verticalCenter
-            spacing: 0
+      Qaterial.AppBarButton
+      {
+        icon.source: "qrc:/QaterialGallery/images/icons/menu.svg"
+        onPrimary: true
+      } // AppBarButton
 
-            AppBarButton
-            {
-                icon.source: "qrc:/QaterialGallery/images/icons/menu.svg"
-                onPrimary: true
-            } // ToolButton
-
-            AppBarButton
-            {
-                icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
-                onPrimary: true
-            } // ToolButton
-        } // RowLayout
-    } // AppBar
+      Qaterial.AppBarButton
+      {
+        icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
+        onPrimary: true
+      } // AppBarButton
+    } // Row
+  } // AppBar
 } // Page

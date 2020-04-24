@@ -1,18 +1,24 @@
-/** Copyright (C) Olivier Le Doeuff 2019
-* Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
+// Qaterial
 import Qaterial 1.0 as Qaterial
 
 Qaterial.ScrollablePage
 {
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Dialog Delegates" }
+    AppBarContent { anchors.fill: parent; title: "Dialog Delegates" } // AppBarContent
   } // ToolBar
+
   pane.padding: 0
+
   Column
   {
     width: parent.width
@@ -40,7 +46,7 @@ Qaterial.ScrollablePage
       inputMethodHints: Qt.ImhSensitiveData
       errorText: length ? ("Don't write more than " + maximumLengthCount + " characters") : "Can't be empty"
       maximumLengthCount: 16
-      trailingContent: Qaterial.TextFieldAlertIcon { visible: _textFieldDelegate.errorState }
+      trailingContent: Qaterial.TextFieldAlertIcon { visible: _textFieldDelegate.errorState } // TextFieldAlertIcon
 
       onAccepted:
       {
@@ -76,7 +82,7 @@ Qaterial.ScrollablePage
       inputMethodHints: Qt.ImhSensitiveData
       errorText: length ? ("Don't write more than " + maximumLengthCount + " characters") : "Can't be empty"
       maximumLengthCount: 16
-      trailingContent: Qaterial.TextFieldAlertIcon { visible: _textFieldDelegate2.errorState }
+      trailingContent: Qaterial.TextFieldAlertIcon { visible: _textFieldDelegate2.errorState } // TextFieldAlertIcon
 
       onAccepted:
       {
@@ -108,7 +114,7 @@ Qaterial.ScrollablePage
         ListElement{ text: "Element 9"; }
         ListElement{ text: "Element 10"; }
         ListElement{ text: "Element 11";source: "qrc:/QaterialGallery/images/icons/account.svg" }
-      }
+      } // ListModel
 
       delegate: Component
       {
@@ -117,8 +123,8 @@ Qaterial.ScrollablePage
           text: model.text ? model.text : ""
           secondaryText: model.secondaryText ? model.secondaryText : ""
           icon.source: model.source ? model.source : ""
-        }
-      }
+        } // RadioDialogDelegate
+      } // Component
     } // EnumDelegate
   } // Column
 } // ScrollablePage

@@ -1,75 +1,81 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
-    id: page
+  id: _page
 
-    header: AppBar
+  header: Qaterial.AppBar
+  {
+    RowLayout
     {
-        RowLayout
+      anchors.fill: parent
+      property alias title: _titleLabel.text
+
+      Qaterial.AppBarButton
+      {
+        id: _backButton
+        icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
+        onClicked:  stackView.pop()
+        visible: stackView.depth > 1
+        onPrimary: true
+      } // AppBarButton
+
+      Qaterial.Label
+      {
+        id: _titleLabel
+
+        Layout.fillWidth: true
+        Layout.leftMargin: !_backButton.visible ? 20 : undefined
+        onPrimary: true
+
+        text: "App Bar Top"
+        textType: Qaterial.Style.TextType.Title
+        elide: Label.ElideRight
+      } // Label
+
+      Qaterial.AppBarButton
+      {
+        icon.source: "qrc:/QaterialGallery/images/icons/palette.svg"
+        onPrimary: true
+        onClicked:  themeDialog.open()
+      } // ToolButton
+
+      Qaterial.AppBarButton
+      {
+        icon.source: "qrc:/QaterialGallery/images/icons/dots-vertical.svg"
+        onPrimary: true
+        onClicked: _optionsMenu.open()
+
+        Qaterial.Menu
         {
-            anchors.fill: parent
-            property alias title: titleLabel.text
+          id: _optionsMenu
+          x: parent.width - width
+          transformOrigin: Menu.TopRight
 
-            AppBarButton
-            {
-                id: _backButton
-                icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
-                onClicked:  stackView.pop()
-                visible: stackView.depth > 1
-                onPrimary: true
-            } // ToolButton
+          Qaterial.MenuItem
+          {
+            text: "Settings"
+            onTriggered: console.log("click settings")
+          } // MenuItem
 
-            Label
-            {
-                id: titleLabel
-
-                Layout.fillWidth: true
-                Layout.leftMargin: !_backButton.visible ? 20 : undefined
-                onPrimary: true
-
-                text: "App Bar Top"
-                textType: Style.TextType.Title
-                elide: Label.ElideRight
-            } // Label
-
-            AppBarButton
-            {
-                icon.source: "qrc:/QaterialGallery/images/icons/palette.svg"
-                onPrimary: true
-                onClicked:  themeDialog.open()
-            } // ToolButton
-
-            AppBarButton
-            {
-                icon.source: "qrc:/QaterialGallery/images/icons/dots-vertical.svg"
-                onPrimary: true
-                onClicked: optionsMenu.open()
-
-                Menu
-                {
-                    id: optionsMenu
-                    x: parent.width - width
-                    transformOrigin: Menu.TopRight
-
-                    MenuItem
-                    {
-                        text: "Settings"
-                        onTriggered: console.log("click settings")
-                    } // MenuItem
-                    MenuItem
-                    {
-                        text: "About"
-                        onTriggered: console.log("click about")
-                    } // MenuItem
-                } // Menu
-            } // ToolButton
-        } // RowLayout
-    } // AppBar
+          Qaterial.MenuItem
+          {
+            text: "About"
+            onTriggered: console.log("click about")
+          } // MenuItem
+        } // Menu
+      } // AppBarButton
+    } // RowLayout
+  } // AppBar
 } // Page

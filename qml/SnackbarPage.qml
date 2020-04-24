@@ -1,17 +1,21 @@
-/** Copyright (C) Olivier Le Doeuff 2019
-* Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
+// Qaterial
 import Qaterial 1.0 as Qaterial
 
 Qaterial.Page
 {
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Snackbars" }
+    AppBarContent { anchors.fill: parent; title: "Snackbars" } // AppBarContent
   } // ToolBar
 
   Qaterial.ScrollablePage
@@ -41,7 +45,7 @@ Qaterial.Page
         anchors.horizontalCenter: parent.horizontalCenter
         width: Math.min(parent.width, implicitWidth)
         text: "Single-line message."
-      }
+      } // SnackBar
 
       Qaterial.Snackbar
       {
@@ -50,7 +54,7 @@ Qaterial.Page
         text: "Single-line message with action."
         action: "Action"
         onActionPressed: console.log("Action!")
-      }
+      } // SnackBar
 
       Qaterial.Snackbar
       {
@@ -59,7 +63,7 @@ Qaterial.Page
         text: "Two-line message with action. This message is very long."
         action: "Action"
         onActionPressed: console.log("Action!")
-      }
+      } // SnackBar
 
       Qaterial.Snackbar
       {
@@ -69,7 +73,7 @@ Qaterial.Page
         text: "Expandable Two-line message with action. This message is very long."
         action: "Action"
         onActionPressed: console.log("Action!")
-      }
+      } // SnackBar
 
       Column
       {
@@ -83,8 +87,8 @@ Qaterial.Page
 
           onClicked: Qaterial.SnackbarManager.show({
             text: "Default Snackbar",
-            })
-          } // Button
+          })
+        } // RaisedButton
 
         Qaterial.RaisedButton
         {
@@ -100,7 +104,7 @@ Qaterial.Page
             // Default Value : true
             canBeKilled: false
           })
-        } // Button
+        } // RaisedButton
 
         Qaterial.RaisedButton
         {
@@ -117,7 +121,7 @@ Qaterial.Page
             // Default Value : true
             canBeKilled: false
           })
-        } // Button
+        } // RaisedButton
 
         Qaterial.RaisedButton
         {
@@ -145,10 +149,9 @@ Qaterial.Page
               },
             // Default Value : true
             canBeKilled: true
-          })
-        } // Button
+          }) // SnackBarManager.show
+        } // RaisedButton
       } // Column
     } // Column
   } // ScrollablePage
 } // Page
-

@@ -1,57 +1,62 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Card
+Qaterial.Card
 {
-    id: control
+  id: _control
 
-    contentItem: ColumnLayout
+  contentItem: ColumnLayout
+  {
+    id: _column
+    width: parent.width
+    spacing: 0
+
+    Qaterial.CardMedia
     {
-        id: _column
-        width: parent.width
-        spacing: 0
+      height: Qaterial.Style.dense ? 134 : 168
+      width: Qaterial.Style.dense ? 134 : 168
+      //sourceSize.width: Qaterial.Style.dense ? 134 : 168
+      //sourceSize.height: Qaterial.Style.dense ? 134 : 168
+      source: _control.media
+      clipTop: true
+      Layout.fillWidth: true
+      Layout.maximumWidth: Qaterial.Style.dense ? 134 : 168
+    } // CardMedia
 
-        CardMedia
-        {
-            height: Style.dense ? 134 : 168
-            width: Style.dense ? 134 : 168
-            //sourceSize.width: Style.dense ? 134 : 168
-            //sourceSize.height: Style.dense ? 134 : 168
-            source: control.media
-            clipTop: true
-            Layout.fillWidth: true
-            Layout.maximumWidth: Style.dense ? 134 : 168
-        }
+    RowLayout
+    {
+      Layout.fillWidth: true
+      Layout.alignment: Qt.AlignHCenter
 
-        RowLayout
-        {
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignHCenter
-            SquareButton
-            {
-                foregroundColor: Style.secondaryTextColor()
-                Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-            } // SquareButton
+      Qaterial.SquareButton
+      {
+        foregroundColor: Qaterial.Style.secondaryTextColor()
+        Layout.alignment: Qt.AlignHCenter
+        icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
+      } // SquareButton
 
-            SquareButton
-            {
-                foregroundColor: Style.secondaryTextColor()
-                Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
-            } // SquareButton
+      Qaterial.SquareButton
+      {
+        foregroundColor: Qaterial.Style.secondaryTextColor()
+        Layout.alignment: Qt.AlignHCenter
+        icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
+      } // SquareButton
 
-            SquareButton
-            {
-                foregroundColor: Style.secondaryTextColor()
-                Layout.alignment: Qt.AlignHCenter
-                icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-            } // SquareButton
-        } // RowLayout
-    } // ColumnLayout
-}
+      Qaterial.SquareButton
+      {
+        foregroundColor: Qaterial.Style.secondaryTextColor()
+        Layout.alignment: Qt.AlignHCenter
+        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+      } // SquareButton
+    } // RowLayout
+  } // ColumnLayout
+} // Card

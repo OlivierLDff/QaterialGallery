@@ -1,78 +1,84 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Card
+Qaterial.Card
 {
-    id: control
-    property alias button1: _button1
-    property alias button2: _button2
+  id: _control
+  property alias button1: _button1
+  property alias button2: _button2
 
-    property bool drawline: Style.debug.drawDebugButton
+  property bool drawline: Qaterial.Style.debug.drawDebugButton
 
-    contentItem: ColumnLayout
+  contentItem: ColumnLayout
+  {
+    id: _column
+    width: parent.width
+    spacing: Qaterial.Style.card.verticalPadding
+
+    RowLayout
     {
-        id: _column
-        width: parent.width
-        spacing: Style.card.verticalPadding
+      Layout.topMargin: Qaterial.Style.card.horizontalPadding
 
-        RowLayout
+      ColumnLayout
+      {
+        Layout.fillWidth: true
+
+        Qaterial.Label
         {
-            Layout.topMargin: Style.card.horizontalPadding
-            ColumnLayout
-            {
-                Layout.fillWidth: true
-                Label
-                {
-                    text: control.headerText
-                    elide: Text.ElideRight
-                    textType: Style.TextType.Heading
-                    //padding: Style.card.horizontalPadding
-                    Layout.leftMargin: Style.card.horizontalPadding
-                    Layout.rightMargin: Style.card.horizontalPadding
-                    Layout.fillWidth: true
-                } // Label
+          text: _control.headerText
+          elide: Text.ElideRight
+          textType: Qaterial.Style.TextType.Heading
+          //padding: Qaterial.Style.card.horizontalPadding
+          Layout.leftMargin: Qaterial.Style.card.horizontalPadding
+          Layout.rightMargin: Qaterial.Style.card.horizontalPadding
+          Layout.fillWidth: true
+        } // Label
 
-                CardSupportingText
-                {
-                    supportingText: control.supportingText
-                    Layout.leftMargin: Style.card.horizontalPadding
-                    Layout.rightMargin: Style.card.horizontalPadding
-                    Layout.topMargin: 2
-                    Layout.bottomMargin: 2
-                    Layout.fillWidth: true
-                } // CardSupportingText
-            } // ColumnLayout
-
-            Image
-            {
-                source: control.media
-                Layout.maximumWidth: Style.dense ? 64 : 80
-                Layout.maximumHeight: Style.dense ? 64 : 80
-                Layout.rightMargin: Style.card.horizontalPadding
-            } // Image
-        }
-
-        Row
+        Qaterial.CardSupportingText
         {
-            Layout.leftMargin: Style.card.verticalPadding
-            Layout.rightMargin: Style.card.verticalPadding
+          supportingText: _control.supportingText
+          Layout.leftMargin: Qaterial.Style.card.horizontalPadding
+          Layout.rightMargin: Qaterial.Style.card.horizontalPadding
+          Layout.topMargin: 2
+          Layout.bottomMargin: 2
+          Layout.fillWidth: true
+        } // CardSupportingText
+      } // ColumnLayout
 
-            FlatButton
-            {
-                id: _button1
-                visible: text != ""
-            } // FlatButton
+      Image
+      {
+        source: _control.media
+        Layout.maximumWidth: Qaterial.Style.dense ? 64 : 80
+        Layout.maximumHeight: Qaterial.Style.dense ? 64 : 80
+        Layout.rightMargin: Qaterial.Style.card.horizontalPadding
+      } // Image
+    } // RowLayout
 
-            FlatButton
-            {
-                id: _button2
-                visible: text != ""
-            } // FlatButton
-        } // Row
-    } // ColumnLayout
-}
+    Row
+    {
+      Layout.leftMargin: Qaterial.Style.card.verticalPadding
+      Layout.rightMargin: Qaterial.Style.card.verticalPadding
+
+      Qaterial.FlatButton
+      {
+        id: _button1
+        visible: text != ""
+      } // FlatButton
+
+      Qaterial.FlatButton
+      {
+        id: _button2
+        visible: text != ""
+      } // FlatButton
+    } // Row
+  } // ColumnLayout
+} // Card

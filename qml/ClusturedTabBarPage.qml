@@ -1,124 +1,131 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
-    id: root
-    property bool enabled: true
-    Pane
+  id: _root
+  property bool enabled: true
+  Qaterial.Pane
+  {
+    padding: 0
+
+    elevation: 20
+    anchors.centerIn: parent
+    width: parent.width - 30
+    height: parent.height - 40
+    implicitHeight: height
+
+    Qaterial.Page
     {
-        padding: 0
-
-        elevation: 20
-        anchors.centerIn: parent
-        width: parent.width - 30
-        height: parent.height - 40
-        implicitHeight: height
-
-        Page
+      clip: true
+      anchors.fill: parent
+      header: Qaterial.ToolBar
+      {
+        ColumnLayout
         {
-            clip: true
-            anchors.fill: parent
-            header: ToolBar
+          anchors.fill: parent
+          spacing: 0
+
+          Qaterial.Label
+          {
+            id: _titleLabel
+
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            onPrimary: true
+            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+
+            text: "Clustured Tab Bar"
+            textType: Qaterial.Style.TextType.Title
+            elide: Label.ElideRight
+          } // Label
+
+          Qaterial.SwitchDelegate
+          {
+            Layout.fillWidth: true
+            text: checked ? "Center" : "Right"
+            onPrimary: true
+            checked: true
+            id: _displaySwitch
+          } // SwitchDelegate
+
+          Qaterial.ClusturedTabBar
+          {
+            id: _tabBar
+            currentIndex: _swipeView.currentIndex
+            onPrimary: true
+            enabled: _root.enabled
+
+            Layout.alignment: _displaySwitch.checked ? Qt.AlignHCenter : Qt.AlignRight
+
+            model: ListModel
             {
-                ColumnLayout
-                {
-                    anchors.fill: parent
-                    spacing: 0
+              ListElement { text: "Landscape" }
+              ListElement { text: "City" }
+              ListElement { text: "Abstract" }
+            }
+          } // TabBar
+        } // ColumnLayout
+      } // ToolBar
 
-                    Label
-                    {
-                        id: titleLabel
+      Qaterial.SwipeView
+      {
+        id: _swipeView
+        anchors.fill: parent
+        currentIndex: _tabBar.currentIndex
+        interactive: _root.enabled
+        Item
+        {
+          width: _swipeView.width
+          height: _swipeView.height
 
-                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                        onPrimary: true
-                        Layout.topMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
-                        Layout.bottomMargin: (Style.toolbar.implicitHeight-implicitHeight)/2
+          Qaterial.Label
+          {
+            anchors.centerIn: parent
+            text: "Landscape View"
+            textType: Qaterial.Style.TextType.Display1
+            color: "#FF2196F3"
+          } // Label
+        } // Item
 
-                        text: "Clustured Tab Bar"
-                        textType: Style.TextType.Title
-                        elide: Label.ElideRight
-                    } // Label
+        Item
+        {
+          width: _swipeView.width
+          height: _swipeView.height
 
-                    SwitchDelegate
-                    {
-                        Layout.fillWidth: true
-                        text: checked ? "Center" : "Right"
-                        onPrimary: true
-                        checked: true
-                        id: _displaySwitch
-                    } // SwitchDelegate
+          Qaterial.Label
+          {
+            anchors.centerIn: parent
+            text: "City View"
+            textType: Qaterial.Style.TextType.Display1
+            color: "#FF00BCD4"
+          } // Label
+        } // Item
 
-                    ClusturedTabBar
-                    {
-                        id: tabBar
-                        currentIndex: swipeView.currentIndex
-                        onPrimary: true
-                        enabled: root.enabled
+        Item
+        {
+          width: _swipeView.width
+          height: _swipeView.height
 
-                        Layout.alignment: _displaySwitch.checked ? Qt.AlignHCenter : Qt.AlignRight
-
-                        model: ListModel
-                        {
-                            ListElement { text: "Landscape" }
-                            ListElement { text: "City" }
-                            ListElement { text: "Abstract" }
-                        }
-                    } // TabBar
-                } // ColumnLayout
-            } // ToolBar
-
-            SwipeView
-            {
-                id: swipeView
-                anchors.fill: parent
-                currentIndex: tabBar.currentIndex
-                interactive: root.enabled
-                Item
-                {
-                    width: swipeView.width
-                    height: swipeView.height
-                    Label
-                    {
-                        anchors.centerIn: parent
-                        text: "Landscape View"
-                        textType: Style.TextType.Display1
-                        color: "#FF2196F3"
-                    } // FixedTabBarPage
-                }
-
-                Item
-                {
-                    width: swipeView.width
-                    height: swipeView.height
-                    Label
-                    {
-                        anchors.centerIn: parent
-                        text: "City View"
-                        textType: Style.TextType.Display1
-                        color: "#FF00BCD4"
-                    } // FixedTabBarPage
-                }
-
-                Item
-                {
-                    width: swipeView.width
-                    height: swipeView.height
-                    Label
-                    {
-                        anchors.centerIn: parent
-                        text: "Abstract View"
-                        textType: Style.TextType.Display1
-                        color: "#FFFFC107"
-                    } // FixedTabBarPage
-                }
-
-            } // SwipeView
-        } // Page
-    } // Pane
+          Qaterial.Label
+          {
+            anchors.centerIn: parent
+            text: "Abstract View"
+            textType: Qaterial.Style.TextType.Display1
+            color: "#FFFFC107"
+          } // Label
+        } // Item
+      } // SwipeView
+    } // Page
+  } // Pane
 } // Page

@@ -1,25 +1,30 @@
-/** Copyright (C) Olivier Le Doeuff 2019
-* Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
   id: page
 
-  header: ToolBar
+  header: Qaterial.ToolBar
   {
     ColumnLayout
     {
       anchors.fill: parent
-      AppBarContent { title: "Icon Buttons" }
+      AppBarContent { title: "Icon Buttons" } // AppBarContent
     } // ColumnLayout
   } // ToolBar
 
-  ScrollablePage
+  Qaterial.ScrollablePage
   {
     anchors.fill: parent
 
@@ -28,7 +33,7 @@ Page
       width: parent.width
       spacing: 20
 
-      Label
+      Qaterial.Label
       {
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
@@ -37,210 +42,240 @@ Page
         text: "Blabla."
       } // Label
 
-      Label
+      Qaterial.Label
       {
         text: "AppBar Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Style.TextType.Body2
+        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
       {
         Layout.alignment: Qt.AlignHCenter
         spacing: 20
-        AppBarButton
+
+        Qaterial.AppBarButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
-          } // AppBarButton
-          AppBarButton
-          {
-            icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
-            enabled: false
-          } // AppBarButton
+        } // AppBarButton
+
+        Qaterial.AppBarButton
+        {
+          icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
+          enabled: false
+        } // AppBarButton
       } // RowLayout
 
-      Label
+      Qaterial.Label
       {
         text: "Round Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Style.TextType.Body2
+        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
       {
         Layout.alignment: Qt.AlignHCenter
         spacing: 20
-        RoundButton
+
+        Qaterial.RoundButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
           checkable : true
 
         } // RoundButton
-        RoundButton
+
+        Qaterial.RoundButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
         } // RoundButton
-        RoundButton
+
+        Qaterial.RoundButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
           enabled: false
         } // RoundButton
       } // RowLayout
 
-      Label
+      Qaterial.Label
       {
         text: "Square Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Style.TextType.Body2
+        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
       {
         Layout.alignment: Qt.AlignHCenter
         spacing: 20
-        SquareButton
+
+        Qaterial.SquareButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
           checkable : true
         } // SquareButton
-        SquareButton
+
+        Qaterial.SquareButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
         } // SquareButton
-        SquareButton
+
+        Qaterial.SquareButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
           enabled: false
         } // SquareButton
       } // RowLayout
 
-      Label
+      Qaterial.Label
       {
         text: "Toggle Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Style.TextType.Body2
+        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
       {
         Layout.alignment: Qt.AlignHCenter
         spacing: 0
+
         Row
         {
           property int checked: 0
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-left.svg"
             onClicked: parent.checked = 0
             checked: parent.checked === 0
           } // ToggleButton
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-center.svg"
             onClicked: parent.checked = 1
             checked: parent.checked === 1
           } // ToggleButton
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-right.svg"
             onClicked: parent.checked = 2
             checked: parent.checked === 2
           } // ToggleButton
         } // Row
-        ToggleSeparator {}
+
+        Qaterial.ToggleSeparator {} // ToggleSeparator
+
         Row
         {
           property int checked: 0
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-bold.svg"
             onClicked: parent.checked = 0
             checked: parent.checked === 0
           } // ToggleButton
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-italic.svg"
             onClicked: parent.checked = 1
             checked: parent.checked === 1
           } // ToggleButton
-          ToggleButton
+
+          Qaterial.ToggleButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-underline.svg"
             onClicked: parent.checked = 2
             checked: parent.checked === 2
           } // ToggleButton
         } // Row
-        ToggleSeparator {}
-        ToggleButton
+
+        Qaterial.ToggleSeparator {} // ToggleSeparator
+
+        Qaterial.ToggleButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
           enabled: false
         } // ToggleButton
       } // RowLayout
 
-      Label
+      Qaterial.Label
       {
         text: "Tool Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Style.TextType.Body2
+        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
       {
         Layout.alignment: Qt.AlignHCenter
         spacing: 0
+
         Row
         {
           property int checked: 0
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-left.svg"
             onClicked: parent.checked = 0
             checked: parent.checked === 0
           } // ToolButton
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-center.svg"
             onClicked: parent.checked = 1
             checked: parent.checked === 1
           } // ToolButton
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-align-right.svg"
             onClicked: parent.checked = 2
             checked: parent.checked === 2
           } // ToolButton
         } // Row
-        ToolSeparator {}
+
+        Qaterial.ToolSeparator {} // ToggleSeparator
+
         Row
         {
           property int checked: 0
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-bold.svg"
             onClicked: parent.checked = 0
             checked: parent.checked === 0
           } // ToolButton
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-italic.svg"
             onClicked: parent.checked = 1
             checked: parent.checked === 1
           } // ToolButton
-          ToolButton
+
+          Qaterial.ToolButton
           {
             icon.source: "qrc:/QaterialGallery/images/icons/format-underline.svg"
             onClicked: parent.checked = 2
             checked: parent.checked === 2
           } // ToolButton
         } // Row
-        ToolSeparator {}
-        ToolButton
+
+        Qaterial.ToolSeparator {} // ToggleSeparator
+
+        Qaterial.ToolButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
           enabled: false

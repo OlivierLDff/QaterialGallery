@@ -17,7 +17,7 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent ; title: "Sliders" }
+    AppBarContent { anchors.fill: parent ; title: "Sliders" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -41,7 +41,7 @@ Qaterial.Page
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Slider
         {
@@ -51,7 +51,7 @@ Qaterial.Page
           to: 100
           stepSize: 1
           value: 20
-        }
+        } // Slider
 
         Qaterial.Label
         {
@@ -59,7 +59,7 @@ Qaterial.Page
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.RangeSlider
         {
@@ -70,7 +70,7 @@ Qaterial.Page
           stepSize: 1
           first.value: 20
           second.value: 80
-        }
+        } // RangeSlider
 
         Qaterial.Label
         {
@@ -78,7 +78,7 @@ Qaterial.Page
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Slider
         {
@@ -88,7 +88,7 @@ Qaterial.Page
           to: 100
           value: 50
           stepSize: 1
-        }
+        } // Slider
 
         Qaterial.Label
         {
@@ -96,7 +96,7 @@ Qaterial.Page
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.RangeSlider
         {
@@ -107,7 +107,7 @@ Qaterial.Page
           first.value: 30
           second.value: 70
           stepSize: 1
-        }
+        } // RangeSlider
       } // ColumnLayout
     } // Pane
 
@@ -129,7 +129,7 @@ Qaterial.Page
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Label
         {
@@ -137,7 +137,7 @@ Qaterial.Page
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Slider
         {
@@ -148,7 +148,7 @@ Qaterial.Page
           to: 100
           stepSize: 1
           value: 20
-        }
+        } // Slider
 
         Qaterial.RangeSlider
         {
@@ -160,7 +160,7 @@ Qaterial.Page
           stepSize: 1
           first.value: 20
           second.value: 80
-        }
+        } // RangeSlider
 
         Qaterial.Label
         {
@@ -168,7 +168,7 @@ Qaterial.Page
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Label
         {
@@ -176,7 +176,7 @@ Qaterial.Page
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
-        }
+        } // Label
 
         Qaterial.Slider
         {
@@ -187,7 +187,7 @@ Qaterial.Page
           to: 100
           value: 50
           stepSize: 1
-        }
+        } // Slider
 
         Qaterial.RangeSlider
         {
@@ -199,7 +199,7 @@ Qaterial.Page
           first.value: 30
           second.value: 70
           stepSize: 1
-        }
+        } // RangeSlider
       } // ColumnLayout
     } // Pane
 
@@ -223,7 +223,7 @@ Qaterial.Page
           stepSize: 1
           text: "Slider (" + Math.round(_sliderDelegate.value) + ")"
           secondaryText: "Slider from 0 to 100 (stepSize: 1)"
-        }
+        } // SliderDelegate
 
         Qaterial.SliderDelegate
         {
@@ -236,7 +236,7 @@ Qaterial.Page
           snapMode: Slider.SnapAlways
           text: "Slider (" + Math.round(_sliderDelegateSnap1.value) + ")"
           secondaryText: "Slider from 0 to 100 (stepSize: 10) with snap on"
-        }
+        } // SliderDelegate
 
         Qaterial.SliderDelegate
         {
@@ -249,7 +249,7 @@ Qaterial.Page
           snapMode: Slider.SnapOnRelease
           text: "Slider (" + Math.round(_sliderDelegateSnap2.value) + ")"
           secondaryText: "Slider from 0 to 100 (stepSize: 10) with snap on release"
-        }
+        } // SliderDelegate
 
         Qaterial.RangeSliderDelegate
         {
@@ -262,7 +262,7 @@ Qaterial.Page
           second.value: 40
           text: "Range slider (" + Math.round(_rangeSliderDelegate.first.value) + " ; " + Math.round(_rangeSliderDelegate.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 1)"
-        }
+        } // RangeSliderDelegate
 
         Qaterial.RangeSliderDelegate
         {
@@ -276,7 +276,7 @@ Qaterial.Page
           snapMode: RangeSlider.SnapAlways
           text: "Range slider (" + Math.round(_rangeSliderDelegateSnap1.first.value) + " ; " + Math.round(_rangeSliderDelegateSnap1.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 10) with snap on"
-        }
+        } // RangeSliderDelegate
 
         Qaterial.RangeSliderDelegate
         {
@@ -290,7 +290,7 @@ Qaterial.Page
           snapMode: RangeSlider.SnapOnRelease
           text: "Range slider (" + Math.round(_rangeSliderDelegateSnap2.first.value) + " ; " + Math.round(_rangeSliderDelegateSnap2.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 10) with snap on release"
-        }
+        } // RangeSliderDelegate
       } // Column
     } // Pane
   } // SwipeView
@@ -306,7 +306,6 @@ Qaterial.Page
       ListElement{ text: "Horizontal" }
       ListElement{ text: "Vertical" }
       ListElement{ text: "Delegate"}
-
     } // ListModel
   } // FixedTabBar
 } // Page

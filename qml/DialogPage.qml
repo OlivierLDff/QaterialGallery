@@ -1,10 +1,14 @@
-/** Copyright (C) Olivier Le Doeuff 2019
-* Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
+// Qaterial
 import Qaterial 1.0 as Qaterial
 
 Qaterial.Page
@@ -12,13 +16,13 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Dialogs" }
+    AppBarContent { anchors.fill: parent; title: "Dialogs" } // AppBarContent
   } // ToolBar
 
   Qaterial.ScrollablePage
   {
     anchors.fill: parent
-    //width: parent.width
+
     Column
     {
       width: parent.width
@@ -42,9 +46,11 @@ Qaterial.Page
         text: "Alert"
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_alertComponent)
+
         Component
         {
           id: _alertComponent
+
           Qaterial.AlertDialog
           {
             text: "Discard draft"
@@ -52,7 +58,7 @@ Qaterial.Page
             onAccepted: console.log("Accept")
             onRejected: console.log("Cancel")
             Component.onCompleted: open()
-          } // Qaterial.AlertDialog
+          } // AlertDialog
         } // Component
       } // Button
 
@@ -62,9 +68,11 @@ Qaterial.Page
         text: "Alert with title"
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_alertComponentTitle)
+
         Component
         {
           id: _alertComponentTitle
+
           Qaterial.AlertDialog
           {
             title: "Use google's location service?"
@@ -73,8 +81,8 @@ Qaterial.Page
             onAccepted: console.log("Accept")
             onRejected: console.log("Cancel")
             Component.onCompleted: open()
-          }
-        }
+          } // AlertDialog
+        } // Component
       } // Button
 
       Qaterial.Button
@@ -96,8 +104,8 @@ Qaterial.Page
           title: qsTr("Send data?"),
           iconSource: "qrc:/QaterialGallery/images/icons/account.svg",
           standardButtons: Dialog.Cancel | Dialog.Yes
-        })
-      }
+        }) // DialogManager.openWithSettings
+      } // Button
 
       Qaterial.Button
       {
@@ -105,9 +113,11 @@ Qaterial.Page
         text: "Item Delegate Dialog"
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_simpleComponentTitle)
+
         Component
         {
           id: _simpleComponentTitle
+
           Qaterial.ModalDialog
           {
             title: "Set user account"
@@ -123,7 +133,8 @@ Qaterial.Page
                 fillIcon: true
                 highlightedIcon: true
                 reverseHighlightIcon: true
-              }
+              } // ItemDelegate
+
               Qaterial.ItemDelegate
               {
                 fillIcon: true
@@ -132,7 +143,8 @@ Qaterial.Page
                 width: parent.width
                 icon.source: "qrc:/QaterialGallery/images/icons/account.svg"
                 text: "user02@gmail.com"
-              }
+              } // ItemDelegate
+
               Qaterial.ItemDelegate
               {
                 fillIcon: true
@@ -141,10 +153,10 @@ Qaterial.Page
                 icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
                 width: parent.width
                 text: "add account"
-              }
+              } // ItemDelegate
             } // Column
             Component.onCompleted: open()
-          } // Dialog
+          } // ModalDialog
         } // Component
       } // Button
 
@@ -154,9 +166,11 @@ Qaterial.Page
         text: "Text Field Dialog"
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_textFieldDialogComponent)
+
         Component
         {
           id: _textFieldDialogComponent
+
           Qaterial.TextFieldDialog
           {
             id: _textFieldDialog
@@ -184,9 +198,11 @@ Qaterial.Page
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_radioComponentTitle)
         property int modelIndex: 0
+
         Component
         {
           id: _radioComponentTitle
+
           Qaterial.RadioDialog
           {
             title: "Scrollable Radio Dialog"
@@ -197,13 +213,14 @@ Qaterial.Page
             }
             onRejected: console.log("Cancel")
             currentIndex: _radioDialog.modelIndex
+
             model: ListModel
             {
               ListElement{ text: "Element1"; secondaryText: "secondary text 1" }
               ListElement{ text: "Element2"; secondaryText: "secondary text 2" }
-            }
+            } // ListMOdel
             Component.onCompleted: open()
-          }
+          } // RadioDialog
         } // Component
       } // Button
 
@@ -215,9 +232,11 @@ Qaterial.Page
         width: parent.buttonWidth
         onClicked: Qaterial.DialogManager.openFromComponent(_scrollableComponentTitle)
         property int modelIndex: 0
+
         Component
         {
           id: _scrollableComponentTitle
+
           Qaterial.RadioDialog
           {
             title: "Scrollable Radio Dialog"
@@ -228,6 +247,7 @@ Qaterial.Page
             }
             onRejected: console.log("Cancel")
             currentIndex: _radioScrollableDialog.modelIndex
+
             model: ListModel
             {
               ListElement{ text: "Element1"; secondaryText: "secondary text" }
@@ -241,11 +261,11 @@ Qaterial.Page
               ListElement{ text: "Element9"; secondaryText: "secondary text" }
               ListElement{ text: "Element10"; secondaryText: "secondary text" }
               ListElement{ text: "Element11"; secondaryText: "secondary text" }
-            }
+            } // ListModel
             Component.onCompleted: open()
-          }
-        }
+          } // RadioDialog
+        } // Component
       } // Button
     } // Column
   } // ScrollablePage
-}
+} // Page

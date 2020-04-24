@@ -1,251 +1,269 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-Page
+Qaterial.Page
 {
-    id: page
+  id: _page
 
-    header: ToolBar
+  header: Qaterial.ToolBar
+  {
+    ColumnLayout
     {
-        ColumnLayout
+      anchors.fill: parent
+      spacing: 0
+      AppBarContent { title: "Buttons" } // AppBarContent
+
+      Qaterial.SwitchDelegate
+      {
+        id: _highlightedSwitch
+        text: "Highlight"
+        checked: true
+        Layout.fillWidth: true
+        onPrimary: true
+      } // SwitchDelegate
+
+      RowLayout
+      {
+        Layout.fillWidth: true
+        Layout.rightMargin: 10
+        Layout.leftMargin: 10
+        spacing: 10
+
+        Qaterial.Label
         {
-            anchors.fill: parent
-            spacing: 0
-            AppBarContent { title: "Buttons" }
+          text: "Radius (" + _radiusSlider.value + ")"
+          textType: Qaterial.Style.TextType.Body2
+          onPrimary: true
+        } // Label
 
-            SwitchDelegate
-            {
-                id: _highlightedSwitch
-                text: "Highlight"
-                checked: true
-                Layout.fillWidth: true
-                onPrimary: true
-            } // SwitchDelegate
+        Qaterial.Slider
+        {
+          id: _radiusSlider
+          Layout.fillWidth: true
+          from: 0
+          to: Qaterial.Style.rawButton.minHeight/2
+          value: Qaterial.Style.rawButton.cornerRadius
+          stepSize: 1
+        } // Slider
+      } // RowLayout
+    } // ColumnLayout
+  } // ToolBar
 
-            RowLayout
-            {
-                Layout.fillWidth: true
-                Layout.rightMargin: 10
-                Layout.leftMargin: 10
-                spacing: 10
+  Qaterial.SwipeView
+  {
+    id: _swipeView
+    anchors.fill: parent
+    currentIndex: _tabBar.currentIndex
 
-                Label
-                {
-                    text: "Radius (" + _radiusSlider.value + ")"
-                    textType: Style.TextType.Body2
-                    onPrimary: true
-                } // Label
-
-                Slider
-                {
-                    id: _radiusSlider
-                    Layout.fillWidth: true
-                    from: 0
-                    to: Style.rawButton.minHeight/2
-                    value: Style.rawButton.cornerRadius
-                    stepSize: 1
-                } // Slider
-            } // RowLayout
-        } // ColumnLayout
-    } // ToolBar
-
-    SwipeView
+    Qaterial.Pane
     {
-        id: swipeView
+      width: _swipeView.width
+      height: _swipeView.height
+      bottomPadding: 0
+
+      ColumnLayout
+      {
         anchors.fill: parent
-        currentIndex: tabBar.currentIndex
 
-        Pane
+        Qaterial.Label
         {
-            width: swipeView.width
-            height: swipeView.height
-            bottomPadding: 0
-            ColumnLayout
-            {
-                anchors.fill: parent
+          Layout.fillWidth: true
+          Layout.alignment: Qt.AlignTop
 
-                Label
-                {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignTop
+          wrapMode: Label.Wrap
+          text: "Raised buttons add dimensions to mostly flat layouts. " +
+              "They emphasize functions on busy or wide spaces."
+        } // Label
 
-                    wrapMode: Label.Wrap
-                    text: "Raised buttons add dimensions to mostly flat layouts. " +
-                        "They emphasize functions on busy or wide spaces."
-                }
-
-                GridLayout
-                {
-                    Layout.fillHeight: true
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                    Layout.fillWidth: true
-                    columns: 2
-                    rowSpacing : 40
-                    RaisedButton
-                    {
-                        text: "Raised Button"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    RaisedButton
-                    {
-                        text: "Disabled"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                    RaisedButton
-                    {
-                        text: "Raised Button"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    RaisedButton
-                    {
-                        text: "Disabled"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                } // Grid Layout
-            } // Column
-        } // Pane
-
-        Pane
+        GridLayout
         {
-            width: swipeView.width
-            height: swipeView.height
+          Layout.fillHeight: true
+          Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+          Layout.fillWidth: true
+          columns: 2
+          rowSpacing : 40
 
-            ColumnLayout
-            {
-                anchors.fill: parent
+          Qaterial.RaisedButton
+          {
+            text: "Raised Button"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // RaisedButton
 
-                Label
-                {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignTop
+          Qaterial.RaisedButton
+          {
+            text: "Disabled"
+            enabled: false
+            radius: _radiusSlider.value
+          } // RaisedButton
 
-                    wrapMode: Label.Wrap
-                    text: "A flat button displayes an ink splash on press but does not lift. " +
-                        "Use flat buttons on toolbars, in dialogs and inline with padding."
-                }
+          Qaterial.RaisedButton
+          {
+            text: "Raised Button"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // RaisedButton
 
-                GridLayout
-                {
-                    Layout.fillHeight: true
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                    Layout.fillWidth: true
-                    columns: 2
-                    rowSpacing : 40
-                    FlatButton
-                    {
-                        text: "Flat Button"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    FlatButton
-                    {
-                        text: "Disabled"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                    FlatButton
-                    {
-                        text: "Flat Button"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    FlatButton
-                    {
-                        text: "Disabled"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                }
-            } // Column
-        } // Pane
+          Qaterial.RaisedButton
+          {
+            text: "Disabled"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+            enabled: false
+            radius: _radiusSlider.value
+          } // RaisedButton
+        } // GridLayout
+      } // ColumnLayout
+    } // Pane
 
-        Pane
-        {
-            width: swipeView.width
-            height: swipeView.height
-
-            ColumnLayout
-            {
-                anchors.fill: parent
-
-                Label
-                {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignTop
-
-                    wrapMode: Label.Wrap
-                    text: "Outline buttons become opaque and elevate when pressed. " +
-                        "They are often paired with raised buttons to indicate an alternaive, secondary action."
-                }
-
-                GridLayout
-                {
-                    Layout.fillHeight: true
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                    Layout.fillWidth: true
-                    columns: 2
-                    rowSpacing : 40
-                    OutlineButton
-                    {
-                        text: "Outline Button"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    OutlineButton
-                    {
-                        text: "Disabled"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                    OutlineButton
-                    {
-                        text: "Outline Button"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-                        Layout.alignment: Qt.AlignRight
-                        highlighted: _highlightedSwitch.checked
-                        radius: _radiusSlider.value
-                    }
-                    OutlineButton
-                    {
-                        text: "Disabled"
-                        icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-                        enabled: false
-                        radius: _radiusSlider.value
-                    }
-                }
-            } // Column
-        } // Pane
-    } // SwipeView
-
-    footer: FixedTabBar
+    Qaterial.Pane
     {
-        id: tabBar
-        elevation: 20
-        currentIndex: swipeView.currentIndex
+      width: _swipeView.width
+      height: _swipeView.height
 
-        model: ListModel
+      ColumnLayout
+      {
+        anchors.fill: parent
+
+        Qaterial.Label
         {
-            ListElement{ text: "Raised" }
-            ListElement{ text: "Flat" }
-            ListElement{ text: "Outline" }
-        }
-    }
-}
+          Layout.fillWidth: true
+          Layout.alignment: Qt.AlignTop
+
+          wrapMode: Label.Wrap
+          text: "A flat button displayes an ink splash on press but does not lift. " +
+              "Use flat buttons on toolbars, in dialogs and inline with padding."
+        } // Label
+
+        GridLayout
+        {
+          Layout.fillHeight: true
+          Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+          Layout.fillWidth: true
+          columns: 2
+          rowSpacing : 40
+
+          Qaterial.FlatButton
+          {
+            text: "Flat Button"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // FlatButton
+
+          Qaterial.FlatButton
+          {
+            text: "Disabled"
+            enabled: false
+            radius: _radiusSlider.value
+          } // FlatButton
+
+          Qaterial.FlatButton
+          {
+            text: "Flat Button"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // FlatButton
+
+          Qaterial.FlatButton
+          {
+            text: "Disabled"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
+            enabled: false
+            radius: _radiusSlider.value
+          } // FlatButton
+        } // GridLayout
+      } // ColumnLayout
+    } // Pane
+
+    Qaterial.Pane
+    {
+      width: _swipeView.width
+      height: _swipeView.height
+
+      ColumnLayout
+      {
+        anchors.fill: parent
+
+        Qaterial.Label
+        {
+          Layout.fillWidth: true
+          Layout.alignment: Qt.AlignTop
+
+          wrapMode: Label.Wrap
+          text: "Outline buttons become opaque and elevate when pressed. " +
+              "They are often paired with raised buttons to indicate an alternaive, secondary action."
+        } // Label
+
+        GridLayout
+        {
+          Layout.fillHeight: true
+          Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+          Layout.fillWidth: true
+          columns: 2
+          rowSpacing : 40
+
+          Qaterial.OutlineButton
+          {
+            text: "Outline Button"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // OutlinedButton
+
+          Qaterial.OutlineButton
+          {
+            text: "Disabled"
+            enabled: false
+            radius: _radiusSlider.value
+          } // OutlinedButton
+
+          Qaterial.OutlineButton
+          {
+            text: "Outline Button"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+            Layout.alignment: Qt.AlignRight
+            highlighted: _highlightedSwitch.checked
+            radius: _radiusSlider.value
+          } // OutlinedButton
+
+          Qaterial.OutlineButton
+          {
+            text: "Disabled"
+            icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+            enabled: false
+            radius: _radiusSlider.value
+          } // OutlinedButton
+        } // GridLayout
+      } // ColumnLayout
+    } // Pane
+  } // SwipeView
+
+  footer: Qaterial.FixedTabBar
+  {
+    id: _tabBar
+    elevation: 20
+    currentIndex: _swipeView.currentIndex
+
+    model: ListModel
+    {
+      ListElement{ text: "Raised" }
+      ListElement{ text: "Flat" }
+      ListElement{ text: "Outline" }
+    } // ListModel
+  } // FixedTabBar
+} // Page

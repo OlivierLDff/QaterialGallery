@@ -1,61 +1,69 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
+// Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-ScrollablePage
+Qaterial.ScrollablePage
 {
-    id: page
+  id: _page
 
-    header: ToolBar
+  header: Qaterial.ToolBar
+  {
+    AppBarContent { anchors.fill: parent; title: "Frame" } // AppBarContent
+  } // ToolBar
+
+  readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page.availableWidth / 3 * 2))
+
+  Column
+  {
+    spacing: 40
+    width: parent.width
+
+    Qaterial.Label
     {
-        AppBarContent { anchors.fill: parent; title: "Frame" }
-    } // ToolBar
+      width: parent.width
+      wrapMode: Label.Wrap
+      horizontalAlignment: Qt.AlignHCenter
+      text: "Frame is used to layout a logical group of controls together, within a visual frame."
+    } // Label
 
-    readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, page.availableWidth / 3 * 2))
-
-    Column
+    Qaterial.Frame
     {
-        spacing: 40
-        width: parent.width
+      anchors.horizontalCenter: parent.horizontalCenter
 
-        Label {
-            width: parent.width
-            wrapMode: Label.Wrap
-            horizontalAlignment: Qt.AlignHCenter
-            text: "Frame is used to layout a logical group of controls together, within a visual frame."
-        }
+      Column
+      {
+        spacing: 0
+        width: _page.itemWidth
 
-        Frame
+        Qaterial.RadioButton
         {
-            anchors.horizontalCenter: parent.horizontalCenter
+          text: "First"
+          checked: true
+          width: parent.width
+        } // RadioButton
 
-            Column
-            {
-                spacing: 0
-                width: page.itemWidth
+        Qaterial.RadioButton
+        {
+          id: button
+          text: "Second"
+          width: parent.width
+        } // RadioButton
 
-                RadioButton
-                {
-                    text: "First"
-                    checked: true
-                    width: parent.width
-                }
-                RadioButton
-                {
-                    id: button
-                    text: "Second"
-                    width: parent.width
-                }
-                RadioButton
-                {
-                    text: "Third"
-                    width: parent.width
-                }
-            }
-        }
-    }
-}
+        Qaterial.RadioButton
+        {
+          text: "Third"
+          width: parent.width
+        } // RadioButton
+      } // Column
+    } // Frame
+  } // Column
+} // ScrollablePage
