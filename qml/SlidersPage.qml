@@ -51,6 +51,12 @@ Qaterial.Page
           to: 100
           stepSize: 1
           value: 20
+          Qaterial.ToolTip
+          {
+            parent: _slider.handle
+            visible: _slider.pressed
+            text: _slider.value.toFixed(0)
+          }
         } // Slider
 
         Qaterial.Label
