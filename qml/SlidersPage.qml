@@ -51,11 +51,14 @@ Qaterial.Page
           to: 100
           stepSize: 1
           value: 20
+
           Qaterial.ToolTip
           {
             parent: _slider.handle
             visible: _slider.pressed
+            y: -parent.height - height - 8
             text: _slider.value.toFixed(0)
+            backgroupRadius: Math.min(width, height)/2
           }
         } // Slider
 
