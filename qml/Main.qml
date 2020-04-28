@@ -7,10 +7,6 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
-import Qt.labs.settings 1.0
-
-// Qaterial
 import Qaterial 1.0 as Qaterial
 
 Qaterial.ApplicationWindow
@@ -108,13 +104,6 @@ Qaterial.ApplicationWindow
   {
     //Style.theme = Material.Dark
   }
-
-  // Ugly trick for now : todo remove
-  Material.theme: Qaterial.Style.theme
-  Material.primary : Qaterial.Style.primaryColor
-  Material.background : Qaterial.Style.backgroundColor
-  Material.accent : Qaterial.Style.accentColor
-  Material.foreground: Qaterial.Style.foregroundColor
 
   Shortcut
   {

@@ -89,9 +89,8 @@ int main(int argc, char *argv[])
 
     const QStringList args = parser.positionalArguments();
 
-    // ────────── SET QML FONT AND RESSOURCES ──────────
+    // ────────── SET QML FONT AND RESOURCES ──────────
 
-    QQuickStyle::setStyle(QStringLiteral("Material"));
     engine.addImportPath("qrc:///");
 
     // ────────── REGISTER QML TYPE ────────────
@@ -107,7 +106,10 @@ int main(int argc, char *argv[])
     qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
     engine.load(QUrl("qrc:/QaterialGallery/Main.qml"));
     if (engine.rootObjects().isEmpty())
+    {
+        qCWarning(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Error : Fail to load Main.qml");
         return -1;
+    }
 
     // ────────── START EVENT LOOP ──────────────────────────────────────
     return app.exec();
