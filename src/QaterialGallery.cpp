@@ -9,7 +9,7 @@
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-using namespace QaterialGallery;
+using namespace qaterial::gallery;
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS

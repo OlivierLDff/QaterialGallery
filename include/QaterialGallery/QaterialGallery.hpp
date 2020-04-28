@@ -13,18 +13,19 @@
 // ─────────────────────────────────────────────────────────────
 
 #ifdef WIN32
-    #ifdef QATERIALGALLERY_SHARED   // Shared build
+    #ifdef QATERIALGALLERY_SHARED  
         #define QATERIALGALLERY_API_ __declspec(dllexport)
-    #elif QATERIALGALLERY_STATIC    // No decoration when building staticlly
+    #elif QATERIALGALLERY_STATIC    
         #define QATERIALGALLERY_API_
-    #else                           // Link to lib
+    #else                           
         #define QATERIALGALLERY_API_ __declspec(dllimport)
     #endif
 #else
     #define QATERIALGALLERY_API_
 #endif
 
-namespace QaterialGallery {
+namespace qaterial {
+namespace gallery {
 
 class QATERIALGALLERY_API_ Version
 {
@@ -41,6 +42,7 @@ public:
     static QString GetVersion();
 };
 
+}
 }
 
 #endif

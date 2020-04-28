@@ -41,11 +41,11 @@ void installLoggers()
 #ifdef WIN32
     const auto msvcSink = std::make_shared<spdlog::sinks::msvc_sink_mt>();
     msvcSink->set_level(spdlog::level::debug);
-    Qaterial::Logger::registerSink(msvcSink);
+    qaterial::Logger::registerSink(msvcSink);
 #endif
     const auto stdoutSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     stdoutSink->set_level(spdlog::level::debug);
-    Qaterial::Logger::registerSink(stdoutSink);
+    qaterial::Logger::registerSink(stdoutSink);
 }
 
 int main(int argc, char *argv[])
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setOrganizationName("Oliv");
     QGuiApplication::setApplicationName("Qaterial Gallery");
     QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
-    QGuiApplication::setApplicationVersion(QaterialGallery::Version::GetVersion());
+    QGuiApplication::setApplicationVersion(qaterial::gallery::Version::GetVersion());
 
     qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
         "Organization: %s; "
@@ -97,8 +97,8 @@ int main(int argc, char *argv[])
     // ────────── REGISTER QML TYPE ────────────
 
     // QSM HELPER
-    Qaterial::Utils::loadResources();
-    Qaterial::Utils::registerTypes();
+    qaterial::Utils::loadResources();
+    qaterial::Utils::registerTypes();
 
     Q_INIT_RESOURCE(QaterialGallery);
 
