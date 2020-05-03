@@ -1,22 +1,4 @@
-/**
- * \brief QaterialGallery Main File that:
- * - Initialiaze Qt
- * - Parse command line input
- * - Initialiaze PsnViewer
- * - Register useful type to QML
- * - Install Log Message Handler
- */
-
-// ─────────────────────────────────────────────────────────────
-//                  INCLUDE
-// ─────────────────────────────────────────────────────────────
-
-// Qt
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQuickStyle>
-#include <QtQml>
-#include <QDebug>
+// ──── INCLUDE ────
 
 // Oliv Qt
 #include <Qaterial/Qaterial.hpp>
@@ -27,12 +9,13 @@
 #endif
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-// QaterialGallery
-#include <QaterialGallery/QaterialGallery.hpp>
+// Qt
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QtQml>
+#include <QDebug>
 
-// ─────────────────────────────────────────────────────────────
-//                  DECLARATION
-// ─────────────────────────────────────────────────────────────
+// ──── DECLARATION ────
 
 Q_LOGGING_CATEGORY(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "QaterialGallery")
 
@@ -48,6 +31,8 @@ void installLoggers()
     qaterial::Logger::registerSink(stdoutSink);
 }
 
+// ──── FUNCTIONS ────
+
 int main(int argc, char *argv[])
 {
     installLoggers();
@@ -57,12 +42,12 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    // ────────── REGISTER APPLICATION ──────────────────────────────────────
+    // ──── REGISTER APPLICATION ────
 
     QGuiApplication::setOrganizationName("Oliv");
     QGuiApplication::setApplicationName("Qaterial Gallery");
     QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
-    QGuiApplication::setApplicationVersion(qaterial::gallery::Version::GetVersion());
+    QGuiApplication::setApplicationVersion(qaterial::Version::version().readable());
 
     qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
         "Organization: %s; "
@@ -75,33 +60,18 @@ int main(int argc, char *argv[])
         qPrintable(QGuiApplication::applicationVersion())
         );
 
-    // ────────── COMMAND PARSER ──────────────────────────────────────
-
-    QCommandLineParser parser;
-    parser.setApplicationDescription("QaterialGallery is a gallery for the QML library Qaterial.");
-    parser.addHelpOption();
-    parser.addVersionOption();
-
-    // Process the actual command line arguments given by the user
-    parser.process(app);
-
-    // ────────── PROCESS ARGS ──────────────────────────────────────
-
-    const QStringList args = parser.positionalArguments();
-
-    // ────────── SET QML FONT AND RESOURCES ──────────
+    // ──── LOAD AND REGISTER QML ────
 
     engine.addImportPath("qrc:///");
 
-    // ────────── REGISTER QML TYPE ────────────
-
-    // QSM HELPER
+    // Load Qaterial
     qaterial::Utils::loadResources();
     qaterial::Utils::registerTypes();
 
+    // Load QaterialGallery
     Q_INIT_RESOURCE(QaterialGallery);
 
-    // ────────── LOAD QML MAIN ───────────
+    // ──── LOAD QML MAIN ────
 
     qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
     engine.load(QUrl("qrc:/QaterialGallery/Main.qml"));
@@ -110,7 +80,8 @@ int main(int argc, char *argv[])
         qCWarning(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Error : Fail to load Main.qml");
         return -1;
     }
+    qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Start Qt Event Loop");
 
-    // ────────── START EVENT LOOP ──────────────────────────────────────
+    // ──── START EVENT LOOP ────
     return app.exec();
 }
