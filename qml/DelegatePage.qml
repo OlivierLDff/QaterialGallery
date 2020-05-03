@@ -311,7 +311,7 @@ Qaterial.Page
 
         delegate: Qaterial.ItemDelegate
         {
-          width: parent.width
+          width: _page.width
           highlighted: ListView.isCurrentItem
           drawSeparator: _separatorSwitch.checked
 
@@ -393,7 +393,7 @@ Qaterial.Page
 
         delegate: Qaterial.CheckDelegate
         {
-          width: parent.width
+          width: _page.width
           highlighted: ListView.isCurrentItem
           drawSeparator: _separatorSwitch.checked
 
@@ -434,7 +434,7 @@ Qaterial.Page
 
         delegate: Qaterial.RadioDelegate
         {
-          width: parent.width
+          width: _page.width
           highlighted: ListView.isCurrentItem
           drawSeparator: _separatorSwitch.checked
 
@@ -475,7 +475,7 @@ Qaterial.Page
 
           delegate: Qaterial.SwipeDelegate
           {
-            width: parent.width
+            width: _page.width
             highlighted: ListView.isCurrentItem
             drawSeparator: _separatorSwitch.checked
 

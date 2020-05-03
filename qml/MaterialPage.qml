@@ -13,6 +13,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Page
 {
+  id: _page
   header: Qaterial.ToolBar
   {
     AppBarContent { anchors.fill: parent; title: "Qaterial Gallery "+ Qaterial.Version.readable } // AppBarContent
@@ -189,7 +190,7 @@ Qaterial.Page
 
     Qaterial.ItemDelegate
     {
-      width: parent.width
+      width: _page.width
       text: model.title
       secondaryText: model.text ? model.text : ""
       highlighted: ListView.isCurrentItem
