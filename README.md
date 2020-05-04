@@ -18,59 +18,59 @@ This project also showcase multiplatform deployment with Qt.
 
 ### Main Page
 
-<img src="./doc/screen3.png" alt="screen3" style="zoom:50%;" />
+<img src="./docs/screen3.png" alt="screen3" style="zoom:50%;" />
 
 ### Menu Bar
 
-![screen4](./doc/screen4.png)
+![screen4](./docs/screen4.png)
 
 ### Buttons
 
-![screen5](./doc/screen5.png)
+![screen5](./docs/screen5.png)
 
 ### Icons
 
-<img src="./doc/screen6.png" alt="screen6" style="zoom:50%;" />
+<img src="./docs/screen6.png" alt="screen6" style="zoom:50%;" />
 
 ### Floating Action Button
 
-![screen7](./doc/screen7.png)
+![screen7](./docs/screen7.png)
 
 ### Controls Buttons
 
-![screen8](./doc/screen8.png)
+![screen8](./docs/screen8.png)
 
 ### Typography
 
-<img src="./doc/screen9.png" alt="screen9" style="zoom:50%;" />
+<img src="./docs/screen9.png" alt="screen9" style="zoom:50%;" />
 
 ### Text Field
 
-<img src="./doc/screen10.png" alt="screen10" style="zoom: 50%;" />
+<img src="./docs/screen10.png" alt="screen10" style="zoom: 50%;" />
 
 ### Tab
 
-![screen11](./doc/screen11.png)
+![screen11](./docs/screen11.png)
 
 ### Cards
 
-![screen12](./doc/screen12.png)
+![screen12](./docs/screen12.png)
 
 ### Frame
 
-<img src="./doc/screen13.png" alt="screen13" style="zoom: 50%;" />
+<img src="./docs/screen13.png" alt="screen13" style="zoom: 50%;" />
 
 ### Group Box
 
-<img src="./doc/screen14.png" alt="screen14" style="zoom:50%;" />
+<img src="./docs/screen14.png" alt="screen14" style="zoom:50%;" />
 
 ### Snackbars
 
-<img src="./doc/screen15.png" alt="screen15" style="zoom:50%;" />
+<img src="./docs/screen15.png" alt="screen15" style="zoom:50%;" />
 
 ### Dialogs
 
-![screen16](./doc/screen16.png)
+![screen16](./docs/screen16.png)
 
 
 
