@@ -161,10 +161,18 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Lists";
-      text: "Lists are continuous, vertical indexes of text or images."
-      icon: "qrc:/QaterialGallery/images/icons/delegate.svg"
-      source: "qrc:/QaterialGallery/DelegatePage.qml"
+      title: "App Bars: top";
+      text: "Information and actions relating to the current screen."
+      icon: "qrc:/QaterialGallery/images/icons/topApp.svg"
+      source: "qrc:/QaterialGallery/AppBarTopPage.qml"
+    } // ListElement
+
+    ListElement
+    {
+      title: "Steppers";
+      text: "Steppers are Navigation Components used to display progress through a sequence of logical and numbered steps."
+      icon: "qrc:/QaterialGallery/images/icons/format-list-checks.svg"
+      source: "qrc:/QaterialGallery/StepperPage.qml"
     } // ListElement
 
     ListElement

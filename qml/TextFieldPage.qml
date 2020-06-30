@@ -203,8 +203,8 @@ Qaterial.ScrollablePage
       model: ListModel
       {
         id: model
-        ListElement { text: "Banana" }
-        ListElement { text: "Apple" }
+        ListElement { text: "Banana"  }
+        ListElement { text: "Apple"   }
         ListElement { text: "Coconut" }
       } // ListModel
 
