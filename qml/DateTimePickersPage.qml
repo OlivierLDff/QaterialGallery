@@ -16,7 +16,7 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Steppers" } // AppBarContent
+    AppBarContent { anchors.fill: parent; title: "Date / Time Pickers" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView

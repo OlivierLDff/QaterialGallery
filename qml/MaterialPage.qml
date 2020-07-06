@@ -25,7 +25,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "App Bars: top";
+      title: "App Bars: top"
       text: "Information and actions relating to the current screen."
       icon: "qrc:/QaterialGallery/images/icons/topApp.svg"
       source: "qrc:/QaterialGallery/AppBarTopPage.qml"
@@ -33,7 +33,15 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Date / Time Picker";
+      title: "ToolTip"
+      text: "Display informative text when users hover over, focus on, or tap an element."
+      icon: "qrc:/Qaterial/Icons/tooltip-text-outline.svg"
+      source: "qrc:/QaterialGallery/ToolTipPage.qml"
+    } // ListElement
+
+    ListElement
+    {
+      title: "Date / Time Picker"
       text: "Date pickers and Time pickers provide a simple way to select a single value from a pre-determined set."
       icon: "qrc:/Qaterial/Icons/clock-outline.svg"
       source: "qrc:/QaterialGallery/DateTimePickersPage.qml"
@@ -41,7 +49,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Menu Bar";
+      title: "Menu Bar"
       text: "MenuBar, MenuBarItem, Menu, MenuItem, ..."
       icon: "qrc:/QaterialGallery/images/icons/menu.svg"
       source: "qrc:/QaterialGallery/MenuBarPage.qml"
@@ -49,7 +57,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "App Bars: bottom";
+      title: "App Bars: bottom"
       text: "Navigation and key actions at the bottom of mobile screens."
       icon: "qrc:/QaterialGallery/images/icons/bottomApp.svg"
       source: "qrc:/QaterialGallery/AppBarBottomPage.qml"
@@ -57,7 +65,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Button";
+      title: "Button"
       text: "Buttons allow users to take actions, and make choices, with a single tap."
       icon: "qrc:/QaterialGallery/images/icons/button.svg"
       source: "qrc:/QaterialGallery/ButtonPage.qml"
@@ -65,7 +73,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Icon Button";
+      title: "Icon Button"
       text: "Round, Square and tool"
       icon: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
       source: "qrc:/QaterialGallery/IconButtonPage.qml"
@@ -73,7 +81,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "FAB";
+      title: "FAB"
       text: "A floating action button (FAB) represents the primary action of a screen."
       icon: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
       source: "qrc:/QaterialGallery/FABPage.qml"
@@ -81,7 +89,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Selection controls";
+      title: "Selection controls"
       text: "Selection controls allow the user to select options."
       icon: "qrc:/QaterialGallery/images/icons/checkbox-marked.svg"
       source: "qrc:/QaterialGallery/ControlButtonPage.qml"
@@ -89,7 +97,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Typography";
+      title: "Typography"
       text: "Display, Header, Title, Content, ..."
       icon: "qrc:/QaterialGallery/images/icons/format-letter-case.svg"
       source: "qrc:/QaterialGallery/TypoPage.qml"
@@ -97,7 +105,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Text Field";
+      title: "Text Field"
       text: "Text fields let users enter and edit text."
       icon: "qrc:/QaterialGallery/images/icons/textbox.svg"
       source: "qrc:/QaterialGallery/TextFieldPage.qml"
@@ -105,7 +113,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Tabs";
+      title: "Tabs"
       text: "Tabs organize content across different screens, data sets, and other interactions."
       icon: "qrc:/QaterialGallery/images/icons/tab.svg"
       source: "qrc:/QaterialGallery/TabBarPage.qml"
@@ -113,7 +121,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Cards";
+      title: "Cards"
       text: "Cards contain content and actions about a single subject."
       icon: "qrc:/QaterialGallery/images/icons/pane.svg"
       source: "qrc:/QaterialGallery/CardPage.qml"
@@ -129,7 +137,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Group Box";
+      title: "Group Box"
       text: "Visual frame and title for a logical group of controls."
       icon: "qrc:/QaterialGallery/images/icons/groupBox.svg"
       source: "qrc:/QaterialGallery/GroupBoxPage.qml"
@@ -137,7 +145,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "SnackBars";
+      title: "SnackBars"
       text: "Snackbars provide brief messages about app processes."
       icon: "qrc:/QaterialGallery/images/icons/snackbar.svg"
       source: "qrc:/QaterialGallery/SnackbarPage.qml"
@@ -145,7 +153,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Banners";
+      title: "Banners"
       text: "A banner displays a prominent message and related optional actions."
       icon: "qrc:/QaterialGallery/images/icons/banner.svg"
       source: "qrc:/QaterialGallery/BannerPage.qml"
@@ -153,7 +161,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Dialog";
+      title: "Dialog"
       text: "Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks."
       icon: "qrc:/QaterialGallery/images/icons/dialog.svg"
       source: "qrc:/QaterialGallery/DialogPage.qml"
@@ -161,7 +169,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Sliders";
+      title: "Sliders"
       text: "Sliders are used to select values by sliding a handle along a track. "
       icon: "qrc:/QaterialGallery/images/icons/sliders.svg"
       source: "qrc:/QaterialGallery/SlidersPage.qml"
@@ -169,15 +177,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "App Bars: top";
-      text: "Information and actions relating to the current screen."
-      icon: "qrc:/QaterialGallery/images/icons/topApp.svg"
-      source: "qrc:/QaterialGallery/AppBarTopPage.qml"
-    } // ListElement
-
-    ListElement
-    {
-      title: "Steppers";
+      title: "Steppers"
       text: "Steppers are Navigation Components used to display progress through a sequence of logical and numbered steps."
       icon: "qrc:/QaterialGallery/images/icons/format-list-checks.svg"
       source: "qrc:/QaterialGallery/StepperPage.qml"
@@ -185,7 +185,7 @@ Qaterial.Page
 
     ListElement
     {
-      title: "Dialog Delegates";
+      title: "Dialog Delegates"
       text: "Item delegate than call a dialog"
       icon: "qrc:/QaterialGallery/images/icons/delegate.svg"
       source: "qrc:/QaterialGallery/DialogDelegatePage.qml"
@@ -193,7 +193,7 @@ Qaterial.Page
 
     /*ListElement
     {
-      title: "Fader";
+      title: "Fader"
       text: "An Item that can have a value between 0 and 100"
       icon: "qrc:/QaterialGallery/images/icons/fader.svg"
       source: "qrc:/QaterialGallery/FaderPage.qml"
