@@ -34,11 +34,11 @@ Qaterial.Page
       ColumnLayout
       {
         width: parent.width
-        spacing: 30
 
         Qaterial.Label
         {
           Layout.fillWidth: true
+          Layout.bottomMargin: 50
           Layout.alignment: Qt.AlignTop
 
           wrapMode: Text.Wrap
@@ -61,6 +61,7 @@ Qaterial.Page
         Qaterial.Button
         {
           Layout.alignment: Qt.AlignHCenter
+          Layout.bottomMargin: 50
           text: "TimePickerDialog"
           onClicked: Qaterial.DialogManager.openFromComponent(_TimePickerDialog)
           Component
@@ -86,6 +87,7 @@ Qaterial.Page
         Qaterial.TextFieldTimePicker
         {
           Layout.alignment: Qt.AlignHCenter
+          Layout.bottomMargin: 50
           Layout.preferredWidth: 250
 
           onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager.show({text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`})
@@ -103,7 +105,7 @@ Qaterial.Page
         Qaterial.TextFieldTimePicker
         {
           Layout.alignment: Qt.AlignHCenter
-          Layout.preferredWidth: 200
+          Layout.preferredWidth: 250
 
           styleAm: false
 
@@ -119,11 +121,11 @@ Qaterial.Page
       ColumnLayout
       {
         width: parent.width
-        spacing: 30
 
         Qaterial.Label
         {
           Layout.fillWidth: true
+          Layout.bottomMargin: 50
           Layout.alignment: Qt.AlignTop
 
           wrapMode: Text.Wrap
@@ -146,6 +148,7 @@ Qaterial.Page
         Qaterial.Button
         {
           Layout.alignment: Qt.AlignHCenter
+          Layout.bottomMargin: 50
           text: "DatePickerDialog"
           onClicked: Qaterial.DialogManager.openFromComponent(_DatePickerDialog)
           Component

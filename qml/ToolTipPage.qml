@@ -34,11 +34,11 @@ Qaterial.Page
       ColumnLayout
       {
         width: parent.width
-        spacing: 50
 
         Qaterial.Label
         {
           Layout.fillWidth: true
+          Layout.bottomMargin: 50
           Layout.alignment: Qt.AlignTop
 
           wrapMode: Text.Wrap
@@ -61,6 +61,7 @@ Qaterial.Page
         Qaterial.FlatButton
         {
           id: simpleToolTip
+          Layout.bottomMargin: 50
           Layout.alignment: Qt.AlignHCenter
           text: "Simple ToolTip"
 
@@ -83,6 +84,7 @@ Qaterial.Page
         Qaterial.FlatButton
         {
           id: timeToolTip
+          Layout.bottomMargin: 50
           Layout.alignment: Qt.AlignHCenter
           text: "delay + timeout"
           Qaterial.ToolTip
