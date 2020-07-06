@@ -33,6 +33,14 @@ Qaterial.Page
 
     ListElement
     {
+      title: "Date / Time Picker";
+      text: "Date pickers and Time pickers provide a simple way to select a single value from a pre-determined set."
+      icon: "qrc:/Qaterial/Icons/clock-outline.svg"
+      source: "qrc:/QaterialGallery/DateTimePickersPage.qml"
+    } // ListElement
+
+    ListElement
+    {
       title: "Menu Bar";
       text: "MenuBar, MenuBarItem, Menu, MenuItem, ..."
       icon: "qrc:/QaterialGallery/images/icons/menu.svg"

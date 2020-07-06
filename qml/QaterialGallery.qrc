@@ -38,6 +38,7 @@
     <file>FaderPage.qml</file>
     <file>SlidersPage.qml</file>
     <file>StepperPage.qml</file>
+    <file>DateTimePickersPage.qml</file>
 
     <!-- ICONS -->
     <file>images/icons/back.png</file>
