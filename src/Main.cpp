@@ -5,7 +5,7 @@
 
 // spdlog
 #ifdef WIN32
-#include <spdlog/sinks/msvc_sink.h>
+    #include <spdlog/sinks/msvc_sink.h>
 #endif
 #include <spdlog/sinks/stdout_color_sinks.h>
 
@@ -13,7 +13,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-#include <QDebug>
 
 // ──── DECLARATION ────
 
@@ -49,7 +48,8 @@ int main(int argc, char *argv[])
     QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
     QGuiApplication::setApplicationVersion(qaterial::Version::version().readable());
 
-    qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Register Application: "
+    qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY,
+        "Register Application: "
         "Organization: %s; "
         "Domain: %s; "
         "ApplicationName: %s; "
@@ -57,16 +57,15 @@ int main(int argc, char *argv[])
         qPrintable(QGuiApplication::organizationName()),
         qPrintable(QGuiApplication::organizationDomain()),
         qPrintable(QGuiApplication::applicationName()),
-        qPrintable(QGuiApplication::applicationVersion())
-        );
+        qPrintable(QGuiApplication::applicationVersion()));
 
     // ──── LOAD AND REGISTER QML ────
 
     engine.addImportPath("qrc:///");
 
     // Load Qaterial
-    qaterial::Utils::loadResources();
-    qaterial::Utils::registerTypes();
+    qaterial::loadQmlResources();
+    qaterial::registerQmlTypes();
 
     // Load QaterialGallery
     Q_INIT_RESOURCE(QaterialGallery);
@@ -75,7 +74,7 @@ int main(int argc, char *argv[])
 
     qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Qml Engine Load Main.qml");
     engine.load(QUrl("qrc:/QaterialGallery/Main.qml"));
-    if (engine.rootObjects().isEmpty())
+    if(engine.rootObjects().isEmpty())
     {
         qCWarning(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Error : Fail to load Main.qml");
         return -1;
@@ -83,5 +82,5 @@ int main(int argc, char *argv[])
     qCInfo(QATERIALGALLERY_MAIN_LOGGING_CATEGORY, "Start Qt Event Loop");
 
     // ──── START EVENT LOOP ────
-    return app.exec();
+    return QGuiApplication::exec();
 }

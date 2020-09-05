@@ -115,7 +115,7 @@ Qaterial.Page
           {
             text: "textType + radius"
             visible: customizedToolTip.hovered
-            backgroupRadius: height/2
+            backgroundRadius: height/2
             textType: Qaterial.Style.TextType.Display1
           } // ToolTip
         } // FlatButton

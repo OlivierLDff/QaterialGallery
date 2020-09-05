@@ -20,7 +20,7 @@
     <file>FixedTabBarPage.qml</file>
     <file>FooterTabBarPage.qml</file>
     <file>ScrollableTabBarPage.qml</file>
-    <file>ClusturedTabBarPage.qml</file>
+    <file>ClusteredTabBarPage.qml</file>
     <file>DelegatePage.qml</file>
     <file>CardPage.qml</file>
     <file>CardLayout1.qml</file>

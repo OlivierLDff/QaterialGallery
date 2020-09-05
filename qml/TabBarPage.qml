@@ -60,12 +60,12 @@ Qaterial.Page
       enabled: _enabledSwitch.checked
     } // ScrollableTabBarPage
 
-    ClusturedTabBarPage
+    ClusteredTabBarPage
     {
       width: _swipeView.width
       height: _swipeView.height
       enabled: _enabledSwitch.checked
-    } // ClusturedTabBarPage
+    } // ClusteredTabBarPage
   } // SwipeView
 
   footer: Qaterial.FixedTabBar
@@ -79,7 +79,7 @@ Qaterial.Page
       ListElement { text: "Fixed" }
       ListElement { text: "Footer" }
       ListElement { text: "Scrollable" }
-      ListElement { text: "Clustured" }
+      ListElement { text: "Clustered" }
     } // ListModel
   } // FixedTabBar
 } // Page

@@ -58,7 +58,7 @@ Qaterial.Page
             visible: _slider.pressed
             y: -parent.height - height - 8
             text: _slider.value.toFixed(0)
-            backgroupRadius: Math.min(width, height)/2
+            backgroundRadius: Math.min(width, height)/2
           }
         } // Slider
 
