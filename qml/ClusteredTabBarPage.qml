@@ -45,7 +45,7 @@ Qaterial.Page
             Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
             Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
 
-            text: "Clustured Tab Bar"
+            text: "Clustered Tab Bar"
             textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
           } // Label
@@ -59,7 +59,7 @@ Qaterial.Page
             id: _displaySwitch
           } // SwitchDelegate
 
-          Qaterial.ClusturedTabBar
+          Qaterial.ClusteredTabBar
           {
             id: _tabBar
             currentIndex: _swipeView.currentIndex
