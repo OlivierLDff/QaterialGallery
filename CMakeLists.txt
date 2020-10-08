@@ -17,6 +17,8 @@ set(QATERIALGALLERY_TARGET ${QATERIALGALLERY_PROJECT} CACHE STRING "Qaterial Gal
 set(QATERIALGALLERY_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIALGALLERY_BUILD_STATIC OFF CACHE BOOL "Build as a static library")
 
+set(QATERIALGALLERY_DISCARD_ENV_PATH OFF CACHE BOOL "The executable will discard system qt, and will try to use qt binary deploy along the target. Should be ON when deploying installer")
+
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       VERSION                                    │
 # └──────────────────────────────────────────────────────────────────┘
@@ -32,21 +34,24 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # ──── PRE BUILD PLATFORM DEPENDANCIES ────
 
-include(platform/PreBuildPlatform.cmake)
-
 # ┌──────────────────────────────────────────────────────────────────┐
-# │                         QT5 CMAKE                                │
+# │                       DEPENDENCIES                               │
 # └──────────────────────────────────────────────────────────────────┘
 
-find_package(Qt5Core            CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Gui             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Qml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QmlWorkerScript CONFIG QUIET    NO_CMAKE_SYSTEM_PATH) # Only from qt5.14
-find_package(Qt5Quick           CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QuickControls2  CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Svg             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Xml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QuickCompiler   CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5 REQUIRED COMPONENTS
+  Core
+  Qml
+  Gui
+  Quick
+  QuickControls2
+  Svg
+  Xml
+  QuickCompiler
+)
+find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
+
+include(cmake/FetchSpdlog.cmake)
+include(cmake/FetchQaterial.cmake)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       STATUS                                     │
@@ -110,56 +115,18 @@ endif()
 # ──── SETTINGS ────
 
 target_compile_features(${QATERIALGALLERY_TARGET} PUBLIC cxx_std_11)
-# set output directories for all builds (Debug, Release, etc.)
-foreach(_CONFIG ${CMAKE_CONFIGURATION_TYPES})
-  string(TOUPPER ${_CONFIG} _CONFIG_UPPER)
-  set_target_properties(${QATERIALGALLERY_TARGET}
-    PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/lib"
-    LIBRARY_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/lib"
-    RUNTIME_OUTPUT_DIRECTORY_${_CONFIG_UPPER} "${PROJECT_BINARY_DIR}/${_CONFIG}/bin"
-  )
-endforeach()
 
-# ──── QT ────
+# set output directories for all builds (Debug, Release, etc.)
+set_target_properties(${QATERIALGALLERY_TARGET}
+  PROPERTIES
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>"
+  )
+
+# ──── DEPENDENCIES ────
 
 set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES AUTOMOC TRUE AUTORCC TRUE)
-target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Svg
-  Qt5::Xml
-  Qt5::Qml
-  Qt5::Quick
-  Qt5::QuickControls2
-  )
-
-# Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
-if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
-  include(cmake/FetchQtStaticCMake.cmake)
-  qt_generate_qml_plugin_import(${QATERIALGALLERY_TARGET}
-    QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml
-    EXTRA_PLUGIN
-      QtQuickVirtualKeyboardPlugin
-      QtQuickVirtualKeyboardSettingsPlugin
-      QtQuickVirtualKeyboardStylesPlugin
-      QmlFolderListModelPlugin
-      QQuickLayoutsPlugin
-    VERBOSE
-    )
-  qt_generate_plugin_import(${QATERIALGALLERY_TARGET} VERBOSE)
-endif()
-
-if(TARGET Qt5::QmlWorkerScript)
-  target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE Qt5::QmlWorkerScript)
-endif()
-
-# ──── OTHER DEPENDENCIES ────
-
-include(cmake/FetchSpdlog.cmake)
-include(cmake/FetchQaterial.cmake)
-
 target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
   Qaterial
   spdlog
@@ -167,4 +134,4 @@ target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────
 
-include(platform/PostBuildPlatform.cmake)
+add_subdirectory(platform)

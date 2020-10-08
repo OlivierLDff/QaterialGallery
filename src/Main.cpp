@@ -32,8 +32,13 @@ void installLoggers()
 
 // ──── FUNCTIONS ────
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
+#if defined(Q_OS_WINDOWS) && defined(QATERIALGALLERY_DISCARD_ENV_PATH)
+    const QString executable = argv[0];
+    const auto executablePath = executable.mid(0, executable.lastIndexOf("\\"));
+    QCoreApplication::setLibraryPaths({executablePath});
+#endif
     installLoggers();
 
     // It's important to set the high dip support before creating the gui app
@@ -61,7 +66,11 @@ int main(int argc, char *argv[])
 
     // ──── LOAD AND REGISTER QML ────
 
-    engine.addImportPath("qrc:///");
+#if defined(Q_OS_WINDOWS) && defined(QATERIALGALLERY_DISCARD_ENV_PATH)
+    engine.setImportPathList({QCoreApplication::applicationDirPath(), "qrc:/", "qrc:/qt-project.org/imports"});
+#else
+    engine.addImportPath("qrc:/");
+#endif
 
     // Load Qaterial
     qaterial::loadQmlResources();
