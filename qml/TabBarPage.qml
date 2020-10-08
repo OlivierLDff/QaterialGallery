@@ -53,6 +53,13 @@ Qaterial.Page
       enabled: _enabledSwitch.checked
     } // FooterTabBarPage
 
+    LatoTabBarPage
+    {
+      width: _swipeView.width
+      height: _swipeView.height
+      enabled: _enabledSwitch.checked
+    } // FixedTabBarPage
+
     ScrollableTabBarPage
     {
       width: _swipeView.width
@@ -68,7 +75,7 @@ Qaterial.Page
     } // ClusteredTabBarPage
   } // SwipeView
 
-  footer: Qaterial.FixedTabBar
+  footer: Qaterial.ScrollableTabBar
   {
     id: _tabBar
     elevation: 20
@@ -78,6 +85,7 @@ Qaterial.Page
     {
       ListElement { text: "Fixed" }
       ListElement { text: "Footer" }
+      ListElement { text: "Lato" }
       ListElement { text: "Scrollable" }
       ListElement { text: "Clustered" }
     } // ListModel
