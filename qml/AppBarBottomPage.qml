@@ -14,12 +14,12 @@ Qaterial.Page
 {
   id: _page
 
-  header: Qaterial.AppBar
+  header: Qaterial.ToolBar
   {
     AppBarContent { anchors.fill: parent; title: "App Bar Bottom" } // AppBarContent
   } // AppBar
 
-  footer: Qaterial.AppBar
+  footer: Qaterial.ToolBar
   {
     Row
     {
