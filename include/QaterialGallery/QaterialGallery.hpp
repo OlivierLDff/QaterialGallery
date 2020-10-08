@@ -13,15 +13,15 @@
 // ─────────────────────────────────────────────────────────────
 
 #ifdef WIN32
-    #ifdef QATERIALGALLERY_SHARED  
-        #define QATERIALGALLERY_API_ __declspec(dllexport)
-    #elif QATERIALGALLERY_STATIC    
-        #define QATERIALGALLERY_API_
-    #else                           
-        #define QATERIALGALLERY_API_ __declspec(dllimport)
-    #endif
+#    ifdef QATERIALGALLERY_SHARED
+#        define QATERIALGALLERY_API_ __declspec(dllexport)
+#    elif QATERIALGALLERY_STATIC
+#        define QATERIALGALLERY_API_
+#    else
+#        define QATERIALGALLERY_API_ __declspec(dllimport)
+#    endif
 #else
-    #define QATERIALGALLERY_API_
+#    define QATERIALGALLERY_API_
 #endif
 
 namespace qaterial {

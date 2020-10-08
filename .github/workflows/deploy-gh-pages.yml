@@ -20,12 +20,12 @@ jobs:
     - name: "Deploy"
       run: |
         mkdir -p build/deploy
-        mv platform/html/index.html build/deploy/index.html
+        mv platforms/html/index.html build/deploy/index.html
         mv build/qtloader.js build/deploy/qtloader.js
         mv build/QaterialGallery.js build/deploy/QaterialGallery.js
         mv build/qtlogo.svg build/deploy/qtlogo.svg
         mv build/QaterialGallery.wasm build/deploy/QaterialGallery.wasm
-        mv platform/html/icon.png build/deploy/icon.png
+        mv platforms/html/icon.png build/deploy/icon.png
         cd build/deploy
         git init
         git add .

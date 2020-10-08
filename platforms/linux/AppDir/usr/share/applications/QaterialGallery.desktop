@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Qaterial Gallery
+Comment=Demonstrate Qaterial library.
+Exec=QaterialGallery
+Icon=QaterialGallery
+Categories=Application;

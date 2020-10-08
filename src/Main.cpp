@@ -5,7 +5,7 @@
 
 // spdlog
 #ifdef WIN32
-    #include <spdlog/sinks/msvc_sink.h>
+#    include <spdlog/sinks/msvc_sink.h>
 #endif
 #include <spdlog/sinks/stdout_color_sinks.h>
 
@@ -13,6 +13,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
+#include <QLibraryInfo>
 
 // ──── DECLARATION ────
 
@@ -34,15 +35,23 @@ void installLoggers()
 
 int main(int argc, char* argv[])
 {
-#if defined(Q_OS_WINDOWS) && defined(QATERIALGALLERY_DISCARD_ENV_PATH)
+#if defined(QATERIALGALLERY_IGNORE_ENV)
     const QString executable = argv[0];
+#    if defined(Q_OS_WINDOWS)
     const auto executablePath = executable.mid(0, executable.lastIndexOf("\\"));
     QCoreApplication::setLibraryPaths({executablePath});
+#    elif defined(Q_OS_LINUX)
+    const auto executablePath = executable.mid(0, executable.lastIndexOf("/"));
+    qWarning("executablePath %s", qPrintable(executablePath));
+    //QCoreApplication::setLibraryPaths({executablePath + "/../plugins/", executablePath + "/../qml/"});
+#    else
+#    endif
 #endif
+
+    qWarning("QLibraryInfo::location(QLibraryInfo::PluginsPath) %s", qPrintable(QLibraryInfo::location(QLibraryInfo::PluginsPath)));
+
     installLoggers();
 
-    // It's important to set the high dip support before creating the gui app
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
@@ -66,8 +75,8 @@ int main(int argc, char* argv[])
 
     // ──── LOAD AND REGISTER QML ────
 
-#if defined(Q_OS_WINDOWS) && defined(QATERIALGALLERY_DISCARD_ENV_PATH)
-    engine.setImportPathList({QCoreApplication::applicationDirPath(), "qrc:/", "qrc:/qt-project.org/imports"});
+#if defined(QATERIALGALLERY_IGNORE_ENV)
+    engine.setImportPathList({QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath), "qrc:/", "qrc:/qt-project.org/imports"});
 #else
     engine.addImportPath("qrc:/");
 #endif

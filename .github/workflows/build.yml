@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - ci
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  BuildAppImage:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Configure"
+      run: mkdir -p build && docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake -B ./build/ -S . -DQATERIALGALLERY_IGNORE_ENV=ON
+
+    - name: "Build QaterialGallery"
+      run: docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake --build build --target "QaterialGallery" --config "Release" -j $(nproc)
+
+    - name: "Deploy QaterialGallery AppImage"
+      run: docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake --build build --target "QaterialGalleryAppImage" --config "Release" -j $(nproc)
+
+    - name: Upload QaterialGallery AppImage
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery.AppImage
+        path: build/platforms/*.AppImage
+
+  Build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macOS-latest]
+        version: ['5.15.1']
+        build-type: ['Release']
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+          key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: ${{ matrix.version }}
+          dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+
+      - name: Delete Qt built-in styles
+        run: |
+          rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
+          rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
+          rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Imagine
+          rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
+        shell: bash
+
+      - name: Configure
+        run: |
+          mkdir -p build
+          cmake -DQATERIALGALLERY_IGNORE_ENV=ON -DCMAKE_BUILD_TYPE="${{ matrix.build-type }}" -B build -S .
+        shell: bash
+
+      - name: Build Qaterial
+        run: cmake --build build --target "Qaterial" --config "${{ matrix.build-type }}" -j
+
+      - name: Build QaterialGallery
+        run: cmake --build build --target "QaterialGallery" --config "${{ matrix.build-type }}" -j
+
+      - name: Build QaterialGallery Installer
+        run: cmake --build build --target "QaterialGalleryInstallerX64" --config "${{ matrix.build-type }}" -j
+        if: contains(matrix.os, 'windows')
+
+      - name: Upload QaterialGallery Installer
+        uses: actions/upload-artifact@v2
+        with:
+          name: Qaterial Gallery Installer X64 Windows (${{ matrix.version }})
+          path: build/platforms/QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
+        if: contains(matrix.os, 'windows')
