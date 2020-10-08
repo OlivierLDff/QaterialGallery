@@ -22,6 +22,8 @@ Qaterial.ScrollablePage
 
   readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page.availableWidth / 3 * 2))
 
+  pane.padding: 16
+
   Column
   {
     spacing: 40

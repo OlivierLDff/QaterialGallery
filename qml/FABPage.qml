@@ -70,6 +70,8 @@ Qaterial.Page
 
             wrapMode: Label.Wrap
             text: "A floating action button (FAB) represents the primary action of a screen."
+            padding: 16
+            horizontalAlignment: Text.AlignHCenter
           } // Label
 
           Qaterial.Label
@@ -258,6 +260,7 @@ Qaterial.Page
       Qaterial.Pane
       {
         anchors.fill: parent
+        padding: 16
 
         ColumnLayout
         {
@@ -470,7 +473,8 @@ Qaterial.Page
 
       Qaterial.Pane
       {
-          anchors.fill: parent
+        anchors.fill: parent
+        padding: 16
 
         ColumnLayout
         {
@@ -676,17 +680,17 @@ Qaterial.Page
       } // Pane
     } // ScrollablePage
 
-    Qaterial.Page
-    {
-      width: _swipeView.width
-      height: _swipeView.height
+//    Qaterial.Page
+//    {
+//      width: _swipeView.width
+//      height: _swipeView.height
 
-      Qaterial.Label
-      {
-        text: "Fab Stack"
-        anchors.centerIn: parent
-      } // Label
-    } // Page
+//      Qaterial.Label
+//      {
+//        text: "Fab Stack"
+//        anchors.centerIn: parent
+//      } // Label
+//    } // Page
   } // SwipeView
 
   footer: Qaterial.ScrollableTabBar
@@ -700,7 +704,7 @@ Qaterial.Page
       ListElement{ text: "Fab" }
       ListElement{ text: "Flat" }
       ListElement{ text: "Outlined" }
-      ListElement{ text: "Stack" }
+      //ListElement{ text: "Stack" }
     } // ListModel
   } // ScrollableTabBar
 } // Page

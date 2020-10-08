@@ -70,6 +70,7 @@ Qaterial.Page
       width: _swipeView.width
       height: _swipeView.height
       bottomPadding: 0
+      padding: 16
 
       ColumnLayout
       {
@@ -132,6 +133,7 @@ Qaterial.Page
     {
       width: _swipeView.width
       height: _swipeView.height
+      padding: 16
 
       ColumnLayout
       {
@@ -194,6 +196,7 @@ Qaterial.Page
     {
       width: _swipeView.width
       height: _swipeView.height
+      padding: 16
 
       ColumnLayout
       {

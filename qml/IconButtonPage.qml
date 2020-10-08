@@ -27,6 +27,7 @@ Qaterial.Page
   Qaterial.ScrollablePage
   {
     anchors.fill: parent
+    pane.padding: 16
 
     ColumnLayout
     {
@@ -39,7 +40,8 @@ Qaterial.Page
         Layout.alignment: Qt.AlignTop
 
         wrapMode: Label.Wrap
-        text: "Blabla."
+        text: "Icon buttons are round or square button dedicated to one action."
+        horizontalAlignment: Text.AlignHCenter
       } // Label
 
       Qaterial.Label

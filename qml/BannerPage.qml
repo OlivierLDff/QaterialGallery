@@ -54,6 +54,7 @@ Qaterial.Page
     anchors.top: _banner.bottom
     anchors.bottom: parent.bottom
     clip: true
+    pane.padding: 16
     Column
     {
       width: parent.width

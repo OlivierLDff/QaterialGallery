@@ -19,6 +19,7 @@
     <file>TabBarPage.qml</file>
     <file>FixedTabBarPage.qml</file>
     <file>FooterTabBarPage.qml</file>
+    <file>LatoTabBarPage.qml</file>
     <file>ScrollableTabBarPage.qml</file>
     <file>ClusteredTabBarPage.qml</file>
     <file>DelegatePage.qml</file>

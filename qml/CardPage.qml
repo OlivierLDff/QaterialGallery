@@ -34,6 +34,7 @@ Qaterial.Page
       id: _pane
       width: Math.min(parent.width, 500)
       anchors.horizontalCenter: parent.horizontalCenter
+      padding: 16
 
       ColumnLayout
       {

@@ -31,6 +31,7 @@ Qaterial.Page
       width: _swipeView.width
       height: _swipeView.height
       bottomPadding: 0
+      padding: 16
 
       ColumnLayout
       {
@@ -82,6 +83,7 @@ Qaterial.Page
       width: _swipeView.width
       height: _swipeView.height
       bottomPadding: 0
+      padding: 16
 
       ColumnLayout
       {
@@ -152,6 +154,7 @@ Qaterial.Page
       width: _swipeView.width
       height: _swipeView.height
       bottomPadding: 0
+      padding: 16
 
       ColumnLayout
       {
@@ -164,9 +167,10 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Use radio buttons to:\n" +
-          "Select a single option from a list\n" +
-          "Expose all available options\n" +
-          "If available options can be collapsed, consider using a dropdown menu instead, as it uses less space."
+          "- Select a single option from a list\n" +
+          "- Expose all available options\n" +
+          "- If available options can be collapsed, consider using a dropdown menu instead, as it uses less space."
+
         } // Label
 
         ColumnLayout
