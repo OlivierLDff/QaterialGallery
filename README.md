@@ -1,8 +1,6 @@
-
-
-
-
 # Qaterial Gallery
+
+[![CI](https://github.com/OlivierLDff/QaterialGallery/workflows/CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3ACI)
 
 QaterialGallery is a showcase application and contains example for the library Qaterial . It is still under development. This library is hard fork of previous library QQuickMaterialHelper.
 

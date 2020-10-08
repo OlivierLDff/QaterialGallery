@@ -35,14 +35,14 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
     endif()
 
     add_qt_windows_exe(${QATERIALGALLERY_TARGET}
-      NAME "Qaterial"
+      NAME "Qaterial Gallery"
       PUBLISHER "Qaterial"
       PRODUCT_URL "https://github.com/OlivierLDff/QaterialGallery"
       PACKAGE "com.qaterial.gallery"
       ICON ${CMAKE_CURRENT_SOURCE_DIR}/windows/icon.ico
       ICON_RC ${CMAKE_CURRENT_SOURCE_DIR}/windows/icon.rc
-      QML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/windows
-      NO_TRANSATION
+      QML_DIR ${PROJECT_SOURCE_DIR}/qml
+      NO_TRANSLATIONS
       VERBOSE_LEVEL_DEPLOY 1
       VERBOSE_INSTALLER
       ${PLATFORM_NO_DEPLOY}
@@ -52,16 +52,32 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
       set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QATERIALGALLERY_TARGET})
     endif()
 
-    if(QATERIALGALLERY_DISCARD_ENV_PATH)
-      message("The executable will discard every ")
-      target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_DISCARD_ENV_PATH)
-      target_sources(${QATERIALGALLERY_TARGET} PRIVATE windows/QtConf.qrc)
-    endif()
-
   endif()
 endif()
 
 # ──── LINUX ────
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+
+  if(NOT QATERIALGALLERY_BUILD_SHARED AND NOT QATERIALGALLERY_BUILD_STATIC)
+
+    include(${PROJECT_SOURCE_DIR}/cmake/FetchQtLinuxCMake.cmake)
+
+    if(NOT QATERIALGALLERY_IGNORE_ENV)
+      set(QATERIALGALLERY_ALLOW_ENVIRONMENT_VARIABLE "ALLOW_ENVIRONMENT_VARIABLE")
+    endif()
+
+    add_qt_linux_appimage(${QATERIALGALLERY_TARGET}
+      APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/linux/AppDir
+      QML_DIR ${PROJECT_SOURCE_DIR}/qml
+      NO_TRANSLATIONS
+      ${QATERIALGALLERY_ALLOW_ENVIRONMENT_VARIABLE}
+      VERBOSE_LEVEL 1
+    )
+
+  endif()
+
+endif()
 
 # ──── MACOS ────
 

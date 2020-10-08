@@ -17,7 +17,11 @@ set(QATERIALGALLERY_TARGET ${QATERIALGALLERY_PROJECT} CACHE STRING "Qaterial Gal
 set(QATERIALGALLERY_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIALGALLERY_BUILD_STATIC OFF CACHE BOOL "Build as a static library")
 
-set(QATERIALGALLERY_DISCARD_ENV_PATH OFF CACHE BOOL "The executable will discard system qt, and will try to use qt binary deploy along the target. Should be ON when deploying installer")
+set(QATERIALGALLERY_IGNORE_ENV OFF CACHE BOOL "The executable will discard system qt, and will try to use qt binary deploy along the target. Should be ON when deploying installer")
+set(QATERIALGALLERY_ENABLE_PCH ON CACHE BOOL
+ "Enable precompile headers support for 'QaterialGallery'. \"
+ Only work if CMake support 'target_precompile_headers'. \"
+ This can speed up compilation time.")
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       VERSION                                    │
@@ -50,6 +54,7 @@ find_package(Qt5 REQUIRED COMPONENTS
 )
 find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
+include(cmake/Dependencies.cmake)
 include(cmake/FetchSpdlog.cmake)
 include(cmake/FetchQaterial.cmake)
 
@@ -62,6 +67,7 @@ include(cmake/FetchQaterial.cmake)
 message(STATUS "------ ${QATERIALGALLERY_TARGET} v${QATERIALGALLERY_VERSION} Configuration ------")
 message(STATUS "QATERIALGALLERY_BUILD_SHARED           : ${QATERIALGALLERY_BUILD_SHARED}")
 message(STATUS "QATERIALGALLERY_BUILD_STATIC           : ${QATERIALGALLERY_BUILD_STATIC}")
+message(STATUS "QATERIALGALLERY_IGNORE_ENV             : ${QATERIALGALLERY_IGNORE_ENV}")
 message(STATUS "------ ${QATERIALGALLERY_TARGET} End Configuration ------")
 
 # ──── CHECK CONFLICT ────
@@ -74,23 +80,35 @@ endif()
 # │                       SOURCES                                    │
 # └──────────────────────────────────────────────────────────────────┘
 
-qtquick_compiler_add_resources(QATERIALGALLERY_QML_RES ${CMAKE_CURRENT_SOURCE_DIR}/qml/QaterialGallery.qrc)
-file(GLOB_RECURSE QATERIALGALLERY_QML_SRCS qml/*.qml)
+qt_generate_qmldir(QATERIALGALLERY_QMLDIR_FILE
+ SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
+ MODULE "QaterialGallery")
+
+qt_generate_qrc(QATERIALGALLERY_QML_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/QaterialGallery
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/QaterialGalleryGenerated
+  NAME QaterialGallery.qrc
+  PREFIX "QaterialGallery"
+  GLOB_EXPRESSION "*.qml;qmldir"
+  RECURSE)
+
+qt_generate_qrc(QATERIALGALLERY_RES_QML_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/QaterialGallery
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/QaterialGalleryGenerated
+  NAME QaterialGalleryRes.qrc
+  PREFIX "QaterialGallery"
+  GLOB_EXPRESSION "*.png;*svg"
+  RECURSE)
+
+qtquick_compiler_add_resources(QATERIALGALLERY_QML_RES ${QATERIALGALLERY_QML_QRC})
+file(GLOB_RECURSE QATERIALGALLERY_QML_SRCS qml/QaterialGallery/*.qml)
 source_group("Qml" FILES "${QATERIALGALLERY_QML_SRCS}")
 
 set(QATERIALGALLERY_SRCS
   ${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp
   ${QATERIALGALLERY_QML_RES}
-  # QATERIALGALLERY_QML_SRCS is optionnal, it's only for them to show in visual studio or xcode
-  ${QATERIALGALLERY_QML_SRCS}
-  ${QATERIALGALLERY_PLATFORM_SRCS}
-  )
-
-# Trick to rerun cmake each time QaterialGallery.qrc is updated
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/qml/QaterialGallery.qrc
-  ${CMAKE_CURRENT_BINARY_DIR}/QaterialGallery.qrc.junk
-  )
+  ${QATERIALGALLERY_RES_QML_QRC}
+)
 
 # Dont Run Moc on cpp file generated from qml
 foreach(GENERATED_RES ${QATERIALGALLERY_QML_RES})
@@ -124,14 +142,25 @@ set_target_properties(${QATERIALGALLERY_TARGET}
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>"
   )
 
+if(QATERIALGALLERY_IGNORE_ENV)
+  message(STATUS "The executable will discard every ")
+  target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_IGNORE_ENV)
+endif()
+
+if(QATERIALGALLERY_ENABLE_PCH AND COMMAND target_precompile_headers)
+  target_precompile_headers(${QATERIALGALLERY_TARGET} PRIVATE include/QaterialGallery/Pch/Pch.hpp)
+endif()
+
 # ──── DEPENDENCIES ────
 
-set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES AUTOMOC TRUE AUTORCC TRUE)
+set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES
+  AUTOMOC TRUE
+  AUTORCC TRUE)
 target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
   Qaterial
   spdlog
-  )
+)
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────
 
-add_subdirectory(platform)
+add_subdirectory(platforms)
