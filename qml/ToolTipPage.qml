@@ -123,10 +123,11 @@ Qaterial.Page
     } // ScrollablePage
     Qaterial.Page
     {
-      id: zoifb
       width: _swipeView.width
       height: _swipeView.height
       bottomPadding: 0
+
+      clip: true
 
       Item
       {
