@@ -22,6 +22,7 @@ Qaterial.Page
   Qaterial.ScrollablePage
   {
     anchors.fill: parent
+    pane.padding: 16
 
     Column
     {

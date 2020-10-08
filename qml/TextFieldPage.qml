@@ -18,6 +18,8 @@ Qaterial.ScrollablePage
       AppBarContent { anchors.fill: parent; title: "Text Fields" } // AppBarContent
   } // ToolBar
 
+  pane.padding: 16
+
   Column
   {
     id: _column

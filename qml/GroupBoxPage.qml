@@ -19,6 +19,8 @@ Qaterial.ScrollablePage
     AppBarContent { anchors.fill: parent; title: "Group Box" } // AppBarContent
   } // ToolBar
 
+  pane.padding: 16
+
   property alias button: _group1.button
 
   readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page.availableWidth / 3 * 2))
