@@ -15,7 +15,7 @@ Qaterial.Page
 {
   id: _page
 
-  header: Qaterial.AppBar
+  header: Qaterial.ToolBar
   {
     RowLayout
     {
