@@ -123,6 +123,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
     PACKAGE_NAME "com.qaterial.gallery"
     PACKAGE_SOURCES  ${QATERIALGALLERY_PLATFORMS_DIR}/android
     ${KEYSTORE_SIGNATURE}
+    QML_DIR ${PROJECT_SOURCE_DIR}/qml
     )
 
 endif()
