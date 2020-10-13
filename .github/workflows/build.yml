@@ -10,6 +10,9 @@ on:
     branches:
       - master
 
+  repository_dispatch:
+    types: [qaterial-update]
+
 jobs:
   BuildAppImage:
 
@@ -31,9 +34,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: QaterialGallery.AppImage
-        path: build/platforms/*.AppImage
+        path: build/*.AppImage
 
-  Build:
+  BuildWindows:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -84,6 +87,31 @@ jobs:
       - name: Upload QaterialGallery Installer
         uses: actions/upload-artifact@v2
         with:
-          name: Qaterial Gallery Installer X64 Windows (${{ matrix.version }})
-          path: build/platforms/QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
+          name: Qaterial Gallery Installer Windows (${{ matrix.version }})
+          path: build/QaterialGalleryInstaller*.exe
         if: contains(matrix.os, 'windows')
+
+  BuildWasm:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: "Configure"
+      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 cmake -B ./build/ -S . ..
+    - name: "Build"
+      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 make -C build -j
+    - name: "Deploy to Github Pages"
+      run: |
+        mkdir -p build/deploy
+        mv platforms/html/index.html build/deploy/index.html
+        mv build/qtloader.js build/deploy/qtloader.js
+        mv build/QaterialGallery.js build/deploy/QaterialGallery.js
+        mv build/qtlogo.svg build/deploy/qtlogo.svg
+        mv build/QaterialGallery.wasm build/deploy/QaterialGallery.wasm
+        mv platforms/html/icon.png build/deploy/icon.png
+        cd build/deploy
+        git init
+        git add .
+        git -c user.name='ci' -c user.email='ci' commit -m init
+        git push -f -q https://git:${{ secrets.github_token }}@github.com/${{ github.repository }} HEAD:gh-pages
+      if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/master')

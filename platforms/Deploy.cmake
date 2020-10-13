@@ -1,5 +1,7 @@
 MESSAGE(STATUS "Platform deploy to ${CMAKE_SYSTEM_NAME}")
 
+set(QATERIALGALLERY_PLATFORMS_DIR ${PROJECT_SOURCE_DIR}/platforms)
+
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
@@ -27,6 +29,14 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 
   if(NOT QATERIALGALLERY_BUILD_SHARED AND NOT QATERIALGALLERY_BUILD_STATIC)
 
+    # set output directories for all builds (Debug, Release, etc.)
+    set_target_properties(${QATERIALGALLERY_TARGET}
+      PROPERTIES
+      ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+      RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>"
+      )
+
     include(${PROJECT_SOURCE_DIR}/cmake/FetchQtWindowsCMake.cmake)
 
     # Don't deploy when using static cmake since we are not using any qml file
@@ -39,8 +49,8 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
       PUBLISHER "Qaterial"
       PRODUCT_URL "https://github.com/OlivierLDff/QaterialGallery"
       PACKAGE "com.qaterial.gallery"
-      ICON ${CMAKE_CURRENT_SOURCE_DIR}/windows/icon.ico
-      ICON_RC ${CMAKE_CURRENT_SOURCE_DIR}/windows/icon.rc
+      ICON ${QATERIALGALLERY_PLATFORMS_DIR}/windows/icon.ico
+      ICON_RC ${QATERIALGALLERY_PLATFORMS_DIR}/windows/icon.rc
       QML_DIR ${PROJECT_SOURCE_DIR}/qml
       NO_TRANSLATIONS
       VERBOSE_LEVEL_DEPLOY 1
@@ -49,7 +59,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
     )
 
     if(MSVC)
-      set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QATERIALGALLERY_TARGET})
+      set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${QATERIALGALLERY_TARGET})
     endif()
 
   endif()
@@ -61,6 +71,14 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 
   if(NOT QATERIALGALLERY_BUILD_SHARED AND NOT QATERIALGALLERY_BUILD_STATIC)
 
+    # set output directories for all builds (Debug, Release, etc.)
+    set_target_properties(${QATERIALGALLERY_TARGET}
+      PROPERTIES
+      ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
+      RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>"
+      )
+
     include(${PROJECT_SOURCE_DIR}/cmake/FetchQtLinuxCMake.cmake)
 
     if(NOT QATERIALGALLERY_IGNORE_ENV)
@@ -68,7 +86,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     endif()
 
     add_qt_linux_appimage(${QATERIALGALLERY_TARGET}
-      APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/linux/AppDir
+      APP_DIR ${QATERIALGALLERY_PLATFORMS_DIR}/linux/AppDir
       QML_DIR ${PROJECT_SOURCE_DIR}/qml
       NO_TRANSLATIONS
       ${QATERIALGALLERY_ALLOW_ENVIRONMENT_VARIABLE}
@@ -103,7 +121,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
     VERSION_NAME ${QATERIAL_VERSION}
     VERSION_CODE 3 # Must be incremented on each release
     PACKAGE_NAME "com.qaterial.gallery"
-    PACKAGE_SOURCES  ${CMAKE_CURRENT_SOURCE_DIR}/android
+    PACKAGE_SOURCES  ${QATERIALGALLERY_PLATFORMS_DIR}/android
     ${KEYSTORE_SIGNATURE}
     )
 
@@ -130,9 +148,9 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     CODE_SIGN_IDENTITY "iPhone Developer"
     TEAM_ID ${TEAM_ID} # TEAM_ID must be specified when executing cmake or later in XCode
     COPYRIGHT "Copyright Olivier Ldff 2019-2020"
-    ASSET_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ios/Assets.xcassets"
-    LAUNCHSCREEN_STORYBOARD "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard"
-    MAIN_STORYBOARD "${CMAKE_CURRENT_SOURCE_DIR}/ios/Main.storyboard"
+    ASSET_DIR "${QATERIALGALLERY_PLATFORMS_DIR}/ios/Assets.xcassets"
+    LAUNCHSCREEN_STORYBOARD "${QATERIALGALLERY_PLATFORMS_DIR}/ios/LaunchScreen.storyboard"
+    MAIN_STORYBOARD "${QATERIALGALLERY_PLATFORMS_DIR}/ios/Main.storyboard"
     ORIENTATION_PORTRAIT
     ORIENTATION_PORTRAIT_UPDOWN
     ORIENTATION_LANDSCAPE_LEFT
