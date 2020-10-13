@@ -36,6 +36,87 @@ jobs:
         name: QaterialGallery.AppImage
         path: build/*.AppImage
 
+  BuildApk:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        abi: ['armeabi-v7a', 'arm64-v8a', 'x86_64']
+        # 24 : Android 7.1, 26: Android 8, 28: Android 9, 29: Android 10
+        target-api: ['24', '26', '28', '29']
+        build-tools: ['30.0.2']
+        version: ['5.15.1']
+        build-type: ['Release']
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+        key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.version }}
+        target: android
+        dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+
+    - name: Delete Qt built-in styles
+      run: |
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Imagine
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
+      shell: bash
+
+    - name: "Create signingKey.jks"
+      run: |
+        mkdir -p build
+        echo ${{ secrets.ANDROID_SIGNING_KEY }} > build/signingKeyBase64.txt
+        base64 -d build/signingKeyBase64.txt > build/signingKey.jks
+
+    - name: "Configure"
+      run: |
+        export JAVA_HOME=$JAVA_HOME_8_X64
+        export ANDROID_SDK=$ANDROID_SDK_ROOT
+        export ANDROID_NDK=$ANDROID_SDK/ndk-bundle
+        echo $ANDROID_SDK
+        echo $ANDROID_NDK
+        echo $JAVA_HOME
+        mkdir -p build
+        cmake \
+          -G "Ninja" \
+          -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake \
+          -DANDROID_ABI=${{ matrix.abi }} \
+          -DANDROID_NATIVE_API_LEVEL=${{ matrix.target-api }} \
+          -DANDROID_STL=c++_shared \
+          -DANDROID_TOOLCHAIN=clang \
+          -DANDROID_BUILDTOOLS_REVISION=${{ matrix.build-tools }} \
+          -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH \
+          -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
+          -B ./build/ -S . \
+          -DQATERIALGALLERY_ANDROID_KEYSTORE=$(pwd)/build/signingKey.jks \
+          -DQATERIALGALLERY_ANDROID_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
+          -DQATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEY_STORE_PASSWORD }} \
+          -DQATERIALGALLERY_ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
+
+    - name: "Build QaterialGallery"
+      run: cmake --build build --target QaterialGallery -j
+
+    - name: "Deploy QaterialGallery Apk"
+      run: cmake --build build --target QaterialGalleryApk -j
+
+    - name: Upload QaterialGallery Apk
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-${{ matrix.abi }}-${{ matrix.target-api }}.apk
+        path: build/QaterialGallery-${{ matrix.abi }}/build/outputs/apk/release/QaterialGallery-${{matrix.abi}}-release-signed.apk
+
   BuildWindows:
     runs-on: ${{ matrix.os }}
     strategy:
