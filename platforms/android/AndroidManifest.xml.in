@@ -14,7 +14,7 @@
             android:label="@QT_ANDROID_APP_NAME@"
             android:name="org.qtproject.qt5.android.bindings.QtActivity"
             android:screenOrientation="unspecified"
-            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
+            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
             android:theme="@style/AppTheme"
             android:launchMode="singleTop">
 

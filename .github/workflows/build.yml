@@ -36,6 +36,32 @@ jobs:
         name: QaterialGallery.AppImage
         path: build/*.AppImage
 
+  BuildApk:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        abi: ['armeabi-v7a']
+        api: ['30']
+        ndk: ['28.0.3']
+        version: ['5.15.1']
+        build-type: ['Release']
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Configure"
+      run: mkdir -p build && docker run --rm -v $(pwd):/src/ reivilo1234/qt-android-cmake:qt${{ matrix.version }}-api${{ matrix.api }}-ndk${{ matrix.ndk }} cmake -B ./build/ -S . -DQATERIALGALLERY_IGNORE_ENV=ON -DANDROID_ABI=${{ matrix.abi }} -DANDROID_NATIVE_API_LEVEL=${{ matrix.api }} -DCMAKE_BUILD_TYPE=${{ matrix.build-type }}
+
+    - name: "Deploy QaterialGallery Apk"
+      run: docker run --rm -v $(pwd):/src/ reivilo1234/qt-android-cmake:qt${{ matrix.version }}-api${{ matrix.api }}-ndk${{ matrix.ndk }} make -C build "QaterialGalleryApk" -j
+
+    - name: Upload QaterialGallery Apk
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-${{ matrix.abi }}.apk
+        path: build/QaterialGallery-${{ matrix.abi }}/build/outputs/apk/debug/*.apk
+
   BuildWindows:
     runs-on: ${{ matrix.os }}
     strategy:
