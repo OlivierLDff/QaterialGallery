@@ -69,7 +69,7 @@ Qaterial.Page
           Qaterial.ToolTip
           {
             text: "Simple"
-            visible: simpleToolTip.hovered
+            visible: simpleToolTip.hovered || simpleToolTip.pressed
           } // ToolTip
         } // FlatButton
 
@@ -91,7 +91,7 @@ Qaterial.Page
           Qaterial.ToolTip
           {
             text: "Simple ToolTip"
-            visible: timeToolTip.hovered
+            visible: timeToolTip.hovered || timeToolTip.pressed
             delay: 300
             timeout: 800
           } // ToolTip
@@ -115,7 +115,7 @@ Qaterial.Page
           Qaterial.ToolTip
           {
             text: "textType + radius"
-            visible: customizedToolTip.hovered
+            visible: customizedToolTip.hovered || customizedToolTip.pressed
             backgroundRadius: height/2
             textType: Qaterial.Style.TextType.Display1
           } // ToolTip
