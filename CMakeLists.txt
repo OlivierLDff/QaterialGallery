@@ -13,15 +13,6 @@ cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 # └──────────────────────────────────────────────────────────────────┘
 
 set(QATERIALGALLERY_PROJECT "QaterialGallery" CACHE STRING "Qaterial Gallery Project Name")
-set(QATERIALGALLERY_TARGET ${QATERIALGALLERY_PROJECT} CACHE STRING "Qaterial Gallery Target Name")
-set(QATERIALGALLERY_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
-set(QATERIALGALLERY_BUILD_STATIC OFF CACHE BOOL "Build as a static library")
-
-set(QATERIALGALLERY_IGNORE_ENV OFF CACHE BOOL "The executable will discard system qt, and will try to use qt binary deploy along the target. Should be ON when deploying installer")
-set(QATERIALGALLERY_ENABLE_PCH ON CACHE BOOL
- "Enable precompile headers support for 'QaterialGallery'. \"
- Only work if CMake support 'target_precompile_headers'. \"
- This can speed up compilation time.")
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       VERSION                                    │
@@ -36,7 +27,19 @@ set(QATERIALGALLERY_VERSION ${QATERIALGALLERY_VERSION_MAJOR}.${QATERIALGALLERY_V
 project(${QATERIALGALLERY_PROJECT} VERSION ${QATERIALGALLERY_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-# ──── PRE BUILD PLATFORM DEPENDANCIES ────
+set(QATERIALGALLERY_TARGET ${QATERIALGALLERY_PROJECT} CACHE STRING "Qaterial Gallery Target Name")
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
+  set(QATERIALGALLERY_BUILD_SHARED ON CACHE BOOL "Build as a shared library (Default for Android build)" FORCE)
+else()
+  set(QATERIALGALLERY_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
+endif()
+set(QATERIALGALLERY_BUILD_STATIC OFF CACHE BOOL "Build as a static library")
+
+set(QATERIALGALLERY_IGNORE_ENV OFF CACHE BOOL "The executable will discard system qt, and will try to use qt binary deploy along the target. Should be ON when deploying installer")
+set(QATERIALGALLERY_ENABLE_PCH ON CACHE BOOL
+ "Enable precompile headers support for 'QaterialGallery'. \"
+ Only work if CMake support 'target_precompile_headers'. \"
+ This can speed up compilation time.")
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       DEPENDENCIES                               │
@@ -134,14 +137,6 @@ endif()
 
 target_compile_features(${QATERIALGALLERY_TARGET} PUBLIC cxx_std_11)
 
-# set output directories for all builds (Debug, Release, etc.)
-set_target_properties(${QATERIALGALLERY_TARGET}
-  PROPERTIES
-  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>_Artifact"
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>"
-  )
-
 if(QATERIALGALLERY_IGNORE_ENV)
   message(STATUS "The executable will discard every ")
   target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_IGNORE_ENV)
@@ -163,4 +158,4 @@ target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────
 
-add_subdirectory(platforms)
+include(platforms/Deploy.cmake)
