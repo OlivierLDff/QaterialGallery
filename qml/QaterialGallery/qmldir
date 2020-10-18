@@ -1,0 +1,40 @@
+# File auto generated with CMake qt_generate_qmldir. Run CMake to regenerate if files changed.
+
+module QaterialGallery
+
+AppBarBottomPage 1.0 AppBarBottomPage.qml
+AppBarContent 1.0 AppBarContent.qml
+AppBarTopPage 1.0 AppBarTopPage.qml
+BannerPage 1.0 BannerPage.qml
+ButtonPage 1.0 ButtonPage.qml
+CardLayout1 1.0 CardLayout1.qml
+CardLayout2 1.0 CardLayout2.qml
+CardLayout3 1.0 CardLayout3.qml
+CardLayout4 1.0 CardLayout4.qml
+CardPage 1.0 CardPage.qml
+ClusteredTabBarPage 1.0 ClusteredTabBarPage.qml
+ControlButtonPage 1.0 ControlButtonPage.qml
+DateTimePickersPage 1.0 DateTimePickersPage.qml
+DelegatePage 1.0 DelegatePage.qml
+DialogDelegatePage 1.0 DialogDelegatePage.qml
+DialogPage 1.0 DialogPage.qml
+FABPage 1.0 FABPage.qml
+FaderPage 1.0 FaderPage.qml
+FixedTabBarPage 1.0 FixedTabBarPage.qml
+FooterTabBarPage 1.0 FooterTabBarPage.qml
+FramePage 1.0 FramePage.qml
+GroupBoxLayout 1.0 GroupBoxLayout.qml
+GroupBoxPage 1.0 GroupBoxPage.qml
+IconButtonPage 1.0 IconButtonPage.qml
+LatoTabBarPage 1.0 LatoTabBarPage.qml
+Main 1.0 Main.qml
+MaterialPage 1.0 MaterialPage.qml
+MenuBarPage 1.0 MenuBarPage.qml
+ScrollableTabBarPage 1.0 ScrollableTabBarPage.qml
+SlidersPage 1.0 SlidersPage.qml
+SnackbarPage 1.0 SnackbarPage.qml
+StepperPage 1.0 StepperPage.qml
+TabBarPage 1.0 TabBarPage.qml
+TextFieldPage 1.0 TextFieldPage.qml
+ToolTipPage 1.0 ToolTipPage.qml
+TypoPage 1.0 TypoPage.qml

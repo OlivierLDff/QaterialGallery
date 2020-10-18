@@ -84,7 +84,7 @@ endif()
 # └──────────────────────────────────────────────────────────────────┘
 
 qt_generate_qmldir(QATERIALGALLERY_QMLDIR_FILE
- SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
+ SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/QaterialGallery
  MODULE "QaterialGallery")
 
 qt_generate_qrc(QATERIALGALLERY_QML_QRC
