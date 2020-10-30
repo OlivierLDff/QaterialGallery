@@ -1,4 +1,4 @@
-name: CI
+name: 👷 CI/CD
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
       matrix:
         abi: ['armeabi-v7a', 'arm64-v8a', 'x86_64']
         # 24 : Android 7.1, 26: Android 8, 28: Android 9, 29: Android 10
-        target-api: ['24', '26', '28', '29']
+        target-api: ['29']
         build-tools: ['30.0.2']
         version: ['5.15.1']
         build-type: ['Release']
