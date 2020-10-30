@@ -26,7 +26,7 @@ Qaterial.Page
       {
         id: _backButton
         icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
-        onClicked:  stackView.pop()
+        onClicked: stackView.pop()
         visible: stackView.depth > 1
         onPrimary: true
       } // AppBarButton
@@ -48,7 +48,7 @@ Qaterial.Page
       {
         icon.source: "qrc:/QaterialGallery/images/icons/palette.svg"
         onPrimary: true
-        onClicked:  themeDialog.open()
+        onClicked: themeDialog.open()
       } // ToolButton
 
       Qaterial.AppBarButton

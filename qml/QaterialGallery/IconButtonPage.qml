@@ -85,7 +85,7 @@ Qaterial.Page
         Qaterial.RoundButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
-          checkable : true
+          checkable: true
 
         } // RoundButton
 
@@ -117,7 +117,7 @@ Qaterial.Page
         Qaterial.SquareButton
         {
           icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-          checkable : true
+          checkable: true
         } // SquareButton
 
         Qaterial.SquareButton

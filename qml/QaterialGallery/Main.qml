@@ -24,12 +24,13 @@ Qaterial.ApplicationWindow
     {
       title: qsTr("File")
       width: 300
-      Qaterial.MenuItem { text: qsTr("New..."); onTriggered: console.log("New"); action: Action{shortcut : "Ctrl+N"} } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Open..."); onTriggered: console.log("Open") } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Save"); onTriggered: console.log("Save") } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Save As..."); onTriggered: console.log("Save As") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("New...");onTriggered: console.log(
+    "New");action: Action { shortcut: "Ctrl+N" } } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Open...");onTriggered: console.log("Open") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Save");onTriggered: console.log("Save") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Save As...");onTriggered: console.log("Save As") } // MenuItem
       Qaterial.MenuSeparator { width: parent.width } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Quit"); onTriggered: console.log("Quit") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Quit");onTriggered: console.log("Quit") } // MenuItem
     } // Menu
 
     Qaterial.Menu
@@ -42,12 +43,12 @@ Qaterial.ApplicationWindow
         icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg";
         action: Action
         {
-          shortcut : "Ctrl+C"
+          shortcut: "Ctrl+C"
           onTriggered: console.log("Copy")
         }
       } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Cut"); onTriggered: console.log("Cut") } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Paste"); onTriggered: console.log("Paster") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Cut");onTriggered: console.log("Cut") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Paste");onTriggered: console.log("Paster") } // MenuItem
 
       Qaterial.Menu
       {
@@ -65,7 +66,7 @@ Qaterial.ApplicationWindow
         icon.source: "qrc:/QaterialGallery/images/icons/airplane.svg";
         action: Action
         {
-          shortcut : "Ctrl+Shift+F5"
+          shortcut: "Ctrl+Shift+F5"
           onTriggered: console.log("Dummy")
         }
       } // MenuItem
@@ -76,7 +77,7 @@ Qaterial.ApplicationWindow
         icon.color: "#8BC34A"
         action: Action
         {
-          shortcut : "Ctrl+K,Ctrl+L"
+          shortcut: "Ctrl+K,Ctrl+L"
           onTriggered: console.log("Colored")
         }
       } // MenuItem
@@ -85,17 +86,17 @@ Qaterial.ApplicationWindow
     Qaterial.Menu
     {
       title: qsTr("Test")
-      Qaterial.MenuItem { text: qsTr("Checked 1 very loing afznuaefb"); checked: true } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Checked 2"); checkable: true } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Checked 3"); checkable: true } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Checked 4"); checkable: true } // MenuItem
-      Qaterial.MenuItem { text: qsTr("Checked 5"); checkable: true } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Checked 1 very loing afznuaefb");checked: true } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Checked 2");checkable: true } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Checked 3");checkable: true } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Checked 4");checkable: true } // MenuItem
+      Qaterial.MenuItem { text: qsTr("Checked 5");checkable: true } // MenuItem
     } // Menu
 
     Qaterial.Menu
     {
       title: qsTr("Help")
-      Qaterial.MenuItem { text: qsTr("About"); onTriggered: console.log("About") } // MenuItem
+      Qaterial.MenuItem { text: qsTr("About");onTriggered: console.log("About") } // MenuItem
     } // Menu
   } // MenuBar
 
@@ -128,6 +129,6 @@ Qaterial.ApplicationWindow
   Qaterial.StyleSettingsDialog
   {
     id: themeDialog
-    width: window.width*0.8
+    width: window.width * 0.8
   } // StyleSettingsDialog
 } // ApplicationWindow

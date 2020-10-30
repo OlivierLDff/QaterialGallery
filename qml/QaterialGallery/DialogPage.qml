@@ -16,7 +16,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Dialogs" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Dialogs" } // AppBarContent
   } // ToolBar
 
   Qaterial.ScrollablePage
@@ -34,12 +35,13 @@ Qaterial.Page
         width: parent.width
         wrapMode: Label.Wrap
         elide: Text.ElideRight
-        text: "A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.\n" + "  • Dialogs are purposefully interruptive, so they should be used sparingly."
+        text: "A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.\n" +
+          "  • Dialogs are purposefully interruptive, so they should be used sparingly."
         maximumLineCount: 7
         textType: Qaterial.Style.TextType.Caption
       } // Label
 
-      readonly property double buttonWidth: Math.min(width*0.8, 500)
+      readonly property double buttonWidth: Math.min(width * 0.8, 500)
 
       Qaterial.Button
       {
@@ -217,8 +219,8 @@ Qaterial.Page
 
             model: ListModel
             {
-              ListElement{ text: "Element1"; secondaryText: "secondary text 1" }
-              ListElement{ text: "Element2"; secondaryText: "secondary text 2" }
+              ListElement { text: "Element1";secondaryText: "secondary text 1" }
+              ListElement { text: "Element2";secondaryText: "secondary text 2" }
             } // ListMOdel
             Component.onCompleted: open()
           } // RadioDialog
@@ -251,17 +253,17 @@ Qaterial.Page
 
             model: ListModel
             {
-              ListElement{ text: "Element1"; secondaryText: "secondary text" }
-              ListElement{ text: "Element2"; secondaryText: "secondary text" }
-              ListElement{ text: "Element3"; secondaryText: "secondary text" }
-              ListElement{ text: "Element4"; secondaryText: "secondary text" }
-              ListElement{ text: "Element5"; secondaryText: "secondary text" }
-              ListElement{ text: "Element6"; secondaryText: "secondary text" }
-              ListElement{ text: "Element7"; secondaryText: "secondary text" }
-              ListElement{ text: "Element8"; secondaryText: "secondary text" }
-              ListElement{ text: "Element9"; secondaryText: "secondary text" }
-              ListElement{ text: "Element10"; secondaryText: "secondary text" }
-              ListElement{ text: "Element11"; secondaryText: "secondary text" }
+              ListElement { text: "Element1";secondaryText: "secondary text" }
+              ListElement { text: "Element2";secondaryText: "secondary text" }
+              ListElement { text: "Element3";secondaryText: "secondary text" }
+              ListElement { text: "Element4";secondaryText: "secondary text" }
+              ListElement { text: "Element5";secondaryText: "secondary text" }
+              ListElement { text: "Element6";secondaryText: "secondary text" }
+              ListElement { text: "Element7";secondaryText: "secondary text" }
+              ListElement { text: "Element8";secondaryText: "secondary text" }
+              ListElement { text: "Element9";secondaryText: "secondary text" }
+              ListElement { text: "Element10";secondaryText: "secondary text" }
+              ListElement { text: "Element11";secondaryText: "secondary text" }
             } // ListModel
             Component.onCompleted: open()
           } // RadioDialog

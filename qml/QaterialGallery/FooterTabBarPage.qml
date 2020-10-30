@@ -46,8 +46,8 @@ Qaterial.Page
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onPrimary: true
-            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
-            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
+            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
             text: "Footer Tab Bar"
             textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
@@ -140,10 +140,10 @@ Qaterial.Page
 
         model: ListModel
         {
-          ListElement{ text: "Favorites"; source: "/QaterialGallery/images/icons/heart.svg" }
-          ListElement{ text: "Music"; source: "/QaterialGallery/images/icons/music-note.svg" }
-          ListElement{ text: "Albums"; source: "/QaterialGallery/images/icons/album.svg" }
-          ListElement{ text: "Settings"; source: "/QaterialGallery/images/icons/settings.svg" }
+          ListElement { text: "Favorites";source: "/QaterialGallery/images/icons/heart.svg" }
+          ListElement { text: "Music";source: "/QaterialGallery/images/icons/music-note.svg" }
+          ListElement { text: "Albums";source: "/QaterialGallery/images/icons/album.svg" }
+          ListElement { text: "Settings";source: "/QaterialGallery/images/icons/settings.svg" }
         } // ListModel
       } // FixedTabBar
     } // Page

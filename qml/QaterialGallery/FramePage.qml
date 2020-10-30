@@ -17,10 +17,12 @@ Qaterial.ScrollablePage
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Frame" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Frame" } // AppBarContent
   } // ToolBar
 
-  readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page.availableWidth / 3 * 2))
+  readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page
+    .availableWidth / 3 * 2))
 
   pane.padding: 16
 

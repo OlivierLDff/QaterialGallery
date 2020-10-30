@@ -17,7 +17,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-      AppBarContent { anchors.fill: parent; title: "Control Buttons" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Control Buttons" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -44,8 +45,8 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Use switches to: \n" +
-          "- Toggle a single option on or off, on mobile and tablet\n" +
-          "- Immediately activate or deactivate something"
+            "- Toggle a single option on or off, on mobile and tablet\n" +
+            "- Immediately activate or deactivate something"
         } // Label
 
         ColumnLayout
@@ -96,9 +97,9 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Use checkboxes to: \n" +
-              "- Select one or multiple items from a list\n" +
-              "- Present a list containing sub-selections\n" +
-              "- Turn an option on or off in desktop environment"
+            "- Select one or multiple items from a list\n" +
+            "- Present a list containing sub-selections\n" +
+            "- Turn an option on or off in desktop environment"
         } // Label
 
         ColumnLayout
@@ -167,9 +168,9 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Use radio buttons to:\n" +
-          "- Select a single option from a list\n" +
-          "- Expose all available options\n" +
-          "- If available options can be collapsed, consider using a dropdown menu instead, as it uses less space."
+            "- Select a single option from a list\n" +
+            "- Expose all available options\n" +
+            "- If available options can be collapsed, consider using a dropdown menu instead, as it uses less space."
 
         } // Label
 
@@ -184,7 +185,7 @@ Qaterial.Page
           {
             checked: true
             text: qsTr("Child 1")
-          }  // RadioButton
+          } // RadioButton
 
           Qaterial.RadioButton
           {
@@ -209,9 +210,9 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Switch" }
-      ListElement{ text: "Check" }
-      ListElement{ text: "Radio" }
+      ListElement { text: "Switch" }
+      ListElement { text: "Check" }
+      ListElement { text: "Radio" }
     } // ListModel
   } // FixedTabBar
 } // Page

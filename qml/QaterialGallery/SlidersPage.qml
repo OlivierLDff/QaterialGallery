@@ -17,7 +17,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent ; title: "Sliders" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Sliders" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -59,13 +60,14 @@ Qaterial.Page
             visible: _slider.pressed
             y: -parent.height - height - 8
             text: _slider.value.toFixed(0)
-            backgroundRadius: Math.min(width, height)/2
+            backgroundRadius: Math.min(width, height) / 2
           }
         } // Slider
 
         Qaterial.Label
         {
-          text: "Range slider (" + Math.round(_rangeSlider.first.value) + " ; " + Math.round(_rangeSlider.second.value) + ")"
+          text: "Range slider (" + Math.round(_rangeSlider.first.value) + " ; " + Math.round(_rangeSlider.second
+            .value) + ")"
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
@@ -93,7 +95,7 @@ Qaterial.Page
         Qaterial.Slider
         {
           width: parent.width
-          enabled:false
+          enabled: false
           from: 0
           to: 100
           value: 50
@@ -144,7 +146,8 @@ Qaterial.Page
 
         Qaterial.Label
         {
-          text: "Range slider (" + Math.round(_rangeSliderVertical.first.value) + " ; " + Math.round(_rangeSliderVertical.second.value) + ")"
+          text: "Range slider (" + Math.round(_rangeSliderVertical.first.value) + " ; " + Math.round(
+            _rangeSliderVertical.second.value) + ")"
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
           textType: Qaterial.Style.TextType.Body2
@@ -223,7 +226,7 @@ Qaterial.Page
       Column
       {
         width: parent.width
-        spacing:20
+        spacing: 20
 
         Qaterial.SliderDelegate
         {
@@ -272,7 +275,8 @@ Qaterial.Page
           stepSize: 1
           first.value: 20
           second.value: 40
-          text: "Range slider (" + Math.round(_rangeSliderDelegate.first.value) + " ; " + Math.round(_rangeSliderDelegate.second.value) + ")"
+          text: "Range slider (" + Math.round(_rangeSliderDelegate.first.value) + " ; " + Math.round(
+            _rangeSliderDelegate.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 1)"
         } // RangeSliderDelegate
 
@@ -286,7 +290,8 @@ Qaterial.Page
           first.value: 30
           second.value: 70
           snapMode: RangeSlider.SnapAlways
-          text: "Range slider (" + Math.round(_rangeSliderDelegateSnap1.first.value) + " ; " + Math.round(_rangeSliderDelegateSnap1.second.value) + ")"
+          text: "Range slider (" + Math.round(_rangeSliderDelegateSnap1.first.value) + " ; " + Math.round(
+            _rangeSliderDelegateSnap1.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 10) with snap on"
         } // RangeSliderDelegate
 
@@ -300,7 +305,8 @@ Qaterial.Page
           first.value: 40
           second.value: 80
           snapMode: RangeSlider.SnapOnRelease
-          text: "Range slider (" + Math.round(_rangeSliderDelegateSnap2.first.value) + " ; " + Math.round(_rangeSliderDelegateSnap2.second.value) + ")"
+          text: "Range slider (" + Math.round(_rangeSliderDelegateSnap2.first.value) + " ; " + Math.round(
+            _rangeSliderDelegateSnap2.second.value) + ")"
           secondaryText: "Range slider from 0 to 100 (stepSize: 10) with snap on release"
         } // RangeSliderDelegate
       } // Column
@@ -315,9 +321,9 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Horizontal" }
-      ListElement{ text: "Vertical" }
-      ListElement{ text: "Delegate"}
+      ListElement { text: "Horizontal" }
+      ListElement { text: "Vertical" }
+      ListElement { text: "Delegate" }
     } // ListModel
   } // FixedTabBar
 } // Page

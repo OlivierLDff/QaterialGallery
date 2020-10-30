@@ -45,8 +45,8 @@ Qaterial.Page
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onPrimary: true
-            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
-            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
+            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Scrollable Tab Bar"
             textType: Qaterial.Style.TextType.Title
@@ -108,7 +108,7 @@ Qaterial.Page
             Qaterial.Label
             {
               anchors.centerIn: parent
-              text: "Chapter " + (index+1)
+              text: "Chapter " + (index + 1)
               textType: Qaterial.Style.TextType.Display1
             } // Label
           } // Item

@@ -16,7 +16,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Steppers" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Steppers" } // AppBarContent
   } // ToolBar
 
   property bool verticalStepper: width < 500
@@ -25,8 +26,8 @@ Qaterial.Page
   {
     id: stepper
 
-    x: root.verticalStepper ? parent.width/2 - _row.width/2 : 0
-    y: root.verticalStepper ? 0 : parent.height/2 - 50
+    x: root.verticalStepper ? parent.width / 2 - _row.width / 2 : 0
+    y: root.verticalStepper ? 0 : parent.height / 2 - 50
     width: parent.width
     height: parent.height
 
@@ -98,7 +99,8 @@ Qaterial.Page
         return previous.done && newNextElementRole.done
       }
       color: highlighted ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()
-      height: 8; radius: 4
+      height: 8;
+      radius: 4
     } // Rectangle
 
     indicator: Qaterial.ColorIcon
@@ -184,18 +186,20 @@ Qaterial.Page
       {
         id: _backButton
         text: "Back"
-        onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex -- : console.log(`currentIndex min`)
+        onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex-- : console.log(`currentIndex min`)
       } // OutlineButton
       Qaterial.RaisedButton
       {
         text: "Next"
-        onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+        onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(
+          `currentIndex max`)
       } // RaisedButton
       Qaterial.OutlineButton
       {
         visible: stepper.currentElement.optional
         text: "Skip"
-        onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+        onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(
+          `currentIndex max`)
       } // OutlineButton
 
       Qaterial.RaisedButton
@@ -204,7 +208,7 @@ Qaterial.Page
 
         text:
         {
-          if(stepper.currentIndex === stepper.count-1)
+          if(stepper.currentIndex === stepper.count - 1)
             return done ? "Cancel" : "Finish"
           return done ? "Cancel" : "Done"
         }
@@ -213,30 +217,34 @@ Qaterial.Page
           stepper.currentElement.done = !stepper.currentElement.done
 
           // If this is the last Steps you want to know it
-          if(stepper.currentIndex === stepper.count-1 && done)
+          if(stepper.currentIndex === stepper.count - 1 && done)
           {
             let finished = true
             let unfinishedStep = -1
 
             /// Check if every steps are done if they aren't optional
-            for (let i = 0; i <= stepper.count-1; i++)
+            for(let i = 0; i <= stepper.count - 1; i++)
             {
-              if(!stepper.model.get(i).done && !stepper.model.get(i).optional)
+              if(!stepper.model.get(i)
+                .done && !stepper.model.get(i)
+                .optional)
               {
-                finished = false; unfinishedStep = i+1
+                finished = false;
+                unfinishedStep = i + 1
               }
             }
             if(finished)
               console.log(`Finish !`)
             else
             {
-              console.log(`You haven't finished the step ${unfinishedStep}! You have to do it to finish the process`)
+              console.log(
+                `You haven't finished the step ${unfinishedStep}! You have to do it to finish the process`)
               stepper.currentElement.done = !stepper.currentElement.done
             }
           }
           // When Done is clicked, go to next step
-          if(stepper.currentIndex < stepper.count-1 && done)
-            stepper.currentIndex ++
+          if(stepper.currentIndex < stepper.count - 1 && done)
+            stepper.currentIndex++
         }
       } // RaisedButton
     } // Row

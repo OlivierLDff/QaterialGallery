@@ -46,8 +46,8 @@ Qaterial.Page
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onPrimary: true
-            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
-            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
+            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Fixed Tab Bar"
             textType: Qaterial.Style.TextType.Title
@@ -83,13 +83,13 @@ Qaterial.Page
             enabled: _root.enabled
 
             display: _displaySwitch.checked && _showIconSwitch.checked ? AbstractButton.TextUnderIcon :
-                _showIconSwitch.checked ? AbstractButton.IconOnly : AbstractButton.TextOnly
+              _showIconSwitch.checked ? AbstractButton.IconOnly : AbstractButton.TextOnly
 
             model: ListModel
             {
-              ListElement { text: "Explore"; source: "/QaterialGallery/images/icons/compass.svg"}
-              ListElement { text: "Flights"; source: "/QaterialGallery/images/icons/airplane.svg"}
-              ListElement { text: "Trips"; source: "/QaterialGallery/images/icons/briefcase.svg"}
+              ListElement { text: "Explore";source: "/QaterialGallery/images/icons/compass.svg" }
+              ListElement { text: "Flights";source: "/QaterialGallery/images/icons/airplane.svg" }
+              ListElement { text: "Trips";source: "/QaterialGallery/images/icons/briefcase.svg" }
             } // ListModel
           } // TabBar
         } // ColumnLayout

@@ -42,8 +42,8 @@ Qaterial.Page
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onPrimary: true
-            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
-            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight-implicitHeight)/2
+            Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
+            Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Clustered Tab Bar"
             textType: Qaterial.Style.TextType.Title

@@ -15,7 +15,8 @@ Qaterial.ScrollablePage
 {
   header: Qaterial.ToolBar
   {
-      AppBarContent { anchors.fill: parent; title: "Text Fields" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Text Fields" } // AppBarContent
   } // ToolBar
 
   pane.padding: 16
@@ -69,7 +70,7 @@ Qaterial.ScrollablePage
       Qaterial.TextField // Phone Field // Demonstrate number keyboard
       {
         id: _phoneField
-        width: _column.width*0.7
+        width: _column.width * 0.7
         title: "Phone Number *"
         placeholderText: "Where can we reach you"
         inputMethodHints: Qt.ImhDialableCharactersOnly
@@ -79,7 +80,7 @@ Qaterial.ScrollablePage
 
       Qaterial.ComboBox // Position
       {
-        width: _column.width*0.3
+        width: _column.width * 0.3
         model: ["First", "Second", "Third"]
       } // ComboBox
     } // Row
@@ -151,7 +152,7 @@ Qaterial.ScrollablePage
       maximumLengthCount: 16
       inputMethodHints: Qt.ImhSensitiveData
       trailingVisible: errorState
-      trailingContent: Qaterial.TextFieldAlertIcon { } // TextFieldAlertIcon
+      trailingContent: Qaterial.TextFieldAlertIcon {} // TextFieldAlertIcon
     } // TextField
 
     Qaterial.TextField // Salary Field // Demonstrata text prefix
@@ -179,7 +180,7 @@ Qaterial.ScrollablePage
       validator: RegExpValidator { regExp: /.{8,}/ }
       echoMode: TextInput.Password
       inputMethodHints: Qt.ImhSensitiveData
-      trailingContent: Qaterial.TextFieldPasswordButton { } // TextFieldPasswordButton
+      trailingContent: Qaterial.TextFieldPasswordButton {} // TextFieldPasswordButton
     } // TextField
 
     Qaterial.TextField // Password Confirm // Demonstrate error
@@ -188,12 +189,12 @@ Qaterial.ScrollablePage
       enabled: _enabled.checked
       title: "Retype password"
       readonly property string password: _password.text //WARNING : SHOULD BE SANITIZE WITH \ to avoid any pbs
-      error: text !== _password.text//RegExpValidator { regExp: RegExp("^" + _confirmPassword.password + "$") }
+      error: text !== _password.text //RegExpValidator { regExp: RegExp("^" + _confirmPassword.password + "$") }
       errorText: "Password not matching"
       width: _column.width
       echoMode: TextInput.Password
       inputMethodHints: Qt.ImhSensitiveData
-      trailingContent: Qaterial.TextFieldPasswordButton { } // TextFieldPasswordButton
+      trailingContent: Qaterial.TextFieldPasswordButton {} // TextFieldPasswordButton
     } // TextField
 
     Qaterial.ComboBox
@@ -205,15 +206,15 @@ Qaterial.ScrollablePage
       model: ListModel
       {
         id: model
-        ListElement { text: "Banana"  }
-        ListElement { text: "Apple"   }
+        ListElement { text: "Banana" }
+        ListElement { text: "Apple" }
         ListElement { text: "Coconut" }
       } // ListModel
 
       onAccepted:
       {
-        if (find(editText) === -1)
-            model.append({text: editText})
+        if(find(editText) === -1)
+          model.append({ text: editText })
       }
     } // ComboBox
 
@@ -229,7 +230,7 @@ Qaterial.ScrollablePage
       errorText: "No more than 48 characters"
       maximumLengthCount: 48
       trailingVisible: errorState
-      trailingContent: Qaterial.TextFieldAlertIcon { } // TextFieldAlerticon
+      trailingContent: Qaterial.TextFieldAlertIcon {} // TextFieldAlerticon
       height: 150
     } // TextArea
 
@@ -246,7 +247,7 @@ Qaterial.ScrollablePage
       errorText: "No more than 48 characters"
       maximumLengthCount: 48
       trailingVisible: errorState
-      trailingContent: Qaterial.TextFieldAlertIcon { } // TextFieldAlerticon
+      trailingContent: Qaterial.TextFieldAlertIcon {} // TextFieldAlerticon
     } // TextArea
 
     Qaterial.ScrollableTextArea
@@ -262,7 +263,7 @@ Qaterial.ScrollablePage
       errorText: "No more than 48 characters"
       maximumLengthCount: 512
       trailingVisible: errorState
-      trailingContent: Qaterial.TextFieldAlertIcon { } // TextFieldAlertIcon
+      trailingContent: Qaterial.TextFieldAlertIcon {} // TextFieldAlertIcon
       height: 150
     } // ScrollableTextArea
 
@@ -273,22 +274,22 @@ Qaterial.ScrollablePage
       text: "Submit"
       onClicked:
       {
-          _nameInput.submitInput()
-          _phoneField.submitInput()
-          _addressField.submitInput()
-          _password.submitInput()
-          _confirmPassword.submitInput()
+        _nameInput.submitInput()
+        _phoneField.submitInput()
+        _addressField.submitInput()
+        _password.submitInput()
+        _confirmPassword.submitInput()
       }
     } // Button
 
     Qaterial.Label
     {
-        width: _column.width
-        horizontalAlignment: Qt.AlignHCenter
-        wrapMode: Label.Wrap
-        elide: Text.ElideRight
-        text: "Field with * are required"
-        textType: Qaterial.Style.TextType.Caption
+      width: _column.width
+      horizontalAlignment: Qt.AlignHCenter
+      wrapMode: Label.Wrap
+      elide: Text.ElideRight
+      text: "Field with * are required"
+      textType: Qaterial.Style.TextType.Caption
     } // Label
   } // Column
 } // ScrollablePage

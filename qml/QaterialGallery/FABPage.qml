@@ -18,7 +18,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Floating Action Buttons" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Floating Action Buttons" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -282,7 +283,7 @@ Qaterial.Page
             Qaterial.FlatFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
-              checkable : true
+              checkable: true
             } // FlatFabButton
 
             Qaterial.FlatFabButton
@@ -312,7 +313,7 @@ Qaterial.Page
             Qaterial.MiniFlatFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
-              checkable : true
+              checkable: true
             } // MiniFlatFabButton
 
             Qaterial.MiniFlatFabButton
@@ -342,7 +343,7 @@ Qaterial.Page
             Qaterial.FlatFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/thumb-up.svg"
-              checkable : true
+              checkable: true
               rippleClip: false
             } // FlatFabButton
 
@@ -374,22 +375,22 @@ Qaterial.Page
 
             Qaterial.MiniFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
-                checkable : true
-                rippleClip: false
+              icon.source: "qrc:/QaterialGallery/images/icons/crosshairs-gps.svg"
+              checkable: true
+              rippleClip: false
             } // MiniFlatFabButton
 
             Qaterial.MiniFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
-                rippleClip: false
+              icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
+              rippleClip: false
             } // MiniFlatFabButton
 
             Qaterial.MiniFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-                rippleClip: false
-                enabled: false
+              icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
+              rippleClip: false
+              enabled: false
             } // MiniFlatFabButton
           } // Row
 
@@ -408,20 +409,20 @@ Qaterial.Page
 
             Qaterial.ScalableFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
-                checkable : true
+              icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
+              checkable: true
 
             } // ScalableFlatFabButton
 
             Qaterial.ScalableFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
+              icon.source: "qrc:/QaterialGallery/images/icons/plus.svg"
             } // ScalableFlatFabButton
 
             Qaterial.ScalableFlatFabButton
             {
-                icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-                enabled: false
+              icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
+              enabled: false
             } // ScalableFlatFabButton
           } // Grid
 
@@ -442,7 +443,7 @@ Qaterial.Page
             {
               type: Qaterial.Style.FabType.Mini
               icon.source: "qrc:/QaterialGallery/images/icons/plus-circle-outline.svg"
-              checkable : true
+              checkable: true
 
             } // ScalableFlatFabButton
 
@@ -496,7 +497,7 @@ Qaterial.Page
             Qaterial.OutlinedFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/airplane.svg"
-              checkable : true
+              checkable: true
             } // OutlinedFabButton
 
             Qaterial.OutlinedFabButton
@@ -526,7 +527,7 @@ Qaterial.Page
             Qaterial.MiniOutlinedFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/content-copy.svg"
-              checkable : true
+              checkable: true
             } // MiniOutlinedFabButton
 
             Qaterial.MiniOutlinedFabButton
@@ -556,7 +557,7 @@ Qaterial.Page
             Qaterial.OutlinedFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-              checkable : true
+              checkable: true
               rippleClip: false
             } // OutlinedFabButton
 
@@ -589,7 +590,7 @@ Qaterial.Page
             Qaterial.MiniOutlinedFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/pencil.svg"
-              checkable : true
+              checkable: true
               rippleClip: false
             } // MiniOutlinedFabButton
 
@@ -623,7 +624,7 @@ Qaterial.Page
             Qaterial.ScalableOutlinedFabButton
             {
               icon.source: "qrc:/QaterialGallery/images/icons/settings.svg"
-              checkable : true
+              checkable: true
 
             } // ScalableOutlinedFabButton
 
@@ -658,7 +659,7 @@ Qaterial.Page
             {
               type: Qaterial.Style.FabType.Mini
               icon.source: "qrc:/QaterialGallery/images/icons/heart.svg"
-              checkable : true
+              checkable: true
             } // ScalableOutlinedFabButton
 
             Qaterial.ScalableOutlinedFabButton
@@ -680,17 +681,17 @@ Qaterial.Page
       } // Pane
     } // ScrollablePage
 
-//    Qaterial.Page
-//    {
-//      width: _swipeView.width
-//      height: _swipeView.height
+    //    Qaterial.Page
+    //    {
+    //      width: _swipeView.width
+    //      height: _swipeView.height
 
-//      Qaterial.Label
-//      {
-//        text: "Fab Stack"
-//        anchors.centerIn: parent
-//      } // Label
-//    } // Page
+    //      Qaterial.Label
+    //      {
+    //        text: "Fab Stack"
+    //        anchors.centerIn: parent
+    //      } // Label
+    //    } // Page
   } // SwipeView
 
   footer: Qaterial.ScrollableTabBar
@@ -701,9 +702,9 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Fab" }
-      ListElement{ text: "Flat" }
-      ListElement{ text: "Outlined" }
+      ListElement { text: "Fab" }
+      ListElement { text: "Flat" }
+      ListElement { text: "Outlined" }
       //ListElement{ text: "Stack" }
     } // ListModel
   } // ScrollableTabBar

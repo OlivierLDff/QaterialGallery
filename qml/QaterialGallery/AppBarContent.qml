@@ -20,7 +20,7 @@ RowLayout
   {
     id: _backButton
     icon.source: "qrc:/QaterialGallery/images/icons/arrow-left.svg"
-    onClicked:  stackView.pop()
+    onClicked: stackView.pop()
     visible: stackView.depth > 1
     onPrimary: true
   } // AppBarButton
@@ -42,6 +42,6 @@ RowLayout
   {
     icon.source: "qrc:/QaterialGallery/images/icons/palette.svg"
     onPrimary: true
-    onClicked:  themeDialog.open()
+    onClicked: themeDialog.open()
   } // AppBarButton
 } // RowLayout

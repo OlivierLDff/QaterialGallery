@@ -17,7 +17,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Cards" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Cards" } // AppBarContent
   } // ToolBar
 
   Flickable
@@ -71,7 +72,8 @@ Qaterial.Page
           thumbnail: "qrc:/QaterialGallery/images/card40x40.png"
           headerText: "Title goes here"
           subHeaderText: "Secondary Text"
-          supportingText: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+          supportingText:
+            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
           button1.text: "Action 1"
           button2.text: "Action 2"
         } // CardLayout2
@@ -79,14 +81,14 @@ Qaterial.Page
         ListView
         {
           model: 5
-          cacheBuffer : 5
+          cacheBuffer: 5
           Layout.fillWidth: true
           spacing: Qaterial.Style.card.horizontalPadding
           orientation: ListView.Horizontal
           implicitHeight: 220
           delegate: CardLayout4
           {
-            media: "qrc:/QaterialGallery/images/card168x168_" + (5-index) + ".png"
+            media: "qrc:/QaterialGallery/images/card168x168_" + (5 - index) + ".png"
           } // CardLayout4
         } // ListView
 
@@ -118,19 +120,19 @@ Qaterial.Page
         ListView
         {
           model: 5
-          cacheBuffer : 5
+          cacheBuffer: 5
           Layout.fillWidth: true
           spacing: Qaterial.Style.card.horizontalPadding
           orientation: ListView.Horizontal
           implicitHeight: 220
           delegate: CardLayout4
           {
-            media: "qrc:/QaterialGallery/images/card168x168_" + (index+1) + ".png"
+            media: "qrc:/QaterialGallery/images/card168x168_" + (index + 1) + ".png"
             outlined: true
           } // CardLayout4
         } // ListView
       } // ColumnLayout
     } // Pane
-    ScrollIndicator.vertical: Qaterial.ScrollIndicator { }
+    ScrollIndicator.vertical: Qaterial.ScrollIndicator {}
   } // Flickable
 } // Page

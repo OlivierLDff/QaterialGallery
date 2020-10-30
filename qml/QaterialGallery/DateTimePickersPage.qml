@@ -16,7 +16,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Date / Time Pickers" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Date / Time Pickers" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -46,7 +47,8 @@ Qaterial.Page
           elide: Text.ElideRight
           maximumLineCount: 3
 
-          text: "TextFieldTimePicker allows the user to select an hour by editing the text in the field or by picking an hour in a TimePickerDialog."
+          text:
+            "TextFieldTimePicker allows the user to select an hour by editing the text in the field or by picking an hour in a TimePickerDialog."
         } // Label
 
         Qaterial.Label
@@ -69,7 +71,8 @@ Qaterial.Page
             id: _TimePickerDialog
             Qaterial.TimePickerDialog
             {
-              onAccepted: () => Qaterial.SnackbarManager.show({text: `Simple EU Dialog Picker : User picked ${hour}:${minute}`})
+              onAccepted: () => Qaterial.SnackbarManager
+            .show({ text: `Simple EU Dialog Picker : User picked ${hour}:${minute}` })
               Component.onCompleted: open()
             } // TimePickerDialog
           } // Component
@@ -90,7 +93,8 @@ Qaterial.Page
           Layout.bottomMargin: 50
           Layout.preferredWidth: 250
 
-          onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager.show({text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`})
+          onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager
+        .show({ text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}` })
         } // TextFieldTimePicker
 
         Qaterial.Label
@@ -109,7 +113,8 @@ Qaterial.Page
 
           styleAm: false
 
-          onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager.show({text: `EU Picker : User picked ${hour}:${minute}`})
+          onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager
+        .show({ text: `EU Picker : User picked ${hour}:${minute}` })
         } // TextFieldTimePicker
       } // ColumnLayout
     } // ScrollablePage
@@ -133,7 +138,8 @@ Qaterial.Page
           elide: Text.ElideRight
           maximumLineCount: 3
 
-          text: "TextFieldDatePicker allows the user to select a date by editing the text in the field or by picking in a DatePickerDialog."
+          text:
+            "TextFieldDatePicker allows the user to select a date by editing the text in the field or by picking in a DatePickerDialog."
         } // Label
 
         Qaterial.Label
@@ -179,7 +185,7 @@ Qaterial.Page
           Layout.alignment: Qt.AlignHCenter
           Layout.preferredWidth: 250
 
-          from: new Date(1900,0, 1)
+          from: new Date(1900, 0, 1)
           to: new Date(2099, 11, 31)
           date: new Date(2020, 6, 6)
         }
@@ -195,8 +201,8 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Time" }
-      ListElement{ text: "Date" }
+      ListElement { text: "Time" }
+      ListElement { text: "Date" }
     } // ListModel
   } // ScrollableTabBar
 } // Page

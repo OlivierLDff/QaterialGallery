@@ -16,7 +16,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "App Bar Bottom" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "App Bar Bottom" } // AppBarContent
   } // AppBar
 
   footer: Qaterial.ToolBar

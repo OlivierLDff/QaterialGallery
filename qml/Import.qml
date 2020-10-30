@@ -10,4 +10,4 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.1
 import Qt.labs.platform 1.1
 
-Item { }
+Item {}

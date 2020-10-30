@@ -17,7 +17,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "Banners" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "Banners" } // AppBarContent
   } // ToolBar
 
   property string shortText: "One line text string with one action."
@@ -66,7 +67,7 @@ Qaterial.Page
         wrapMode: Label.Wrap
         elide: Text.ElideRight
         text: "A banner displays an important, succinct message, and provides actions for users to address (or dismiss the banner). It requires a user action to be dismissed.\n" +
-        "  • Banners should be displayed at the top of the screen, below a top app bar. They are persistent and nonmodal, allowing the user to either ignore them or interact with them at any time."
+          "  • Banners should be displayed at the top of the screen, below a top app bar. They are persistent and nonmodal, allowing the user to either ignore them or interact with them at any time."
         //Layout.preferredHeight: 100
         maximumLineCount: 7
         textType: Qaterial.Style.TextType.Caption
@@ -146,7 +147,7 @@ Qaterial.Page
             {
               id: _outlined
               text: "Outlined"
-              width: _supportBox.width/2
+              width: _supportBox.width / 2
               enabled: _icon.checked
             } // RadioButton
 
@@ -155,7 +156,7 @@ Qaterial.Page
               id: _fill
               text: "Fill"
               checked: true
-              width: _supportBox.width/2
+              width: _supportBox.width / 2
               enabled: _icon.checked
             } // RadioButton
           } // Row
@@ -167,7 +168,7 @@ Qaterial.Page
               id: _highlighted
               text: "Highlighted"
               checked: true
-              width: _supportBox.width/2
+              width: _supportBox.width / 2
               enabled: _icon.checked
             } // CheckButton
 
@@ -176,7 +177,7 @@ Qaterial.Page
               id: _reverse
               text: "Reverse"
               checked: true
-              width: _supportBox.width/2
+              width: _supportBox.width / 2
               enabled: _icon.checked
             } // CheckButton
           } // Row

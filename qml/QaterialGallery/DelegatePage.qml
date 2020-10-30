@@ -306,7 +306,7 @@ Qaterial.Page
       {
         anchors.fill: parent
         currentIndex: -1
-        ScrollIndicator.vertical: ScrollIndicator { }
+        ScrollIndicator.vertical: ScrollIndicator {}
         model: _dummyModel
 
         delegate: Qaterial.ItemDelegate
@@ -347,7 +347,7 @@ Qaterial.Page
       {
         anchors.fill: parent
         currentIndex: -1
-        ScrollIndicator.vertical: ScrollIndicator { }
+        ScrollIndicator.vertical: ScrollIndicator {}
         model: _dummyModel
 
         delegate: Qaterial.SwitchDelegate
@@ -388,7 +388,7 @@ Qaterial.Page
       {
         anchors.fill: parent
         currentIndex: -1
-        ScrollIndicator.vertical: ScrollIndicator { }
+        ScrollIndicator.vertical: ScrollIndicator {}
         model: _dummyModel
 
         delegate: Qaterial.CheckDelegate
@@ -429,7 +429,7 @@ Qaterial.Page
       {
         anchors.fill: parent
         currentIndex: -1
-        ScrollIndicator.vertical: ScrollIndicator { }
+        ScrollIndicator.vertical: ScrollIndicator {}
         model: _dummyModel
 
         delegate: Qaterial.RadioDelegate
@@ -468,58 +468,58 @@ Qaterial.Page
 
       ListView
       {
-          anchors.fill: parent
-          currentIndex: -1
-          ScrollIndicator.vertical: Qaterial.ScrollIndicator { }
-          model: _dummyModel
+        anchors.fill: parent
+        currentIndex: -1
+        ScrollIndicator.vertical: Qaterial.ScrollIndicator {}
+        model: _dummyModel
 
-          delegate: Qaterial.SwipeDelegate
+        delegate: Qaterial.SwipeDelegate
+        {
+          width: _page.width
+          highlighted: ListView.isCurrentItem
+          drawSeparator: _separatorSwitch.checked
+
+          // TEXT
+          text: model.text
+          secondaryText: model.info ? model.info : ""
+          overlineText: model.overline ? model.overline : ""
+
+          // ICON
+          icon.source: model.source ? model.source : ""
+          fillIcon: model.fill ? model.fill : false
+          outlinedIcon: model.outlined ? model.outlined : false
+          highlightedIcon: model.highlighted ? model.highlighted : false
+          reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
+
+          // THUMBNAIL
+          roundSource: model.roundImage ? model.roundImage : ""
+          squareSource: model.squareImage ? model.squareImage : ""
+          largeSource: model.largeImage ? model.largeImage : ""
+          largeThumbnail: model.large ? model.large : false
+
+          enabled: _enabledSwitch.checked
+
+          Component
           {
-            width: _page.width
-            highlighted: ListView.isCurrentItem
-            drawSeparator: _separatorSwitch.checked
+            id: removeComponent
 
-            // TEXT
-            text: model.text
-            secondaryText: model.info ? model.info : ""
-            overlineText: model.overline ? model.overline : ""
-
-            // ICON
-            icon.source: model.source ? model.source : ""
-            fillIcon: model.fill ? model.fill : false
-            outlinedIcon: model.outlined ? model.outlined : false
-            highlightedIcon: model.highlighted ? model.highlighted : false
-            reverseHighlightIcon: model.reverseHighlight ? model.reverseHighlight : false
-
-            // THUMBNAIL
-            roundSource: model.roundImage ? model.roundImage : ""
-            squareSource: model.squareImage ? model.squareImage : ""
-            largeSource: model.largeImage ? model.largeImage : ""
-            largeThumbnail: model.large ? model.large : false
-
-            enabled: _enabledSwitch.checked
-
-            Component
+            Rectangle
             {
-              id: removeComponent
+              color: "red"
+              width: parent.width
+              height: parent.height
+              clip: true
+              anchors.left: parent.background.right
 
-              Rectangle
+              Qaterial.Label
               {
-                color: "red"
-                width: parent.width
-                height: parent.height
-                clip: true
-                anchors.left: parent.background.right
-
-                Qaterial.Label
-                {
-                  text: "Remove"
-                  onPrimary: true
-                  anchors.centerIn: parent
-                } // Label
-              } // Rectangle
-            } // Component
-            swipe.right: removeComponent
+                text: "Remove"
+                onPrimary: true
+                anchors.centerIn: parent
+              } // Label
+            } // Rectangle
+          } // Component
+          swipe.right: removeComponent
         } // SwipeDelegate
       } // ListView
     } // Page
@@ -533,11 +533,11 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Item" }
-      ListElement{ text: "Switch" }
-      ListElement{ text: "Check" }
-      ListElement{ text: "Radio" }
-      ListElement{ text: "Swipe" }
+      ListElement { text: "Item" }
+      ListElement { text: "Switch" }
+      ListElement { text: "Check" }
+      ListElement { text: "Radio" }
+      ListElement { text: "Swipe" }
     } // ListModel
   } // ScrollableTabBar
 } // Page

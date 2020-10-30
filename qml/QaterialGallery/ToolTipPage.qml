@@ -16,7 +16,8 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent; title: "ToolTips" } // AppBarContent
+    AppBarContent { anchors.fill: parent;
+      title: "ToolTips" } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -47,7 +48,8 @@ Qaterial.Page
           elide: Text.ElideRight
           maximumLineCount: 3
 
-          text: "When activated (often hen hovered), Tooltips display an element such as a description of its function."
+          text:
+            "When activated (often hen hovered), Tooltips display an element such as a description of its function."
         } // Label
 
         Qaterial.Label
@@ -116,7 +118,7 @@ Qaterial.Page
           {
             text: "textType + radius"
             visible: customizedToolTip.hovered || customizedToolTip.pressed
-            backgroundRadius: height/2
+            backgroundRadius: height / 2
             textType: Qaterial.Style.TextType.Display1
           } // ToolTip
         } // FlatButton
@@ -133,15 +135,15 @@ Qaterial.Page
 
       Item
       {
-        x: (parent.width - width)/2
-        y: (parent.height - height)/2
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
         width: 350
         height: 150
 
         Qaterial.Label
         {
           anchors.horizontalCenter: parent.horizontalCenter
-          y: - (parent.height/2 + 80)
+          y: -(parent.height / 2 + 80)
           width: rectangle.width
 
           wrapMode: Text.Wrap
@@ -149,7 +151,8 @@ Qaterial.Page
           elide: Text.ElideRight
           maximumLineCount: 3
 
-          text: "ToolTip position is automatically update if it can't be displayed on the page. So please resize the app if ToolTips don't appear where they are supposed to."
+          text:
+            "ToolTip position is automatically update if it can't be displayed on the page. So please resize the app if ToolTips don't appear where they are supposed to."
         }
 
         Rectangle
@@ -171,7 +174,8 @@ Qaterial.Page
             elide: Text.ElideRight
             maximumLineCount: 3
 
-            text: "To get a better view of ToolTip Position you can check \"Debug Buttons\" in Settings on the top left corner."
+            text:
+              "To get a better view of ToolTip Position you can check \"Debug Buttons\" in Settings on the top left corner."
           }
 
           Qaterial.FlatButton
@@ -209,7 +213,7 @@ Qaterial.Page
           Qaterial.FlatButton
           {
             id: top
-            x: (parent.width - width)/2
+            x: (parent.width - width) / 2
             y: -height
             text: "Top"
             highlighted: false
@@ -274,7 +278,7 @@ Qaterial.Page
           {
             id: right
             x: parent.width
-            y: (parent.height - height)/2
+            y: (parent.height - height) / 2
             text: "Right"
             highlighted: false
 
@@ -337,7 +341,7 @@ Qaterial.Page
           Qaterial.FlatButton
           {
             id: bottom
-            x: (parent.width - width)/2
+            x: (parent.width - width) / 2
             y: parent.height
             text: "Bottom"
             highlighted: false
@@ -402,7 +406,7 @@ Qaterial.Page
           {
             id: left
             x: -width
-            y: (parent.height - height)/2
+            y: (parent.height - height) / 2
             text: "Left"
             highlighted: false
 
@@ -433,8 +437,8 @@ Qaterial.Page
           Qaterial.FlatButton
           {
             id: center
-            x: (parent.width - width)/2
-            y: (parent.height - height)/2
+            x: (parent.width - width) / 2
+            y: (parent.height - height) / 2
             text: "Center"
             highlighted: false
 
@@ -458,8 +462,8 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Classic" }
-      ListElement{ text: "Position" }
+      ListElement { text: "Classic" }
+      ListElement { text: "Position" }
     } // ListModel
   } // ScrollableTabBar
 } // Page

@@ -51,7 +51,7 @@ Qaterial.Page
           id: _radiusSlider
           Layout.fillWidth: true
           from: 0
-          to: Qaterial.Style.rawButton.minHeight/2
+          to: Qaterial.Style.rawButton.minHeight / 2
           value: Qaterial.Style.rawButton.cornerRadius
           stepSize: 1
         } // Slider
@@ -83,7 +83,7 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Raised buttons add dimensions to mostly flat layouts. " +
-              "They emphasize functions on busy or wide spaces."
+            "They emphasize functions on busy or wide spaces."
         } // Label
 
         GridLayout
@@ -92,7 +92,7 @@ Qaterial.Page
           Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
           Layout.fillWidth: true
           columns: 2
-          rowSpacing : 40
+          rowSpacing: 40
 
           Qaterial.RaisedButton
           {
@@ -146,7 +146,7 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "A flat button displayes an ink splash on press but does not lift. " +
-              "Use flat buttons on toolbars, in dialogs and inline with padding."
+            "Use flat buttons on toolbars, in dialogs and inline with padding."
         } // Label
 
         GridLayout
@@ -155,7 +155,7 @@ Qaterial.Page
           Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
           Layout.fillWidth: true
           columns: 2
-          rowSpacing : 40
+          rowSpacing: 40
 
           Qaterial.FlatButton
           {
@@ -209,7 +209,7 @@ Qaterial.Page
 
           wrapMode: Label.Wrap
           text: "Outline buttons become opaque and elevate when pressed. " +
-              "They are often paired with raised buttons to indicate an alternaive, secondary action."
+            "They are often paired with raised buttons to indicate an alternaive, secondary action."
         } // Label
 
         GridLayout
@@ -218,7 +218,7 @@ Qaterial.Page
           Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
           Layout.fillWidth: true
           columns: 2
-          rowSpacing : 40
+          rowSpacing: 40
 
           Qaterial.OutlineButton
           {
@@ -264,9 +264,9 @@ Qaterial.Page
 
     model: ListModel
     {
-      ListElement{ text: "Raised" }
-      ListElement{ text: "Flat" }
-      ListElement{ text: "Outline" }
+      ListElement { text: "Raised" }
+      ListElement { text: "Flat" }
+      ListElement { text: "Outline" }
     } // ListModel
   } // FixedTabBar
 } // Page
