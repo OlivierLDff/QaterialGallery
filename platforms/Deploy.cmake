@@ -141,23 +141,22 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
   if(NOT TEAM_ID)
     message(WARNING "Please provide TEAM_ID to cmake (cmake -DTEAM_ID=AAAAAAAA <path>). You will need to fix that in xcode!!")
     SET(TEAM_ID "AAAAAAAA")
-  endif(NOT TEAM_ID)
+  endif()
+  if(NOT CODE_SIGN_IDENTITY)
+    message(WARNING "Please provide CODE_SIGN_IDENTITY to cmake (cmake -DCODE_SIGN_IDENTITY=\"iPhone Developer\" <path>). Identity is defaulted to iPhone Developer")
+    SET(CODE_SIGN_IDENTITY "iPhone Developer")
+  endif()
 
   add_qt_ios_app(${QATERIALGALLERY_TARGET}
     NAME "Qaterial"
     BUNDLE_IDENTIFIER "com.qaterial.gallery"
     VERSION ${QATERIAL_VERSION}
     LONG_VERSION ${QATERIAL_VERSION}.${QATERIAL_VERSION_TAG}
-    CODE_SIGN_IDENTITY "iPhone Developer"
+    CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
     TEAM_ID ${TEAM_ID} # TEAM_ID must be specified when executing cmake or later in XCode
-    COPYRIGHT "Copyright Olivier Ldff 2019-2020"
+    COPYRIGHT "Copyright Olivier Le Doeuff 2019-2020"
     ASSET_DIR "${QATERIALGALLERY_PLATFORMS_DIR}/ios/Assets.xcassets"
     LAUNCHSCREEN_STORYBOARD "${QATERIALGALLERY_PLATFORMS_DIR}/ios/LaunchScreen.storyboard"
-    MAIN_STORYBOARD "${QATERIALGALLERY_PLATFORMS_DIR}/ios/Main.storyboard"
-    ORIENTATION_PORTRAIT
-    ORIENTATION_PORTRAIT_UPDOWN
-    ORIENTATION_LANDSCAPE_LEFT
-    ORIENTATION_LANDSCAPE_RIGHT
     VERBOSE
     )
 endif()
