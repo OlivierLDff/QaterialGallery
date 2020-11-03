@@ -21,20 +21,22 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: "Configure"
+    - name: 🔧 Configure
       run: mkdir -p build && docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake -B ./build/ -S . -DQATERIALGALLERY_IGNORE_ENV=ON
 
-    - name: "Build QaterialGallery"
+    - name: 🔨 Build QaterialGallery
       run: docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake --build build --target "QaterialGallery" --config "Release" -j $(nproc)
 
-    - name: "Deploy QaterialGallery AppImage"
+    - name: 🚀 Deploy QaterialGallery AppImage
       run: docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake --build build --target "QaterialGalleryAppImage" --config "Release" -j $(nproc)
 
-    - name: Upload QaterialGallery AppImage
+    - name: 📦 Upload QaterialGallery AppImage
       uses: actions/upload-artifact@v2
       with:
         name: QaterialGallery.AppImage
         path: build/*.AppImage
+
+        if: startsWith(github.ref, 'refs/tags/v')
 
   BuildApk:
 
@@ -57,16 +59,16 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-        key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
+        key: ${{ runner.os }}-QtCache-${{ matrix.version }}-android
 
-    - name: Install Qt
+    - name: ⬆️ Install Qt
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.version }}
         target: android
         dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
 
-    - name: Delete Qt built-in styles
+    - name: 🔥 Delete Qt built-in styles
       run: |
         rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
         rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
@@ -80,7 +82,7 @@ jobs:
         echo ${{ secrets.ANDROID_SIGNING_KEY }} > build/signingKeyBase64.txt
         base64 -d build/signingKeyBase64.txt > build/signingKey.jks
 
-    - name: "Configure"
+    - name: 🔧 Configure
       run: |
         export JAVA_HOME=$JAVA_HOME_8_X64
         export ANDROID_SDK=$ANDROID_SDK_ROOT
@@ -105,17 +107,107 @@ jobs:
           -DQATERIALGALLERY_ANDROID_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEY_STORE_PASSWORD }} \
           -DQATERIALGALLERY_ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
 
-    - name: "Build QaterialGallery"
+    - name: 🔨 Build QaterialGallery
       run: cmake --build build --target QaterialGallery -j
 
-    - name: "Deploy QaterialGallery Apk"
+    - name: 🚀 Deploy QaterialGallery Apk
       run: cmake --build build --target QaterialGalleryApk -j
 
-    - name: Upload QaterialGallery Apk
+    - name: 📦 Upload QaterialGallery Apk
       uses: actions/upload-artifact@v2
       with:
         name: QaterialGallery-${{ matrix.abi }}-${{ matrix.target-api }}.apk
         path: build/QaterialGallery-${{ matrix.abi }}/build/outputs/apk/release/QaterialGallery-${{matrix.abi}}-release-signed.apk
+
+  BuildIpa:
+
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        deployment-target: ['12.0']
+        platform: ['OS64']
+        version: ['5.15.1']
+        build-type: ['Release']
+        bitcode: ['FALSE']
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: OlivierLDff/IosCMakeToolchain
+        path: ios-toolchain
+
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+        key: ${{ runner.os }}-QtCache-${{ matrix.version }}-ios
+
+    - name: ⬆️ Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.version }}
+        target: ios
+        dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+
+    - name: 🔥 Delete Qt built-in styles
+      run: |
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Imagine
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
+      shell: bash
+
+    - uses: Apple-Actions/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.IOS_CERTIFICATES_FILE_BASE64 }}
+        p12-password: ${{ secrets.IOS_CERTIFICATES_PASSWORD }}
+
+    - uses: Apple-Actions/download-provisioning-profiles@v1
+      with:
+        bundle-id: com.qaterial.gallery
+        issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+
+    - name: 🔧 Configure
+      run: |
+        mkdir -p build
+        cmake \
+          -G "Xcode" \
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/ios-toolchain/ios.toolchain.cmake \
+          -DCMAKE_CONFIGURATION_TYPES="Release" \
+          -DDEPLOYMENT_TARGET=${{ matrix.deployment-target }} \
+          -DPLATFORM=OS64COMBINED \
+          -DENABLE_VISIBILITY=FALSE \
+          -DENABLE_BITCODE=${{ matrix.bitcode }} \
+          -DENABLE_ARC=TRUE \
+          -DQT_IOS_TEAM_ID=${{ secrets.IOS_TEAM_ID }} \
+          -DQT_IOS_CODE_SIGN_IDENTITY=${{ secrets.IOS_CODE_SIGN_IDENTITY }} \
+          -DQT_IOS_PROVISIONING_PROFILE_SPECIFIER=${{ secrets.IOS_PROVISIONING_PROFILE_SPECIFIER }} \
+          -B ./build/ -S .
+
+    - name: 🔨 Build QaterialGallery
+      run: cmake --build build --target QaterialGallery --config "${{ matrix.build-type }}" -j8
+
+    - name: 🔨 Build QaterialGallery Archive
+      run: cmake --build build --target QaterialGalleryArchive --config "${{ matrix.build-type }}" -j8
+
+    - name: 🚀 Deploy QaterialGallery Ipa
+      run: cmake --build build --target QaterialGalleryIpa --config "${{ matrix.build-type }}" -j8
+
+    - name: 📦 Upload QaterialGallery App
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-${{ matrix.platform }}-${{ matrix.deployment-target }}.app
+        path: build/${{ matrix.build-type }}-iphoneos/QaterialGallery.app
+
+    - name: 📦 Upload QaterialGallery Ipa
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
+        path: build/QaterialGallery.ipa/Qaterial.ipa
 
   BuildWindows:
     runs-on: ${{ matrix.os }}
@@ -134,14 +226,14 @@ jobs:
           path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
 
-      - name: Install Qt
+      - name: ⬆️ Install Qt
         uses: jurplel/install-qt-action@v2
         with:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
-      - name: Delete Qt built-in styles
+      - name: 🔥 Delete Qt built-in styles
         run: |
           rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
           rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
@@ -149,23 +241,23 @@ jobs:
           rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
         shell: bash
 
-      - name: Configure
+      - name: 🔧 Configure
         run: |
           mkdir -p build
           cmake -DQATERIALGALLERY_IGNORE_ENV=ON -DCMAKE_BUILD_TYPE="${{ matrix.build-type }}" -B build -S .
         shell: bash
 
-      - name: Build Qaterial
+      - name: 🔨 Build Qaterial
         run: cmake --build build --target "Qaterial" --config "${{ matrix.build-type }}" -j
 
-      - name: Build QaterialGallery
+      - name: 🔨 Build QaterialGallery
         run: cmake --build build --target "QaterialGallery" --config "${{ matrix.build-type }}" -j
 
-      - name: Build QaterialGallery Installer
+      - name: 🔨 Build QaterialGallery Installer
         run: cmake --build build --target "QaterialGalleryInstallerX64" --config "${{ matrix.build-type }}" -j
         if: contains(matrix.os, 'windows')
 
-      - name: Upload QaterialGallery Installer
+      - name: 📦 Upload QaterialGallery Installer
         uses: actions/upload-artifact@v2
         with:
           name: Qaterial Gallery Installer Windows (${{ matrix.version }})
@@ -177,11 +269,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: "Configure"
+    - name: 🔧 Configure
       run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 cmake -B ./build/ -S . ..
-    - name: "Build"
+    - name: 🔨 Build
       run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 make -C build -j
-    - name: "Deploy to Github Pages"
+    - name: 🚀 Deploy to Github Pages
       run: |
         mkdir -p build/deploy
         mv platforms/html/index.html build/deploy/index.html
