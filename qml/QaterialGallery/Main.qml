@@ -24,8 +24,11 @@ Qaterial.ApplicationWindow
     {
       title: qsTr("File")
       width: 300
-      Qaterial.MenuItem { text: qsTr("New...");onTriggered: console.log(
-    "New");action: Action { shortcut: "Ctrl+N" } } // MenuItem
+      Qaterial.MenuItem
+      {
+        text: qsTr("New...");onTriggered: console.log(
+          "New");action: Action { shortcut: "Ctrl+N" }
+      } // MenuItem
       Qaterial.MenuItem { text: qsTr("Open...");onTriggered: console.log("Open") } // MenuItem
       Qaterial.MenuItem { text: qsTr("Save");onTriggered: console.log("Save") } // MenuItem
       Qaterial.MenuItem { text: qsTr("Save As...");onTriggered: console.log("Save As") } // MenuItem

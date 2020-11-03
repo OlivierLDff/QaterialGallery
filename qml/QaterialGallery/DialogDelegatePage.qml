@@ -14,8 +14,11 @@ Qaterial.ScrollablePage
 {
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Dialog Delegates" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Dialog Delegates"
+    } // AppBarContent
   } // ToolBar
 
   pane.padding: 0

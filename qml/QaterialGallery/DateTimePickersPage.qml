@@ -16,8 +16,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Date / Time Pickers" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Date / Time Pickers"
+    } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView
@@ -72,7 +75,7 @@ Qaterial.Page
             Qaterial.TimePickerDialog
             {
               onAccepted: () => Qaterial.SnackbarManager
-            .show({ text: `Simple EU Dialog Picker : User picked ${hour}:${minute}` })
+                .show({ text: `Simple EU Dialog Picker : User picked ${hour}:${minute}` })
               Component.onCompleted: open()
             } // TimePickerDialog
           } // Component
@@ -94,7 +97,7 @@ Qaterial.Page
           Layout.preferredWidth: 250
 
           onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager
-        .show({ text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}` })
+            .show({ text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}` })
         } // TextFieldTimePicker
 
         Qaterial.Label
@@ -114,7 +117,7 @@ Qaterial.Page
           styleAm: false
 
           onHourAccepted: (hour, minute, am) => Qaterial.SnackbarManager
-        .show({ text: `EU Picker : User picked ${hour}:${minute}` })
+            .show({ text: `EU Picker : User picked ${hour}:${minute}` })
         } // TextFieldTimePicker
       } // ColumnLayout
     } // ScrollablePage

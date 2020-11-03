@@ -17,8 +17,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Cards" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Cards"
+    } // AppBarContent
   } // ToolBar
 
   Flickable

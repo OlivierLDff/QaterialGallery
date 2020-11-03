@@ -16,8 +16,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Dialogs" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Dialogs"
+    } // AppBarContent
   } // ToolBar
 
   Qaterial.ScrollablePage

@@ -17,8 +17,11 @@ Qaterial.ScrollablePage
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Frame" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Frame"
+    } // AppBarContent
   } // ToolBar
 
   readonly property int itemWidth: Math.max(button.implicitWidth, Math.min(button.implicitWidth * 3, _page

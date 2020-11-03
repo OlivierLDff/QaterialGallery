@@ -16,8 +16,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "ToolTips" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "ToolTips"
+    } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView

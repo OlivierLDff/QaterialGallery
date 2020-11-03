@@ -16,8 +16,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Menu Tab Bar" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Menu Tab Bar"
+    } // AppBarContent
   } // ToolBar
 
   ColumnLayout

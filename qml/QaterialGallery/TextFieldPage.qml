@@ -15,8 +15,11 @@ Qaterial.ScrollablePage
 {
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Text Fields" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Text Fields"
+    } // AppBarContent
   } // ToolBar
 
   pane.padding: 16

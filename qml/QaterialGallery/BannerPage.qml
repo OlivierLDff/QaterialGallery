@@ -17,8 +17,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Banners" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Banners"
+    } // AppBarContent
   } // ToolBar
 
   property string shortText: "One line text string with one action."

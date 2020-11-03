@@ -16,8 +16,11 @@ Qaterial.Page
   id: _page
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Qaterial Gallery " + Qaterial.Version.readable } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Qaterial Gallery " + Qaterial.Version.readable
+    } // AppBarContent
   } // ToolBar
 
   ListModel

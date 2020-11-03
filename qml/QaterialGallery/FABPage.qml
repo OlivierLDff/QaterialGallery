@@ -18,8 +18,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Floating Action Buttons" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Floating Action Buttons"
+    } // AppBarContent
   } // ToolBar
 
   Qaterial.SwipeView

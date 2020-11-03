@@ -15,8 +15,11 @@ Qaterial.Page
 {
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Snackbars" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Snackbars"
+    } // AppBarContent
   } // ToolBar
 
   Qaterial.ScrollablePage

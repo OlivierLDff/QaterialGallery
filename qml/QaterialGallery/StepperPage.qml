@@ -16,8 +16,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    AppBarContent { anchors.fill: parent;
-      title: "Steppers" } // AppBarContent
+    AppBarContent
+    {
+      anchors.fill: parent;
+      title: "Steppers"
+    } // AppBarContent
   } // ToolBar
 
   property bool verticalStepper: width < 500
