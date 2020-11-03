@@ -6,6 +6,10 @@ on:
       - master
       - ci
 
+  release:
+    types:
+      - created
+
   pull_request:
     branches:
       - master
@@ -30,13 +34,29 @@ jobs:
     - name: 🚀 Deploy QaterialGallery AppImage
       run: docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 cmake --build build --target "QaterialGalleryAppImage" --config "Release" -j $(nproc)
 
+    - name: Get Name of Artifact
+      run: |
+        ARTIFACT_PATHNAME=$(ls build/*.AppImage | head -n 1)
+        ARTIFACT_NAME=$(basename $ARTIFACT_PATHNAME)
+        echo ::set-env name=ARTIFACT_NAME::${ARTIFACT_NAME}
+        echo ::set-env name=ARTIFACT_PATHNAME::${ARTIFACT_PATHNAME}
+
     - name: 📦 Upload QaterialGallery AppImage
       uses: actions/upload-artifact@v2
       with:
         name: QaterialGallery.AppImage
-        path: build/*.AppImage
+        path: ${{ env.ARTIFACT_PATHNAME }}
 
-        if: startsWith(github.ref, 'refs/tags/v')
+    - name: 🚀 Upload Release Asset
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ env.ARTIFACT_PATHNAME }}
+        asset_name: QaterialGallery.AppImage
+        asset_content_type: application/vnd.appimage
 
   BuildApk:
 
@@ -118,6 +138,17 @@ jobs:
       with:
         name: QaterialGallery-${{ matrix.abi }}-${{ matrix.target-api }}.apk
         path: build/QaterialGallery-${{ matrix.abi }}/build/outputs/apk/release/QaterialGallery-${{matrix.abi}}-release-signed.apk
+
+    - name: 🚀 Upload Release Asset
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/QaterialGallery-${{ matrix.abi }}/build/outputs/apk/release/QaterialGallery-${{matrix.abi}}-release-signed.apk
+        asset_name: QaterialGallery-${{ matrix.abi }}-${{ matrix.target-api }}.apk
+        asset_content_type: application/zip
 
   BuildIpa:
 
@@ -206,14 +237,34 @@ jobs:
     - name: 📦 Upload QaterialGallery Ipa
       uses: actions/upload-artifact@v2
       with:
-        name: QaterialGallery-${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
+        name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
         path: build/QaterialGallery.ipa/Qaterial.ipa
+
+    - uses: Apple-Actions/upload-testflight-build@master
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      name: 🚀 Release to TestFlight
+      with:
+        app-path: build/QaterialGallery.ipa/Qaterial.ipa
+        issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+
+    - name: 🚀 Upload Release Asset
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/QaterialGallery.ipa/Qaterial.ipa
+        asset_name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
+        asset_content_type: application/zip
 
   BuildWindows:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macOS-latest]
+        os: [windows-latest]
         version: ['5.15.1']
         build-type: ['Release']
     steps:
@@ -255,14 +306,23 @@ jobs:
 
       - name: 🔨 Build QaterialGallery Installer
         run: cmake --build build --target "QaterialGalleryInstallerX64" --config "${{ matrix.build-type }}" -j
-        if: contains(matrix.os, 'windows')
 
       - name: 📦 Upload QaterialGallery Installer
         uses: actions/upload-artifact@v2
         with:
-          name: Qaterial Gallery Installer Windows (${{ matrix.version }})
-          path: build/QaterialGalleryInstaller*.exe
-        if: contains(matrix.os, 'windows')
+          name: Qaterial Gallery Installer Windows
+          path: build/QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
+
+      - name: 🚀 Upload Release Asset
+        if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: build/QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
+          asset_name: QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
 
   BuildWasm:
     runs-on: ubuntu-latest
