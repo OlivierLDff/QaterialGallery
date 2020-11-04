@@ -238,13 +238,13 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
-        path: build/QaterialGallery.ipa/Qaterial.ipa
+        path: build/QaterialGalleryIpa/Qaterial.ipa
 
     - uses: Apple-Actions/upload-testflight-build@master
       if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
       name: 🚀 Release to TestFlight
       with:
-        app-path: build/QaterialGallery.ipa/Qaterial.ipa
+        app-path: build/QaterialGalleryIpa/Qaterial.ipa
         issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
         api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
         api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
@@ -256,7 +256,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: build/QaterialGallery.ipa/Qaterial.ipa
+        asset_path: build/QaterialGalleryIpa/Qaterial.ipa
         asset_name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
         asset_content_type: application/zip
 
