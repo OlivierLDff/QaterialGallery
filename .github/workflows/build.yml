@@ -310,7 +310,7 @@ jobs:
       - name: 📦 Upload QaterialGallery Installer
         uses: actions/upload-artifact@v2
         with:
-          name: Qaterial Gallery Installer Windows
+          name: QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
           path: build/QaterialGalleryInstallerX64${{ matrix.build-type }}.exe
 
       - name: 🚀 Upload Release Asset
