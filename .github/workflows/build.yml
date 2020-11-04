@@ -156,7 +156,7 @@ jobs:
     strategy:
       matrix:
         deployment-target: ['12.0']
-        platform: ['OS64']
+        platform: ['OS64COMBINED']
         version: ['5.15.1']
         build-type: ['Release']
         bitcode: ['FALSE']
@@ -210,7 +210,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/ios-toolchain/ios.toolchain.cmake \
           -DCMAKE_CONFIGURATION_TYPES="Release" \
           -DDEPLOYMENT_TARGET=${{ matrix.deployment-target }} \
-          -DPLATFORM=OS64COMBINED \
+          -DPLATFORM=${{ matrix.platform }} \
           -DENABLE_VISIBILITY=FALSE \
           -DENABLE_BITCODE=${{ matrix.bitcode }} \
           -DENABLE_ARC=TRUE \
