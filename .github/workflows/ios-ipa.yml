@@ -1,0 +1,130 @@
+name: 👷 iOs CI
+
+on:
+  push:
+    branches:
+      - master
+      - ci
+
+  release:
+    types:
+      - created
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  BuildIpa:
+
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        deployment-target: ['12.0']
+        platform: ['OS64']
+        qt-version: ['5.15.1']
+        build-type: ['Release']
+        bitcode: ['FALSE']
+
+    steps:
+    -
+      uses: actions/checkout@v2
+    -
+      uses: actions/checkout@v2
+      name: ⬆ Install toolchain
+      with:
+        repository: OlivierLDff/IosCMakeToolchain
+        path: ios-toolchain
+    -
+      name: Cache Qt
+      id: cache-qt-ios
+      uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.qt-version }}
+        key: ${{ runner.os }}-QtCache-${{ matrix.qt-version }}-ios
+    -
+      name: ⬆ Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.qt-version }}
+        target: ios
+        dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.qt-version }}
+        cached: ${{ steps.cache-qt-ios.outputs.cache-hit }}
+    -
+      name: 🔥 Delete Qt built-in styles
+      run: |
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Imagine
+        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
+      shell: bash
+    -
+      uses: OlivierLDff/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.IOS_CERTIFICATES_FILE_BASE64 }}
+        p12-password: ${{ secrets.IOS_CERTIFICATES_PASSWORD }}
+    -
+      uses: OlivierLDff/download-provisioning-profiles@v1
+      with:
+        bundle-id: com.qaterial.gallery
+        issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+    -
+      name: 🔧 Configure
+      run: |
+        mkdir -p build
+        cmake \
+          -G "Xcode" \
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/ios-toolchain/ios.toolchain.cmake \
+          -DCMAKE_CONFIGURATION_TYPES="Release" \
+          -DDEPLOYMENT_TARGET=${{ matrix.deployment-target }} \
+          -DPLATFORM=${{ matrix.platform }} \
+          -DENABLE_VISIBILITY=FALSE \
+          -DENABLE_BITCODE=${{ matrix.bitcode }} \
+          -DENABLE_ARC=TRUE \
+          -DQT_IOS_TEAM_ID=${{ secrets.IOS_TEAM_ID }} \
+          -DQT_IOS_CODE_SIGN_IDENTITY=${{ secrets.IOS_CODE_SIGN_IDENTITY }} \
+          -DQT_IOS_PROVISIONING_PROFILE_SPECIFIER=${{ secrets.IOS_PROVISIONING_PROFILE_SPECIFIER }} \
+          -B ./build/ -S .
+    -
+      name: 🔨 Build QaterialGallery
+      run: cmake --build build --target QaterialGallery --config "${{ matrix.build-type }}"
+    -
+      name: 🔨 Build QaterialGallery Archive
+      run: cmake --build build --target QaterialGalleryArchive --config "${{ matrix.build-type }}"
+    -
+      name: 🚀 Deploy QaterialGallery Ipa
+      run: cmake --build build --target QaterialGalleryIpa --config "${{ matrix.build-type }}"
+    -
+      name: 📦 Upload QaterialGallery App
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-${{ matrix.platform }}-${{ matrix.deployment-target }}.app
+        path: build/${{ matrix.build-type }}-iphoneos/QaterialGallery.app
+    -
+      name: 📦 Upload QaterialGallery Ipa
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
+        path: build/QaterialGalleryIpa/Qaterial.ipa
+    -
+      uses: OlivierLDff/upload-testflight-build@v1
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      name: 🚀 Release to TestFlight
+      with:
+        app-path: build/QaterialGalleryIpa/Qaterial.ipa
+        issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+    -
+      name: 🚀 Upload Release Asset
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/QaterialGalleryIpa/Qaterial.ipa
+        asset_name: QaterialGallery-i${{ matrix.platform }}-${{ matrix.deployment-target }}.ipa
+        asset_content_type: application/zip

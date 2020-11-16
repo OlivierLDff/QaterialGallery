@@ -1,0 +1,66 @@
+name: 👷 AppImage CI
+
+on:
+  push:
+    branches:
+      - master
+      - ci
+
+  release:
+    types:
+      - created
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  BuildAppImage:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+      uses: actions/checkout@v2
+    -
+      name: 🔧 Configure
+      run: |
+        mkdir -p build
+        docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 \
+          cmake \
+          -DQATERIALGALLERY_IGNORE_ENV=ON \
+          -B ./build/ -S .
+    -
+      name: 🔨 Build QaterialGallery
+      run: |
+        docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 \
+          cmake --build build --target "QaterialGallery" --config "Release" -j $(nproc)
+    -
+      name: 🚀 Deploy QaterialGallery AppImage
+      run: |
+        docker run --rm -v $(pwd):/src/ --device /dev/fuse --cap-add SYS_ADMIN --security-opt apparmor:unconfined reivilo1234/qt-linux-cmake:qt5.15.1-gcc7 \
+          cmake --build build --target "QaterialGalleryAppImage" --config "Release" -j $(nproc)
+    -
+      name: Get Name of Artifact
+      run: |
+        ARTIFACT_PATHNAME=$(ls build/*.AppImage | head -n 1)
+        ARTIFACT_NAME=$(basename $ARTIFACT_PATHNAME)
+        echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
+        echo "ARTIFACT_PATHNAME=${ARTIFACT_PATHNAME}" >> $GITHUB_ENV
+    -
+      name: 📦 Upload QaterialGallery AppImage
+      uses: actions/upload-artifact@v2
+      with:
+        name: QaterialGallery.AppImage
+        path: ${{ env.ARTIFACT_PATHNAME }}
+    -
+      name: 🚀 Upload Release Asset
+      if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ env.ARTIFACT_PATHNAME }}
+        asset_name: QaterialGallery.AppImage
+        asset_content_type: application/vnd.appimage

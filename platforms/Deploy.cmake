@@ -6,21 +6,8 @@ set(QATERIALGALLERY_PLATFORMS_DIR ${PROJECT_SOURCE_DIR}/platforms)
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
-  qt_generate_qml_plugin_import(${QATERIALGALLERY_TARGET}
-    QML_SRC ${PROJECT_SOURCE_DIR}/qml
-    EXTRA_PLUGIN
-      QtQuickVirtualKeyboardPlugin
-      QtQuickVirtualKeyboardSettingsPlugin
-      QtQuickVirtualKeyboardStylesPlugin
-      QmlFolderListModelPlugin
-      QQuickLayoutsPlugin
-    VERBOSE
-    )
+  qt_generate_qml_plugin_import(${QATERIALGALLERY_TARGET} QML_SRC ${PROJECT_SOURCE_DIR}/qml VERBOSE)
   qt_generate_plugin_import(${QATERIALGALLERY_TARGET} VERBOSE)
-endif()
-
-if(TARGET Qt5::QmlWorkerScript)
-  target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE Qt5::QmlWorkerScript)
 endif()
 
 # ──── WINDOWS ────
@@ -99,6 +86,28 @@ endif()
 
 # ──── MACOS ────
 
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
+
+  include(${PROJECT_SOURCE_DIR}/cmake/FetchQtMacCMake.cmake)
+
+  add_qt_mac_app(${QATERIALGALLERY_TARGET}
+    NAME "Qaterial"
+    BUNDLE_IDENTIFIER "com.qaterial.gallery"
+    LONG_VERSION ${QATERIALGALLERY_VERSION}.${QATERIALGALLERY_VERSION_TAG}
+    COPYRIGHT "Copyright Olivier Le Doeuff 2019-2020"
+    APPLICATION_CATEGORY_TYPE "public.app-category.developer-tools"
+    QML_DIR ${PROJECT_SOURCE_DIR}/qml
+    RESOURCES
+      "${QATERIALGALLERY_PLATFORMS_DIR}/macos/Assets.xcassets"
+    DMG
+    PKG
+    # PKG_UPLOAD_SYMBOLS
+    VERBOSE
+    VERBOSE_LEVEL 3
+  )
+
+endif()
+
 # ──── ANDROID ────
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
@@ -125,7 +134,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Android")
     PACKAGE_SOURCES  ${QATERIALGALLERY_PLATFORMS_DIR}/android
     ${KEYSTORE_SIGNATURE}
     QML_DIR ${PROJECT_SOURCE_DIR}/qml
-    )
+  )
 
 endif()
 

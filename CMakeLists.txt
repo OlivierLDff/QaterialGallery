@@ -21,7 +21,7 @@ set(QATERIALGALLERY_PROJECT "QaterialGallery" CACHE STRING "Qaterial Gallery Pro
 # Project version must be set here
 set(QATERIALGALLERY_VERSION_MAJOR 1)
 set(QATERIALGALLERY_VERSION_MINOR 4)
-set(QATERIALGALLERY_VERSION_PATCH 1)
+set(QATERIALGALLERY_VERSION_PATCH 2)
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
   execute_process(
     COMMAND git rev-parse --short HEAD
