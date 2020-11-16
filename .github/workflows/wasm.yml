@@ -1,0 +1,44 @@
+name: 👷 Wasm CI
+
+on:
+  push:
+    branches:
+      - master
+      - ci
+
+  pull_request:
+    branches:
+      - master
+
+  repository_dispatch:
+    types: [qaterial-update]
+
+jobs:
+  BuildWasm:
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+      uses: actions/checkout@v2
+    -
+      name: 🔧 Configure
+      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 cmake -B ./build/ -S . ..
+    -
+      name: 🔨 Build
+      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10 make -C build -j
+    -
+      name: 🚀 Deploy to Github Pages
+      if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/master')
+      run: |
+        mkdir -p build/deploy
+        cp platforms/html/index.html build/deploy/index.html
+        cp build/qtloader.js build/deploy/qtloader.js
+        cp build/QaterialGallery.js build/deploy/QaterialGallery.js
+        cp build/qtlogo.svg build/deploy/qtlogo.svg
+        cp build/QaterialGallery.wasm build/deploy/QaterialGallery.wasm
+        cp platforms/html/icon.png build/deploy/icon.png
+        cd build/deploy
+        git init
+        git add .
+        git -c user.name='ci' -c user.email='ci' commit -m init
+        git push -f -q https://git:${{ secrets.github_token }}@github.com/${{ github.repository }} HEAD:gh-pages
