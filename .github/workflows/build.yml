@@ -87,6 +87,7 @@ jobs:
         version: ${{ matrix.version }}
         target: android
         dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
     - name: 🔥 Delete Qt built-in styles
       run: |
@@ -181,6 +182,7 @@ jobs:
         version: ${{ matrix.version }}
         target: ios
         dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
     - name: 🔥 Delete Qt built-in styles
       run: |
