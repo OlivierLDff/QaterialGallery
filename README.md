@@ -1,18 +1,20 @@
 # Qaterial Gallery
 
-[![CI](https://github.com/OlivierLDff/QaterialGallery/workflows/CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3ACI)
+|   Configuration   |                            Status                            |
+| :---------------: | :----------------------------------------------------------: |
+| Windows Installer | [![👷 Windows CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Windows%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Windows+CI%22) |
+|  Linux AppImage   | [![👷 AppImage CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20AppImage%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+AppImage+CI%22) |
+|     MacOs Dmg     | [![👷 MacOs CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20MacOs%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+MacOs+CI%22) |
+|     MacOs Pkg     |                                                              |
+|    Android Apk    | [![👷 Android CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Android%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Android+CI%22) |
+|      iOs Ipa      | [![👷 iOs CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20iOs%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+iOs+CI%22) |
+|       Wasm        | [![👷 Wasm CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Wasm%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Wasm+CI%22) |
 
 [![downloadappstore](https://user-images.githubusercontent.com/17255804/98216721-b97d4380-1f49-11eb-9d38-483069cbb4e4.png)](https://apps.apple.com/us/app/qaterial-gallery/id1538406440)
 
 QaterialGallery is a showcase application and contains example for the library Qaterial . It is still under development. This library is hard fork of previous library QQuickMaterialHelper.
 
 This project also showcase multiplatform deployment with Qt.
-
-- [x] Windows (Installer)
-- [x] Linux (AppImage)
-- [ ] macOs *(Compile but no deployment)*
-- [x] iOs (App & Ipa)
-- [x] Android (Apk)
 
 ## Components
 
