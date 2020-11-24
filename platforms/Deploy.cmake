@@ -6,7 +6,16 @@ set(QATERIALGALLERY_PLATFORMS_DIR ${PROJECT_SOURCE_DIR}/platforms)
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
-  qt_generate_qml_plugin_import(${QATERIALGALLERY_TARGET} QML_SRC ${PROJECT_SOURCE_DIR}/qml VERBOSE)
+  qt_generate_qml_plugin_import(${QATERIALGALLERY_TARGET}
+    QML_SRC ${PROJECT_SOURCE_DIR}/qml
+    EXTRA_PLUGIN
+      QtQuickVirtualKeyboardPlugin
+      QtQuickVirtualKeyboardSettingsPlugin
+      QtQuickVirtualKeyboardStylesPlugin
+      QmlFolderListModelPlugin
+      QQuickLayoutsPlugin
+    VERBOSE
+  )
   qt_generate_plugin_import(${QATERIALGALLERY_TARGET} VERBOSE)
 endif()
 
