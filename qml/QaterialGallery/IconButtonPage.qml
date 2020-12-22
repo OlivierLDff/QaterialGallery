@@ -44,12 +44,11 @@ Qaterial.Page
         horizontalAlignment: Text.AlignHCenter
       } // Label
 
-      Qaterial.Label
+      Qaterial.LabelHeadline4
       {
         text: "AppBar Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
@@ -69,12 +68,11 @@ Qaterial.Page
         } // AppBarButton
       } // RowLayout
 
-      Qaterial.Label
+      Qaterial.LabelHeadline4
       {
         text: "Round Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
@@ -101,12 +99,11 @@ Qaterial.Page
         } // RoundButton
       } // RowLayout
 
-      Qaterial.Label
+      Qaterial.LabelHeadline4
       {
         text: "Square Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
@@ -132,12 +129,11 @@ Qaterial.Page
         } // SquareButton
       } // RowLayout
 
-      Qaterial.Label
+      Qaterial.LabelHeadline4
       {
         text: "Toggle Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout
@@ -208,12 +204,11 @@ Qaterial.Page
         } // ToggleButton
       } // RowLayout
 
-      Qaterial.Label
+      Qaterial.LabelHeadline4
       {
         text: "Tool Button"
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
-        textType: Qaterial.Style.TextType.Body2
       } // Label
 
       RowLayout

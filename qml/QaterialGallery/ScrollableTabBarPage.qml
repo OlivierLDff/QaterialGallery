@@ -39,7 +39,7 @@ Qaterial.Page
           spacing: 0
           id: _column
 
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             id: titleLabel
 
@@ -49,7 +49,6 @@ Qaterial.Page
             Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Scrollable Tab Bar"
-            textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
           } // Label
 
@@ -61,7 +60,7 @@ Qaterial.Page
             onPrimary: true
             enabled: _root.enabled
 
-            minWidth: 110
+            minWidth: 130
             maxElement: 6
 
             model: ListModel
@@ -101,17 +100,14 @@ Qaterial.Page
         Repeater
         {
           model: 20
-          Item
+          Qaterial.LabelHeadline4
           {
             width: swipeView.width
             height: swipeView.height
-            Qaterial.Label
-            {
-              anchors.centerIn: parent
-              text: "Chapter " + (index + 1)
-              textType: Qaterial.Style.TextType.Display1
-            } // Label
-          } // Item
+            text: "Chapter " + (index + 1)
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+          } // Label
         } // Repeater
       } // SwipeView
     } // Page

@@ -33,7 +33,7 @@ Qaterial.Page
       width: parent.width
       spacing: Qaterial.Style.card.horizontalPadding
 
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         width: parent.width
         wrapMode: Label.Wrap
@@ -41,7 +41,6 @@ Qaterial.Page
         text: "A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.\n" +
           "  • Dialogs are purposefully interruptive, so they should be used sparingly."
         maximumLineCount: 7
-        textType: Qaterial.Style.TextType.Caption
       } // Label
 
       readonly property double buttonWidth: Math.min(width * 0.8, 500)

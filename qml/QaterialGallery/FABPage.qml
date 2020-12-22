@@ -78,12 +78,11 @@ Qaterial.Page
             horizontalAlignment: Text.AlignHCenter
           } // Label
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Mini Fab"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           RowLayout
@@ -128,12 +127,11 @@ Qaterial.Page
             } // MiniFabButton
           } // RowLayout
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Default Fab"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           RowLayout
@@ -179,12 +177,11 @@ Qaterial.Page
             } // FabButton
           } // RowLayout
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Extended Fab"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           GridLayout
@@ -235,12 +232,11 @@ Qaterial.Page
             } // ExtendedfabButton
           } // GridLayout
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Default To Fab"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Qaterial.ExtendedFabButton
@@ -271,12 +267,11 @@ Qaterial.Page
           width: parent.width
           spacing: 5
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Flat Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -301,12 +296,11 @@ Qaterial.Page
             } // FlatFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Mini Flat Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -331,12 +325,11 @@ Qaterial.Page
             } // MiniFlatFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Flat Fab Button (No Clip)"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -364,12 +357,11 @@ Qaterial.Page
             } // FlatFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Mini Flat Fab Button (No Clip)"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -397,12 +389,11 @@ Qaterial.Page
             } // MiniFlatFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Scalable Flat Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Grid
@@ -429,12 +420,11 @@ Qaterial.Page
             } // ScalableFlatFabButton
           } // Grid
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Scalable Mini Flat Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Grid
@@ -485,12 +475,11 @@ Qaterial.Page
           width: parent.width
           spacing: 5
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Outlined Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -515,12 +504,11 @@ Qaterial.Page
             } // OutlinedFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Mini Outlined Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -545,12 +533,11 @@ Qaterial.Page
             } // MiniOutlinedFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Outlined Fab Button (No Clip)"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -578,12 +565,11 @@ Qaterial.Page
             } // OutlinedFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Mini Outlined Fab Button (No Clip)"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Row
@@ -611,12 +597,11 @@ Qaterial.Page
             } // MiniOutlinedFabButton
           } // Row
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Scalable Outlined Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Grid
@@ -645,12 +630,11 @@ Qaterial.Page
             } // ScalableOutlinedFabButton
           } // Grid
 
-          Qaterial.Label
+          Qaterial.LabelBody1
           {
             text: "Scalable Mini Outlined Fab Button"
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            textType: Qaterial.Style.TextType.Body2
           } // Label
 
           Grid

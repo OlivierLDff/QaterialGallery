@@ -54,14 +54,13 @@ Qaterial.Page
             "TextFieldTimePicker allows the user to select an hour by editing the text in the field or by picking an hour in a TimePickerDialog."
         } // Label
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "Simple EU Time Picker Dialog"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.Button
         {
@@ -81,14 +80,13 @@ Qaterial.Page
           } // Component
         } // Button
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "AM/PM TextFieldTimePicker"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.TextFieldTimePicker
         {
@@ -100,14 +98,13 @@ Qaterial.Page
             .show({ text: `AM Picker : User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}` })
         } // TextFieldTimePicker
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "EU TextFieldTimePicker"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.TextFieldTimePicker
         {
@@ -145,14 +142,13 @@ Qaterial.Page
             "TextFieldDatePicker allows the user to select a date by editing the text in the field or by picking in a DatePickerDialog."
         } // Label
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "Simple Date Picker Dialog"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.Button
         {
@@ -174,14 +170,13 @@ Qaterial.Page
           } // Component
         } // Button
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "TextFieldDatePicker"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.TextFieldDatePicker
         {

@@ -31,7 +31,7 @@ Qaterial.Page
         onPrimary: true
       } // AppBarButton
 
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         id: _titleLabel
 
@@ -40,7 +40,6 @@ Qaterial.Page
         onPrimary: true
 
         text: "App Bar Top"
-        textType: Qaterial.Style.TextType.Title
         elide: Label.ElideRight
       } // Label
 

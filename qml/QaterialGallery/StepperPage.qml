@@ -164,13 +164,12 @@ Qaterial.Page
   footer: Item
   {
     height: supportingTextLabel.height + _row.height + 20
-    Qaterial.Label
+    Qaterial.LabelBody1
     {
       id: supportingTextLabel
       width: parent.width
 
       text: stepper.currentElement.supportingText
-      textType: Qaterial.Style.TextType.Body2
       horizontalAlignment: Text.AlignHCenter
 
       wrapMode: Text.Wrap

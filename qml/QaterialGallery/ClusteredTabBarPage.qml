@@ -36,7 +36,7 @@ Qaterial.Page
           anchors.fill: parent
           spacing: 0
 
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             id: _titleLabel
 
@@ -46,7 +46,6 @@ Qaterial.Page
             Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Clustered Tab Bar"
-            textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
           } // Label
 
@@ -89,11 +88,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Landscape View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FF2196F3"
           } // Label
         } // Item
@@ -103,11 +101,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "City View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FF00BCD4"
           } // Label
         } // Item
@@ -117,11 +114,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Abstract View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FFFFC107"
           } // Label
         } // Item

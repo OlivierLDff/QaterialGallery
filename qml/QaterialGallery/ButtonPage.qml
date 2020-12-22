@@ -39,11 +39,9 @@ Qaterial.Page
         Layout.leftMargin: 10
         spacing: 10
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Radius (" + _radiusSlider.value + ")"
-          textType: Qaterial.Style.TextType.Body2
-          onPrimary: true
         } // Label
 
         Qaterial.Slider

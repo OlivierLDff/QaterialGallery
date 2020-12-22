@@ -40,7 +40,7 @@ Qaterial.Page
           anchors.fill: parent
           spacing: 0
 
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             id: _titleLabel
 
@@ -50,7 +50,6 @@ Qaterial.Page
             Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
 
             text: "Fixed Tab Bar"
-            textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
           } // Label
 
@@ -85,6 +84,8 @@ Qaterial.Page
             display: _displaySwitch.checked && _showIconSwitch.checked ? AbstractButton.TextUnderIcon :
               _showIconSwitch.checked ? AbstractButton.IconOnly : AbstractButton.TextOnly
 
+            spacing: 4
+
             model: ListModel
             {
               ListElement { text: "Explore";source: "/QaterialGallery/images/icons/compass.svg" }
@@ -107,11 +108,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Explore View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FFF44336"
           } // Label
         } // Item
@@ -121,11 +121,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Flight View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FFE91E63"
           } // Label
         } // Item
@@ -135,11 +134,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Trips View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FF9C27B0"
           } // Label
         } // Item

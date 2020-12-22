@@ -32,7 +32,7 @@ Qaterial.Page
       width: parent.width
       spacing: Qaterial.Style.card.verticalPadding * 4
 
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         width: parent.width
         wrapMode: Label.Wrap
@@ -42,7 +42,6 @@ Qaterial.Page
           "  • A snackbar can contain a single action. Because they disappear automatically, the action shouldn’t be “Dismiss” or “Cancel.”"
         //Layout.preferredHeight: 100
         maximumLineCount: 7
-        textType: Qaterial.Style.TextType.Caption
       } // Label
 
       Qaterial.Snackbar

@@ -32,11 +32,10 @@ Qaterial.Card
       {
         Layout.fillWidth: true
 
-        Qaterial.Label
+        Qaterial.LabelHeadline5
         {
           text: _control.headerText
           elide: Text.ElideRight
-          textType: Qaterial.Style.TextType.Heading
           //padding: Qaterial.Style.card.horizontalPadding
           Layout.leftMargin: Qaterial.Style.card.horizontalPadding
           Layout.rightMargin: Qaterial.Style.card.horizontalPadding

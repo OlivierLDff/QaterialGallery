@@ -38,3 +38,4 @@ TabBarPage 1.0 TabBarPage.qml
 TextFieldPage 1.0 TextFieldPage.qml
 ToolTipPage 1.0 ToolTipPage.qml
 TypoPage 1.0 TypoPage.qml
+TypoPageEntry 1.0 TypoPageEntry.qml

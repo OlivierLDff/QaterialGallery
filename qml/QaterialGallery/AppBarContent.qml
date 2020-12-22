@@ -25,7 +25,7 @@ RowLayout
     onPrimary: true
   } // AppBarButton
 
-  Qaterial.Label
+  Qaterial.LabelHeadline6
   {
     id: _titleLabel
 
@@ -34,7 +34,6 @@ RowLayout
     onPrimary: true
 
     text: "Default text"
-    textType: Qaterial.Style.TextType.Title
     elide: Qaterial.Label.ElideRight
   } // Label
 

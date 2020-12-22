@@ -40,12 +40,11 @@ Qaterial.Page
       {
         width: parent.width
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Slider (" + Math.round(_slider.value) + ")"
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.Slider
@@ -67,13 +66,12 @@ Qaterial.Page
           }
         } // Slider
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Range slider (" + Math.round(_rangeSlider.first.value) + " ; " + Math.round(_rangeSlider.second
             .value) + ")"
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.RangeSlider
@@ -87,12 +85,11 @@ Qaterial.Page
           second.value: 80
         } // RangeSlider
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Disabled slider"
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.Slider
@@ -105,12 +102,11 @@ Qaterial.Page
           stepSize: 1
         } // Slider
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Disabled Range Slider"
           width: parent.width
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.RangeSlider
@@ -139,21 +135,19 @@ Qaterial.Page
         rowSpacing: 6
         columns: 2
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Slider (" + Math.round(_sliderVertical.value) + ")"
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Range slider (" + Math.round(_rangeSliderVertical.first.value) + " ; " + Math.round(
             _rangeSliderVertical.second.value) + ")"
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.Slider
@@ -179,20 +173,18 @@ Qaterial.Page
           second.value: 80
         } // RangeSlider
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Disabled slider"
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           text: "Disabled Range Slider"
           Layout.fillWidth: true
           horizontalAlignment: Text.AlignHCenter
-          textType: Qaterial.Style.TextType.Body2
         } // Label
 
         Qaterial.Slider

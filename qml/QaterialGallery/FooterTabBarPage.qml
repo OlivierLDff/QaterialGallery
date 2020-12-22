@@ -40,7 +40,7 @@ Qaterial.Page
           anchors.fill: parent
           spacing: 0
 
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             id: _titleLabel
 
@@ -49,17 +49,16 @@ Qaterial.Page
             Layout.topMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
             Layout.bottomMargin: (Qaterial.Style.toolbar.implicitHeight - implicitHeight) / 2
             text: "Footer Tab Bar"
-            textType: Qaterial.Style.TextType.Title
             elide: Label.ElideRight
           } // Label
 
           Qaterial.SwitchDelegate
           {
+            id: _displaySwitch
             Layout.fillWidth: true
             onPrimary: true
             text: "Hint Text"
             checked: true
-            id: _displaySwitch
           } // SwitchDelegate
         } // ColumnLayout
       } // ToolBar
@@ -76,11 +75,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Favorites View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FFF44336"
           } // Label
         } // Item
@@ -90,11 +88,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Music View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FFE91E63"
           } // Label
         } // Item
@@ -104,11 +101,10 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Album View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FF9C27B0"
           } // Label
         } // Item
@@ -118,33 +114,48 @@ Qaterial.Page
           width: _swipeView.width
           height: _swipeView.height
 
-          Qaterial.Label
+          Qaterial.LabelHeadline4
           {
             anchors.centerIn: parent
             text: "Settings View"
-            textType: Qaterial.Style.TextType.Display1
             color: "#FF673AB7"
           } // Label
         } // Item
       } // SwipeView
 
-      footer: Qaterial.FixedTabBar
+      footer: Qaterial.TabBar
       {
         id: _tabBar
         width: parent.width
         currentIndex: _swipeView.currentIndex
-        onPrimary: true
         enabled: _root.enabled
-        hintText: _displaySwitch.checked
-        useSmallFont: true
 
-        model: ListModel
+
+        Repeater
         {
-          ListElement { text: "Favorites";source: "/QaterialGallery/images/icons/heart.svg" }
-          ListElement { text: "Music";source: "/QaterialGallery/images/icons/music-note.svg" }
-          ListElement { text: "Albums";source: "/QaterialGallery/images/icons/album.svg" }
-          ListElement { text: "Settings";source: "/QaterialGallery/images/icons/settings.svg" }
-        } // ListModel
+          id: _repeater
+
+          model: ListModel
+          {
+            ListElement { text: "Favorites";source: "qrc:/QaterialGallery/images/icons/heart.svg" }
+            ListElement { text: "Music";source: "qrc:/QaterialGallery/images/icons/music-note.svg" }
+            ListElement { text: "Albums";source: "qrc:/QaterialGallery/images/icons/album.svg" }
+            ListElement { text: "Settings";source: "qrc:/QaterialGallery/images/icons/settings.svg" }
+          } // ListModel
+
+          delegate: Qaterial.TabButton
+          {
+            width: _tabBar.width / model.count
+            implicitWidth: width
+            text: model.text ? model.text : ""
+            icon.source: model.source ? model.source : ""
+            spacing: 4
+            enabled: _root.enabled
+            display: (index === _tabBar.currentIndex || !_displaySwitch.checked) ? AbstractButton.TextUnderIcon : AbstractButton.IconOnly
+            font: Qaterial.Style.textTheme.overline
+          } // TabButton
+        } // Repeater
+
       } // FixedTabBar
     } // Page
   } // Pane

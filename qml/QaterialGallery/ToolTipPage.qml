@@ -55,14 +55,13 @@ Qaterial.Page
             "When activated (often hen hovered), Tooltips display an element such as a description of its function."
         } // Label
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "Simple ToolTip On Button"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.FlatButton
         {
@@ -78,14 +77,13 @@ Qaterial.Page
           } // ToolTip
         } // FlatButton
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "Apparition Time Customized ToolTip"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.FlatButton
         {
@@ -102,14 +100,13 @@ Qaterial.Page
           } // ToolTip
         } // FlatButton
 
-        Qaterial.Label
+        Qaterial.LabelBody1
         {
           Layout.fillWidth: true
           Layout.alignment: Qt.AlignTop
           horizontalAlignment: Text.AlignHCenter
 
           text: "Customized ToolTip"
-          textType: Qaterial.Style.TextType.Body2
         } // Label
         Qaterial.FlatButton
         {
@@ -119,14 +116,15 @@ Qaterial.Page
 
           Qaterial.ToolTip
           {
-            text: "textType + radius"
+            text: "font + radius"
             visible: customizedToolTip.hovered || customizedToolTip.pressed
             backgroundRadius: height / 2
-            textType: Qaterial.Style.TextType.Display1
+            font: Qaterial.Style.textTheme.caption
           } // ToolTip
         } // FlatButton
       } // ColumnLayout
     } // ScrollablePage
+
     Qaterial.Page
     {
       width: _swipeView.width
@@ -165,12 +163,11 @@ Qaterial.Page
           color: "transparent"
           border.color: Qaterial.Style.accentColor
 
-          Qaterial.Label
+          Qaterial.LabelHint1
           {
             anchors.horizontalCenter: parent.horizontalCenter
             y: 20
             width: parent.width - 32
-            textType: Qaterial.Style.TextType.Hint
 
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter

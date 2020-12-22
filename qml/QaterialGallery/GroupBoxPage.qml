@@ -64,7 +64,7 @@ Qaterial.ScrollablePage
       title: "Caption Inline Title"
       columnWidth: _page.itemWidth
       anchors.horizontalCenter: parent.horizontalCenter
-      textType: Qaterial.Style.TextType.Caption
+      font: Qaterial.Style.textTheme.caption
       inlineTitle: true
     } // GroupBoxLayout
 
@@ -73,7 +73,7 @@ Qaterial.ScrollablePage
       title: "Caption Default Title"
       columnWidth: _page.itemWidth
       anchors.horizontalCenter: parent.horizontalCenter
-      textType: Qaterial.Style.TextType.Caption
+      font: Qaterial.Style.textTheme.caption
     } // GroupBoxLayout
   } // Column
 } // ScrollablePage

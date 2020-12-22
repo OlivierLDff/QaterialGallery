@@ -64,7 +64,7 @@ Qaterial.Page
       width: parent.width
       spacing: Qaterial.Style.card.verticalPadding
 
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         width: parent.width
         wrapMode: Label.Wrap
@@ -73,7 +73,6 @@ Qaterial.Page
           "  • Banners should be displayed at the top of the screen, below a top app bar. They are persistent and nonmodal, allowing the user to either ignore them or interact with them at any time."
         //Layout.preferredHeight: 100
         maximumLineCount: 7
-        textType: Qaterial.Style.TextType.Caption
       } // Label
 
       Qaterial.GroupBox

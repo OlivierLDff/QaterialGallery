@@ -38,14 +38,13 @@ Qaterial.ScrollablePage
       checked: true
     } // SwitchButton
 
-    Qaterial.Label
+    Qaterial.LabelCaption
     {
       width: _column.width
       wrapMode: Label.Wrap
       elide: Text.ElideRight
       text: "Text fields allow users to enter text into a UI. They typically appear in forms and dialogs."
       maximumLineCount: 5
-      textType: Qaterial.Style.TextType.Caption
     } // Label
 
     Qaterial.TextField // Name Field // Demonstrate required
@@ -165,7 +164,6 @@ Qaterial.ScrollablePage
       title: "Salary"
       prefixText: "$"
       suffixText: "USD"
-      suffixTextType: Qaterial.Style.TextType.Overline
       suffixTextColor: "#8BC34A"
       placeholderText: "Enter your Salary"
       validator: RegExpValidator { regExp: /[0-9]*[.,]?[0-9]{0,2}/ }
@@ -285,14 +283,13 @@ Qaterial.ScrollablePage
       }
     } // Button
 
-    Qaterial.Label
+    Qaterial.LabelCaption
     {
       width: _column.width
       horizontalAlignment: Qt.AlignHCenter
       wrapMode: Label.Wrap
       elide: Text.ElideRight
       text: "Field with * are required"
-      textType: Qaterial.Style.TextType.Caption
     } // Label
   } // Column
 } // ScrollablePage
