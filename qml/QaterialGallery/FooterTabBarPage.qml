@@ -130,7 +130,6 @@ Qaterial.Page
         currentIndex: _swipeView.currentIndex
         enabled: _root.enabled
 
-
         Repeater
         {
           id: _repeater
@@ -151,7 +150,8 @@ Qaterial.Page
             icon.source: model.source ? model.source : ""
             spacing: 4
             enabled: _root.enabled
-            display: (index === _tabBar.currentIndex || !_displaySwitch.checked) ? AbstractButton.TextUnderIcon : AbstractButton.IconOnly
+            display: (index === _tabBar.currentIndex || !_displaySwitch.checked) ? AbstractButton.TextUnderIcon :
+              AbstractButton.IconOnly
             font: Qaterial.Style.textTheme.overline
           } // TabButton
         } // Repeater
