@@ -5,7 +5,6 @@
 | Windows Installer | [![👷 Windows CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Windows%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Windows+CI%22) |
 |  Linux AppImage   | [![👷 AppImage CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20AppImage%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+AppImage+CI%22) |
 |     MacOs Dmg     | [![👷 MacOs CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20MacOs%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+MacOs+CI%22) |
-|     MacOs Pkg     |                                                              |
 |    Android Apk    | [![👷 Android CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Android%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Android+CI%22) |
 |      iOs Ipa      | [![👷 iOs CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20iOs%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+iOs+CI%22) |
 |       Wasm        | [![👷 Wasm CI](https://github.com/OlivierLDff/QaterialGallery/workflows/%F0%9F%91%B7%20Wasm%20CI/badge.svg)](https://github.com/OlivierLDff/QaterialGallery/actions?query=workflow%3A%22%F0%9F%91%B7+Wasm+CI%22) |
