@@ -3,13 +3,7 @@
 ## CMake scripts
 
 set(QTGENERATORCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtGeneratorCMake.git" CACHE STRING "QtGeneratorCMake repository, can be a local URL")
-set(QTGENERATORCMAKE_TAG "master" CACHE STRING "QtGeneratorCMake git tag")
-
-set(FETCHGOOGLEFONTCMAKE_REPOSITORY "https://github.com/OlivierLDff/FetchGoogleFontCMake.git" CACHE STRING "FetchGoogleFontCMake repository, can be a local URL")
-set(FETCHGOOGLEFONTCMAKE_TAG "master" CACHE STRING "FetchGoogleFontCMake git tag")
-
-set(GOOGLEFONTS_REPOSITORY "https://github.com/OlivierLDff/fonts" CACHE STRING "Google fonts repository, can be a local URL")
-set(GOOGLEFONTS_TAG "master" CACHE STRING "Google fonts git tag")
+set(QTGENERATORCMAKE_TAG "162d7e748ea588be4eb1403e5224471a589ae266" CACHE STRING "QtGeneratorCMake git tag")
 
 set(QTSTATICCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtStaticCMake.git" CACHE STRING "QtStaticCMake repository, can be a local URL")
 set(QTSTATICCMAKE_TAG "master" CACHE STRING "QtStaticCMake git tag")
@@ -32,18 +26,10 @@ set(QTMACCMAKE_TAG "main" CACHE STRING "Git Tag of QtMacCMake")
 set(QBC_REPOSITORY "https://github.com/OlivierLdff/QBCInstaller.git" CACHE STRING "QBC repository, can be a local URL")
 set(QBC_TAG "master" CACHE STRING "QBC git tag")
 
-## Ressources
-
-set(MATERIALDESIGNICONS_REPOSITORY "https://github.com/OlivierLDff/MaterialDesignSvgo" CACHE STRING "MaterialDesignIcons repository url")
-set(MATERIALDESIGNICONS_TAG "master" CACHE STRING "MaterialDesignIcons git tag")
-
 ## C++ libraries
 
 set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog repository url")
-set(SPDLOG_TAG "v1.x" CACHE STRING "spdlog git tag")
-
-set(QOLM_REPOSITORY "https://github.com/OlivierLDff/QOlm.git" CACHE STRING "QOlm repository url")
-set(QOLM_TAG "master" CACHE STRING "QOlm git tag")
+set(SPDLOG_TAG "7d07e0312a9185789977b9b0d1b18bae52db6b72" CACHE STRING "spdlog git tag")
 
 set(QATERIAL_REPOSITORY "https://github.com/OlivierLDff/Qaterial.git" CACHE STRING "Repository of Qaterial")
-set(QATERIAL_TAG "master" CACHE STRING "Git Tag of Qaterial")
+set(QATERIAL_TAG "adc7a13d243f217c62be262faa8dd1d2bede54dc" CACHE STRING "Git Tag of Qaterial")
