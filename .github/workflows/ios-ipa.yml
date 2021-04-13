@@ -25,6 +25,9 @@ jobs:
         qt-version: ['5.15.1']
         build-type: ['Release']
         bitcode: ['FALSE']
+        # 1 is legacy build system
+        # 12 is new build system
+        build-system: ['1']
 
     steps:
     -
@@ -76,6 +79,7 @@ jobs:
         mkdir -p build
         cmake \
           -G "Xcode" \
+          -Tbuildsystem=${{ matrix.build-system }} \
           -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/ios-toolchain/ios.toolchain.cmake \
           -DCMAKE_CONFIGURATION_TYPES="Release" \
           -DDEPLOYMENT_TARGET=${{ matrix.deployment-target }} \

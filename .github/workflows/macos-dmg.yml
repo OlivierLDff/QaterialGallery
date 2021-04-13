@@ -23,6 +23,9 @@ jobs:
         min-osx-target: ['10.13']
         qt-version: ['5.15.1']
         build-type: ['Release']
+        # 1 is legacy build system
+        # 12 is new build system
+        build-system: ['1']
 
     steps:
     -
@@ -68,6 +71,7 @@ jobs:
         mkdir -p build
         cmake \
           -G "Xcode" \
+          -Tbuildsystem=${{ matrix.build-system }} \
           -DCMAKE_OSX_DEPLOYMENT_TARGET=${{ matrix.min-osx-target }} \
           -DQT_MAC_TEAM_ID=${{ secrets.MAC_TEAM_ID }} \
           -DQT_MAC_CODE_SIGN_IDENTITY="Developer ID Application" \
