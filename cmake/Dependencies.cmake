@@ -29,7 +29,7 @@ set(QBC_TAG "master" CACHE STRING "QBC git tag")
 ## C++ libraries
 
 set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog repository url")
-set(SPDLOG_TAG "7d07e0312a9185789977b9b0d1b18bae52db6b72" CACHE STRING "spdlog git tag")
+set(SPDLOG_TAG "v1.x" CACHE STRING "spdlog git tag")
 
 set(QATERIAL_REPOSITORY "https://github.com/OlivierLDff/Qaterial.git" CACHE STRING "Repository of Qaterial")
-set(QATERIAL_TAG "adc7a13d243f217c62be262faa8dd1d2bede54dc" CACHE STRING "Git Tag of Qaterial")
+set(QATERIAL_TAG "v1.4.0" CACHE STRING "Git Tag of Qaterial")
