@@ -155,10 +155,6 @@ if(QATERIALGALLERY_IGNORE_ENV)
   target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE -DQATERIALGALLERY_IGNORE_ENV)
 endif()
 
-if(QATERIALGALLERY_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIALGALLERY_TARGET} PRIVATE include/QaterialGallery/Pch/Pch.hpp)
-endif()
-
 # ──── DEPENDENCIES ────
 
 set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES
@@ -167,6 +163,16 @@ set_target_properties(${QATERIALGALLERY_TARGET} PROPERTIES
 target_link_libraries(${QATERIALGALLERY_TARGET} PRIVATE
   Qaterial
   spdlog
+  Qt::Core
+  Qt::Gui
+  Qt::Qml
+  Qt::Quick
+  Qt::QuickControls2
+  Qt::Svg
+  Qt::Widgets
+)
+target_compile_definitions(${QATERIALGALLERY_TARGET} PRIVATE
+  -DQATERIALGALLERY_VERSION="${QATERIALGALLERY_VERSION}"
 )
 
 # ────────── POST BUILD PLATFORM DEPENDANCIES ─────────────

@@ -32,4 +32,4 @@ set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog re
 set(SPDLOG_TAG "v1.x" CACHE STRING "spdlog git tag")
 
 set(QATERIAL_REPOSITORY "https://github.com/OlivierLDff/Qaterial.git" CACHE STRING "Repository of Qaterial")
-set(QATERIAL_TAG "v1.4.0" CACHE STRING "Git Tag of Qaterial")
+set(QATERIAL_TAG "v1.4.9" CACHE STRING "Git Tag of Qaterial" FORCE)

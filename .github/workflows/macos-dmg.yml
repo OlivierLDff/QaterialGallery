@@ -20,12 +20,12 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        min-osx-target: ['10.13']
-        qt-version: ['5.15.1']
+        min-osx-target: ['11.0']
+        qt-version: ['5.15.2']
         build-type: ['Release']
         # 1 is legacy build system
         # 12 is new build system
-        build-system: ['1']
+        build-system: ['12']
 
     steps:
     -
@@ -58,20 +58,13 @@ jobs:
         dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.qt-version }}
         cached: ${{ steps.cache-qt-macos.outputs.cache-hit }}
     -
-      name: 🔥 Delete Qt built-in styles
-      run: |
-        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/designer
-        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Fusion
-        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Imagine
-        rm -rf ${Qt5_Dir}/qml/QtQuick/Controls.2/Universal
-      shell: bash
-    -
       name: 🔧 Configure
       run: |
         mkdir -p build
         cmake \
           -G "Xcode" \
           -Tbuildsystem=${{ matrix.build-system }} \
+          -DCMAKE_OSX_ARCHITECTURES="x86_64" \
           -DCMAKE_OSX_DEPLOYMENT_TARGET=${{ matrix.min-osx-target }} \
           -DQT_MAC_TEAM_ID=${{ secrets.MAC_TEAM_ID }} \
           -DQT_MAC_CODE_SIGN_IDENTITY="Developer ID Application" \
