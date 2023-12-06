@@ -1,5 +1,3 @@
-// ──── INCLUDE ────
-
 // Oliv Qt
 #include <Qaterial/Qaterial.hpp>
 
@@ -24,11 +22,9 @@ void installLoggers()
 #ifdef WIN32
     const auto msvcSink = std::make_shared<spdlog::sinks::msvc_sink_mt>();
     msvcSink->set_level(spdlog::level::debug);
-    qaterial::Logger::registerSink(msvcSink);
 #endif
     const auto stdoutSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     stdoutSink->set_level(spdlog::level::debug);
-    qaterial::Logger::registerSink(stdoutSink);
 }
 
 // ──── FUNCTIONS ────
@@ -60,7 +56,8 @@ int main(int argc, char* argv[])
     QGuiApplication::setOrganizationName("Oliv");
     QGuiApplication::setApplicationName("Qaterial Gallery");
     QGuiApplication::setOrganizationDomain("https://github.com/OlivierLDff/QaterialGallery");
-    QGuiApplication::setApplicationVersion(qaterial::Version::version().readable());
+
+    QGuiApplication::setApplicationVersion(QATERIALGALLERY_VERSION);
 
     qCDebug(QATERIALGALLERY_MAIN_LOGGING_CATEGORY,
         "Register Application: "
